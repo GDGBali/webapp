@@ -15,6 +15,7 @@
   "dependencies": {
     "cross-env": "^5.1.4",
     "nuxt": "^1.0.0",
+    "vue-progressive-image": "^2.4.4",
     "vuetify": "^1.0.0"
   },
   "devDependencies": {
