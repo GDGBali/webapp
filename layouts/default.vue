@@ -85,3 +85,9 @@ export default {
   }
 };
 </script>
+
+<style>
+nav {
+  z-index: 3 !important;
+}
+</style>

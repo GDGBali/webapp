@@ -10,7 +10,7 @@ import {
   VIcon,
   VGrid,
   VToolbar,
-  VParallax
+  VJumbotron
 } from 'vuetify';
 import { Scroll } from 'vuetify/es5/directives';
 
@@ -25,7 +25,7 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
-    VParallax
+    VJumbotron
   },
   directives: {
     Scroll
