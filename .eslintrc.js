@@ -8,18 +8,42 @@ module.exports = {
     parser: 'babel-eslint'
   },
   extends: [
-    'eslint:recommended',
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
     'plugin:vue/recommended',
     'plugin:prettier/recommended'
   ],
-  // required to lint *.vue files
-  plugins: ['vue'],
-  // add your custom rules here
+  plugins: ['vue', 'prettier'],
   rules: {
-    'no-console': 'off',
-    'vue/max-attributes-per-line': 'off',
-    'prettier/prettier': ['error', { semi: true, singleQuote: true }]
+    'prettier/prettier': [
+      'error',
+      { semi: true, singleQuote: true, printWidth: 80 }
+    ],
+    'vue/html-indent': [
+      'error',
+      2,
+      {
+        attribute: 1,
+        closeBracket: 0,
+        ignores: [],
+        alignAttributesVertically: true
+      }
+    ],
+    'vue/html-closing-bracket-spacing': [
+      'error',
+      {
+        selfClosingTag: 'always'
+      }
+    ],
+    'vue/max-attributes-per-line': [
+      2,
+      {
+        singleline: 3,
+        multiline: {
+          max: 1,
+          allowFirstLine: false
+        }
+      }
+    ],
+    'vue/valid-v-on': ['error'],
+    'vue/require-prop-types': 'off'
   }
 }

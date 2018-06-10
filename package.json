@@ -13,6 +13,8 @@
     "lintfix": "eslint --fix --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
     "cross-env": "^5.1.4",
     "nuxt": "^1.0.0",
     "vue-progressive-image": "^2.4.4",
@@ -32,7 +34,9 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.5.0",
+    "node-sass": "^4.9.0",
     "prettier": "^1.12.1",
+    "sass-loader": "^7.0.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1"
   }

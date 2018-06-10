@@ -54,8 +54,13 @@ module.exports = {
         ]
       ]
     },
-    vendor: ['~/plugins/vuetify.js', '~/plugins/vue-progressive-image.js'],
+    vendor: [
+      '~/plugins/vuetify.js',
+      '~/plugins/vue-progressive-image.js',
+      'axios'
+    ],
     extractCSS: true,
+    cssSourceMap: false,
     /*
     ** Run ESLint on save
     */

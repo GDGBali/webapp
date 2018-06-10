@@ -10,9 +10,11 @@ import {
   VIcon,
   VGrid,
   VToolbar,
-  VJumbotron
+  VJumbotron,
+  VAvatar
 } from 'vuetify';
 import { Scroll } from 'vuetify/es5/directives';
+import colors from 'vuetify/es5/util/colors';
 
 Vue.use(Vuetify, {
   components: {
@@ -25,9 +27,13 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
-    VJumbotron
+    VJumbotron,
+    VAvatar
   },
   directives: {
     Scroll
+  },
+  theme: {
+    primary: colors.teal.base
   }
 });

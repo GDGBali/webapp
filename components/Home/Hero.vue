@@ -6,14 +6,29 @@
       :blur="30"
       no-ratio
     />
-    <div class="hero-overlay"/>
+    <div class="hero-overlay" />
     <v-container fill-height class="hero-content">
       <v-layout align-center>
-        <v-flex text-xs-center>
-          <div>
-            <h3 class="display-3 heading">Custom Colsor</h3>
-            <h3 class="display-3">{{ events.title }}</h3>
-          </div>
+        <v-flex xs12>
+          <v-container>
+            <v-layout 
+              row 
+              wrap 
+              justify-center 
+              align-center>
+              <v-flex xs6 text-xs-center>
+                <GdgIcon />
+              </v-flex>
+              <v-flex xs12 text-xs-center>
+                <div class="heading">
+                  {{ event.title }}
+                </div>
+                <div class="heading">
+                  {{ event.secondTitle }}
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-flex>
       </v-layout>
     </v-container>
@@ -21,12 +36,16 @@
 </template>
 
 <script>
-import { events } from '~/data/events.js';
+import GdgIcon from '~/components/Icons/GdgIcon.vue';
+
 export default {
-  data() {
-    return {
-      events
-    };
+  components: {
+    GdgIcon
+  },
+  computed: {
+    event() {
+      return this.$store.state.events.latestEvent;
+    }
   }
 };
 </script>
@@ -35,6 +54,8 @@ export default {
 <style scoped>
 .heading {
   font-family: 'Product Sans';
+  font-size: 3.5em;
+  color: #fff;
 }
 @media (min-height: 500px) {
   #hero {
