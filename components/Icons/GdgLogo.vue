@@ -1,7 +1,7 @@
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 222.79 115.39">
     <defs>
-      <style>.cls-1{fill:none;}.cls-2{fill:#ffc107;}.cls-3{fill:#0f9d58;}.cls-4{fill:#bf360c;}.cls-11,.cls-12,.cls-4,.cls-5,.cls-6{opacity:0.2;isolation:isolate;}.cls-5{fill:#263238;}.cls-6{fill:#fff;}.cls-7{fill:url(#radial-gradient);}.cls-8{fill:url(#radial-gradient-2);}.cls-9{fill:#4285f4;}.cls-10{fill:#db4437;}.cls-11{fill:#1a237e;}.cls-12{fill:#3e2723;}.cls-13{fill:url(#radial-gradient-3);}.cls-14{font-size:55.27px;}.cls-14,.cls-15{font-family:ProductSans-Regular, Product Sans;}.cls-15{font-size:58.69px;}</style>
+      <style>.cls-1{fill:none;}.cls-2{fill:#ffc107;}.cls-3{fill:#0f9d58;}.cls-4{fill:#bf360c;}.cls-11,.cls-12,.cls-4,.cls-5,.cls-6{opacity:0.2;isolation:isolate;}.cls-5{fill:#263238;}.cls-6{fill:#fff;}.cls-7{fill:url(#radial-gradient);}.cls-8{fill:url(#radial-gradient-2);}.cls-9{fill:#4285f4;}.cls-10{fill:#db4437;}.cls-11{fill:#1a237e;}.cls-12{fill:#3e2723;}.cls-13{fill:url(#radial-gradient-3);}.cls-14{font-size:55.27px;letter-spacing:0.07em;}.cls-14,.cls-15{font-family:ProductSans-Regular, Product Sans;}.cls-15{font-size:58.69px;}</style>
       <radialGradient 
         id="radial-gradient" 
         cx="97.53" 
@@ -33,7 +33,7 @@
         <stop offset="1" stop-color="#fff" stop-opacity="0" />
       </radialGradient>
     </defs>
-    <title>Asset 5</title>
+    <title>Asset 7</title>
     <g id="Layer_2" data-name="Layer 2">
       <g id="Layer_4" data-name="Layer 4">
         <g id="_Group_" data-name="&lt;Group&gt;">
@@ -96,7 +96,7 @@
               transform="translate(-47.38 -27.07)" />
           </g>
         </g>
-        <text :fill="iconColor" class="cls-14" transform="translate(137.21 101.41)">Bali</text>
+        <text :fill="iconColor" class="cls-14" transform="translate(120.21 101.41)">Bali</text>
         <text :fill="iconColor" class="cls-15" transform="translate(88.21 52.04)">GDG</text>
       </g>
     </g>

@@ -12,10 +12,10 @@ export const mutations = {
 };
 
 export const actions = {
-  async getLatestEvents({ commit }) {
-    const { data } = await axios.get(
-      'https://my-json-server.typicode.com/gdg-bali/webapp/events/1'
-    );
-    commit('setLatestEvent', data);
-  }
+  // async getLatestEvents({ commit }) {
+  //   const { data } = await axios.get(
+  //     'https://my-json-server.typicode.com/gdg-bali/webapp/events/1'
+  //   );
+  //   commit('setLatestEvent', data);
+  // }
 };

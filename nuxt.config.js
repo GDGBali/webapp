@@ -6,7 +6,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'gdg-bali',
+    title: 'GDG Bali',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -57,7 +57,8 @@ module.exports = {
     vendor: [
       '~/plugins/vuetify.js',
       '~/plugins/vue-progressive-image.js',
-      'axios'
+      'axios',
+      'babel-polyfill'
     ],
     extractCSS: true,
     cssSourceMap: false,

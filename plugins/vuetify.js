@@ -11,7 +11,8 @@ import {
   VGrid,
   VToolbar,
   VJumbotron,
-  VAvatar
+  VAvatar,
+  VParallax
 } from 'vuetify';
 import { Scroll } from 'vuetify/es5/directives';
 import colors from 'vuetify/es5/util/colors';
@@ -28,7 +29,8 @@ Vue.use(Vuetify, {
     VGrid,
     VToolbar,
     VJumbotron,
-    VAvatar
+    VAvatar,
+    VParallax
   },
   directives: {
     Scroll

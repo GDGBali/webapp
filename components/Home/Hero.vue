@@ -1,11 +1,5 @@
 <template>
-  <section id="hero">
-    <progressive-background
-      id="bg-hero"
-      :src="require('~/assets/images/home.jpg')"
-      :blur="30"
-      no-ratio
-    />
+  <section v-lazy:background-image="require('~/assets/images/main.jpg')" id="hero">
     <div class="hero-overlay" />
     <v-container fill-height class="hero-content">
       <v-layout align-center>
@@ -16,15 +10,15 @@
               wrap 
               justify-center 
               align-center>
-              <v-flex xs6 text-xs-center>
+              <v-flex xs12 sm8 text-xs-center>
                 <GdgIcon />
               </v-flex>
               <v-flex xs12 text-xs-center>
-                <div class="heading">
-                  {{ event.title }}
-                </div>
-                <div class="heading">
-                  {{ event.secondTitle }}
+                <div class="mt-5">
+                  <v-btn to="/events" class="primary--text">
+                    <v-icon left>local_activity</v-icon>
+                    Events
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>
@@ -51,7 +45,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style lang="scss">
 .heading {
   font-family: 'Product Sans';
   font-size: 3.5em;
@@ -70,15 +64,13 @@ export default {
   }
 }
 
-#bg-hero {
-  background-color: #673ab7;
+#hero {
+  min-height: 100vh;
+  position: relative;
+  background-color: #008080;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-}
-
-#hero {
-  position: relative;
 }
 
 .hero-content {

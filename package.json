@@ -17,6 +17,7 @@
     "babel-polyfill": "^6.26.0",
     "cross-env": "^5.1.4",
     "nuxt": "^1.0.0",
+    "vue-lazyload": "^1.2.4",
     "vue-progressive-image": "^2.4.4",
     "vuetify": "^1.0.0"
   },

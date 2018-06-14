@@ -23,19 +23,16 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar 
-      :color="toolbarColor" 
-      :flat="flatToolbar"
       :app="notRootPath"
-      :dark="!notRootPath"
+      color="white"
       fixed>
       <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer" />
       <v-spacer class="hidden-md-and-up" />
-      <nuxt-link to="/" class="mt-3">
+      <nuxt-link to="/" class="navbrand">
         <img
           src="~/assets/images/logo.svg"
           alt="logo"
           width="100"
-          height="80"
           class="mx-4">
       </nuxt-link>
       <v-spacer class="hidden-sm-and-down" />
@@ -69,34 +66,28 @@ export default {
     items: [
       { icon: 'apps', title: 'Welcome', to: '/' },
       { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-    ],
-    // toolbarColor: 'transparent',
-    flatToolbar: true
+    ]
   }),
   computed: {
     notRootPath() {
       return isNotRootPath(this.$route.path);
-    },
-    toolbarColor() {
-      return isNotRootPath(this.$route.path) ? '' : 'transparent';
-    }
-  },
-  methods: {
-    onScroll(e) {
-      // const offsetTop = window.pageYOffset || document.documentElement.scrollTop
-      const offsetTop = e.target.scrollTop;
-
-      if (offsetTop > 100) {
-        this.toolbarColor = 'white';
-        this.flatToolbar = false;
-      } else {
-        this.toolbarColor = 'transparent';
-        this.flatToolbar = true;
-      }
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.navbrand {
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 959px) {
+  .navbrand {
+    margin-top: 0;
+    align-self: flex-end;
+    img {
+      width: 85px;
+    }
+  }
+}
 </style>
