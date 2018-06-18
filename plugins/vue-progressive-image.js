@@ -5,10 +5,16 @@ Vue.use(VueLazyload, {
   filter: {
     progressive(listener, options) {
       listener.el.setAttribute('lazy-progressive', 'true');
-      // console.log(listener);
-      // const apa = require('~/assets/images/hero.jpg');
-      // console.log(apa);
-      // listener.loading = apa;
+    },
+    webp(listener, options) {
+      if (!options.supportWebp) return;
+
+      const imgName = listener.el.dataset.imgname;
+      const webpImg = require(`~/assets/images/${
+        listener.el.dataset.imgname
+      }.webp`);
+
+      listener.src = webpImg;
     }
   }
 });

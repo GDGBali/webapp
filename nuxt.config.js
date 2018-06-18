@@ -66,6 +66,11 @@ module.exports = {
     ** Run ESLint on save
     */
     extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.(webp)$/i,
+        loaders: ['file-loader?hash=sha512&digest=hex&name=[name].[hash].[ext]']
+      });
+
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

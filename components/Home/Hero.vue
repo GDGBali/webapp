@@ -1,5 +1,5 @@
 <template>
-  <section v-lazy:background-image="require('~/assets/images/main.jpg')" id="hero">
+  <section v-lazy:background-image="require('~/assets/images/hero.jpg')" id="hero" data-imgname="hero">
     <div class="hero-overlay" />
     <v-container fill-height class="hero-content">
       <v-layout align-center>
