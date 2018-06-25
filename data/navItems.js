@@ -14,5 +14,9 @@ export const navItems = [
   {
     link: '/tutorials',
     text: 'tutorials'
+  },
+  {
+    link: '/showcase',
+    text: 'showcase'
   }
 ];

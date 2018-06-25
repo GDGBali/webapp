@@ -45,7 +45,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .heading {
   font-family: 'Product Sans';
   font-size: 3.5em;

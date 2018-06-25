@@ -28,7 +28,7 @@ module.exports = {
   plugins: [
     '~/plugins/vuetify.js',
     {
-      src: '~/plugins/vue-progressive-image.js',
+      src: '~/plugins/vue-lazy-load.js',
       ssr: false
     }
   ],
@@ -56,7 +56,7 @@ module.exports = {
     },
     vendor: [
       '~/plugins/vuetify.js',
-      '~/plugins/vue-progressive-image.js',
+      '~/plugins/vue-lazy-load.js',
       'axios',
       'babel-polyfill'
     ],
