@@ -86,7 +86,7 @@ export default {
     margin-top: 0;
     align-self: flex-end;
     img {
-      width: 85px;
+      width: 75px;
     }
   }
 }

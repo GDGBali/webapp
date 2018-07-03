@@ -18,7 +18,7 @@
             </div>
           </v-card-title>
           <v-card-actions class="justify-end">
-            <v-btn to="/events" color="primary">
+            <v-btn to="/events/io18" color="primary">
               <v-icon left>info</v-icon>
               Details
             </v-btn>
@@ -43,12 +43,3 @@
     </v-layout>
   </v-container>
 </template>
-
-<script>
-import Hero from '~/components/Home/Hero.vue';
-export default {
-  components: {
-    Hero
-  }
-};
-</script>

@@ -10,9 +10,9 @@ import {
   VIcon,
   VGrid,
   VToolbar,
-  VJumbotron,
-  VAvatar,
-  VParallax
+  VDivider,
+  VTabs,
+  VExpansionPanel
 } from 'vuetify';
 import { Scroll } from 'vuetify/es5/directives';
 import colors from 'vuetify/es5/util/colors';
@@ -28,9 +28,9 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
-    VJumbotron,
-    VAvatar,
-    VParallax
+    VDivider,
+    VTabs,
+    VExpansionPanel
   },
   directives: {
     Scroll
