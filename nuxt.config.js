@@ -2,9 +2,6 @@ const nodeExternals = require('webpack-node-externals');
 // const resolve = dir => require('path').join(__dirname, dir);
 
 module.exports = {
-  /*
-  ** Headers of the page
-  */
   head: {
     title: 'GDG Bali',
     meta: [
@@ -32,14 +29,35 @@ module.exports = {
       ssr: false
     }
   ],
+  modules: [
+    [
+      'nuxt-i18n',
+      {
+        locales: [
+          {
+            name: 'Indonesia',
+            code: 'id',
+            iso: 'id',
+            file: 'id.js'
+          },
+          {
+            name: 'English',
+            code: 'en',
+            iso: 'en-US',
+            file: 'en.js'
+          }
+        ],
+        langDir: 'lang/',
+        lazy: true,
+        defaultLocale: 'id',
+        vueI18n: {
+          fallbackLocale: 'id'
+        }
+      }
+    ]
+  ],
   css: ['~/assets/style/app.styl'],
-  /*
-  ** Customize the progress bar color
-  */
   loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
   build: {
     babel: {
       plugins: [

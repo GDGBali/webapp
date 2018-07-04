@@ -1,0 +1,63 @@
+export default {
+  features: {
+    whatGdg: 'What is GDG ?',
+    welcomeTitle: 'Welcome to the',
+    welcomeText: `a developer community who are interested in Google's developer technology everything from platforms to product APIs.`,
+    description: `
+      GDG Bali is one of hundreds GDGs around the world that is not managed or owned but it is supported by Google.
+      Together with the support of various partners, we organize free conferences,
+      workshops and many other activities and opportunities to learn and get in touch with many professionals from all around Bali.
+    `,
+    whatTodo: {
+      title: 'What do you do at GDG ?',
+      learn:
+        'Courses, workshops, bootcamps, conferences, codelabs, hackathons, tutorships and study resources for free use, easy access to external training events and certification exams.',
+      build:
+        'Either you are a beginner or experienced developer, GDG is a good place to challenge yourself and try to develop or publish projects by working and coordinating with other members of the community.',
+      share:
+        'The GDG is a community of enthusiasts solely made up of and founded on volunteers. Each opportunity that the GDG offers you is possible thanks to their work of sharing their projects and skills, without any remuneration. Sharing all of this is definitely a great way to support the GDG and returning something to the community.',
+      connect:
+        'Taking part in our activities will allow you to meet, talk and share your ideas and your work with many professionals and enthusiasts of the sector, both local and internationally.',
+      organize:
+        'Sharing is not the only way to help the GDG. The other way to contribute is to take part in the organizational activities of an event and other core activities of the community. This will improve your soft skills in communication and how to manage an event.',
+      haveFun:
+        'The GDG is a healthy environment for people who love humanity towards others and dynamism. In the GDG you will find girls and boys always ready to help you, courteous, friendly, humble and full of irony and joy, but also enterprising, proactive and disruptive ideas. In GDG it is basically easy to find good friends with whom to spend some formative and amusing moments.'
+    }
+  },
+  events: {
+    next: 'Next Event',
+    io: {
+      description: `
+        Google I/O is Google's annual developer conference, where they share the latest products and technologies.
+        GDG Bali will bring the I/O experience here in Bali with a series of talks and workshops to help professional and 
+        student developers deep dive in the new technologies announced during Google I/O 2018. This is FREE, so please sign up early!
+      `
+    },
+    workbox: {
+      description: `
+        In this meetup, we will talk about how to implement service worker the easy way using Workbox.
+        We will integrate it with an existing app using either ReactJS or VueJS.
+        We will keep you updated so stay tuned!
+      `
+    },
+    flutter: {
+      description: `
+        Flutter is Google's mobile app SDK for crafting high-quality native
+        interfaces on iOS and Android.
+        Flutter Study Jam is a great opportunity to bring members of your
+        community together to learn Flutter in person and support them to
+        complete the course.
+        We will keep you updated so stay tuned!
+      `
+    },
+    devfest: {
+      description: `
+        GDG DevFests are large, community-run events that can offer speaker
+        sessions across multiple product areas, all-day hack-a-thons,
+        codelabs, and more. In 2018, the official DevFest Season runs from
+        August 01st through November 30th.
+        We will keep you updated so stay tuned!
+      `
+    }
+  }
+};

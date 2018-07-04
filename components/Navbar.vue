@@ -28,9 +28,9 @@
       fixed>
       <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer" />
       <v-spacer class="hidden-md-and-up" />
-      <nuxt-link to="/" class="navbrand">
+      <nuxt-link :to="localePath('index')" class="navbrand">
         <img
-          src="~/assets/images/logo.svg"
+          src="~/assets/icons/logo.svg"
           alt="logo"
           width="100"
           class="mx-4">
@@ -40,8 +40,9 @@
         <v-btn
           v-for="navItem in navItems"
           :key="navItem.text"
-          :to="navItem.link"
+          :to="localePath(navItem.routeName)"
           active-class="active--nav"
+          exact
           flat>
           <span>{{ navItem.text }}</span>
         </v-btn>
