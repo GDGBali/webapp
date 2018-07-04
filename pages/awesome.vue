@@ -3,7 +3,7 @@
     <v-layout row wrap>
       <v-flex xs12>
         <div class="text-xs-center mb-4">
-          <img src="~/assets/images/awesome.svg" alt="" width="500">
+          <img src="~/assets/icons/awesome.svg" alt="" width="500">
           <h1 class="product-sans">Awesomeness!</h1>
           <div class="body-2">
             Here you can find amazing frameworks, libraries or modules.
@@ -22,14 +22,14 @@
           <v-expansion-panel popout>
             <v-expansion-panel-content
               v-for="(awesome, i) in awesomeness"
-              :key="i"
+              :key="`awesome-${i}`"
             >
               <div slot="header" class="title product-sans">{{ awesome.category }}</div>
               <v-card>
                 <v-card-text>
                   <v-list>
                     <template v-for="(item, i2) in awesome.lists">
-                      <v-list-tile :key="i2">
+                      <v-list-tile :key="`item-${i2}`">
                         <v-list-tile-action>
                           <v-icon color="grey lighten-1">
                             locked
@@ -41,7 +41,7 @@
                       </v-list-tile>
                       <v-divider 
                         v-if="i2 + 1 < awesome.lists.length"
-                        :key="i2" />
+                        :key="`divider-${i2}`" />
                     </template>
                   </v-list>
                 </v-card-text>

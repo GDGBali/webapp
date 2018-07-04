@@ -7,7 +7,7 @@
           sm8
           md4>
           <div>
-            <img src="~/assets/images/io18.svg" alt="">
+            <img src="~/assets/icons/io18.svg" alt="">
           </div>
           <div>
             <v-btn 

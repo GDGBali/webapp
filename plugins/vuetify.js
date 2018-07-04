@@ -12,7 +12,9 @@ import {
   VToolbar,
   VDivider,
   VTabs,
-  VExpansionPanel
+  VSelect,
+  VExpansionPanel,
+  transitions
 } from 'vuetify';
 import { Scroll } from 'vuetify/es5/directives';
 import colors from 'vuetify/es5/util/colors';
@@ -30,7 +32,9 @@ Vue.use(Vuetify, {
     VToolbar,
     VDivider,
     VTabs,
-    VExpansionPanel
+    VSelect,
+    VExpansionPanel,
+    transitions
   },
   directives: {
     Scroll
