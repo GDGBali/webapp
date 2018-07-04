@@ -3,22 +3,13 @@
     <v-container grid-list-xl>
       <v-layout row wrap>
         <v-flex xs12>
-          <div class="product-sans display-2 white--text">
-            Next Event
-          </div>
+          <div class="product-sans display-2 white--text">{{ $t('events.next') }}</div>
         </v-flex>
         <v-flex xs12>
           <v-card>
             <v-card-title primary-title>
               <div class="headline mb-0 product-sans">Google I/O 2018 Extended</div>
-              <div class="body-1 mt-3">
-                Google I/O is Google's annual developer conference, 
-                where they share the latest products and technologies. 
-                GDG Bali will bring the I/O experience here in Bali with 
-                a series of talks and workshops to help professional and student developers deep dive in the
-                new technologies announced during Google I/O 2018. 
-                This is FREE, so please sign up early! 
-              </div>
+              <div class="body-1 mt-3">{{ $t('events.io.description') }}</div>
               <v-layout row wrap>
                 <v-flex xs12>
                   <v-icon left class="mr-2">location_on</v-icon>
@@ -35,7 +26,7 @@
               </v-layout>
             </v-card-title>
             <v-card-actions class="justify-end">
-              <v-btn to="/events" color="primary">
+              <v-btn to="/events/io18" color="primary">
                 <v-icon left>local_activity</v-icon>
                 Join
               </v-btn>

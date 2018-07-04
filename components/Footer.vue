@@ -1,7 +1,17 @@
 <template>
   <v-footer height="auto" class="footer">
     <v-container grid-list-xl>
-      <v-layout 
+      <v-layout>
+        <v-flex xs7 sm3 md3>
+          <v-select
+            :items="localeItems"
+            v-model="locale"
+            solo
+            @change="changeLocale"
+          />
+        </v-flex>
+      </v-layout>
+      <v-layout
         row 
         wrap 
         align-center 
@@ -9,9 +19,9 @@
         <v-flex xs4 sm2>
           <GdgIcon />
         </v-flex>
-        <v-flex xs5 class="text-xs-right">
+        <v-flex xs12 class="text-xs-right">
           <a v-for="socialLink in socialLinks" :key="socialLink.icon" :href="socialLink.link">
-            <img :src="require(`~/assets/images/${socialLink.icon}.svg`)" :alt="`icon-${socialLink.icon}`">
+            <img :src="require(`~/assets/icons/${socialLink.icon}.svg`)" :alt="`icon-${socialLink.icon}`">
           </a>
         </v-flex>
         <v-flex xs12>
@@ -32,6 +42,11 @@ export default {
     GdgIcon
   },
   data: () => ({
+    localeItems: [
+      { value: 'id', text: 'Indonesia' },
+      { value: 'en', text: 'English' }
+    ],
+    locale: 'id',
     socialLinks: [
       {
         link: 'https://www.meetup.com/GDG-Bali',
@@ -50,6 +65,14 @@ export default {
         icon: 'instagram'
       }
     ]
-  })
+  }),
+  mounted() {
+    this.locale = this.$i18n.locale;
+  },
+  methods: {
+    changeLocale(value) {
+      this.$router.push(this.switchLocalePath(value));
+    }
+  }
 };
 </script>
