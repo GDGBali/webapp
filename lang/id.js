@@ -61,5 +61,32 @@ export default {
         Tunggu kabar lebih lanjut dari kami!
       `
     }
+  },
+  awesome: {
+    title: `
+      Di sini kamu bisa mencari beberapa framework, library atau modul yang sangat menarik.
+      <br>
+      Kamu juga bisa lihat contoh-contoh pemakaian untuk setiap <b>awesomeness</b>.
+      <br>
+      Daftar ini masih tidak lengkap, kami akan segera menambahkannya.
+      <br><br>
+      Credit goes to <a href="https://github.com/sindresorhus" target="_blank">sindresorhus</a>
+    `
+  },
+  tutorials: {
+    title: `
+      Di sini kamu dapat membaca beberapa tutorial yang dibuat oleh komunitas.
+      <br>
+      Kamu juga bisa taruh tutorial buatanmu sendiri.
+      <br>
+    `
+  },
+  showcase: {
+    title: `
+      Kami akan taruh beberapa project open source yang dibuat oleh komunitas di sini.
+      <br>
+      Kamu juga bisa taruh project buatanmu sendiri.
+      <br>
+    `
   }
 };

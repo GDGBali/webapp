@@ -4,12 +4,11 @@
       <v-flex xs12>
         <div class="text-xs-center mb-4">
           <h1 class="product-sans">Tutorials</h1>
-          <div class="body-2">
-            Here you can find tutorials written by the community.
-            <br>
-            You can also submit your own tutorials.
-            <br>
-          </div>
+          <i18n 
+            path="tutorials.title" 
+            tag="div" 
+            class="body-2" 
+            v-html="$t('tutorials.title')" />
         </div>
       </v-flex>
       <v-flex xs12>

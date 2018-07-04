@@ -4,12 +4,11 @@
       <v-flex xs12>
         <div class="text-xs-center mb-4">
           <h1 class="product-sans">Showcase</h1>
-          <div class="body-2">
-            We will post some open source projects created by the community here.
-            <br>
-            You can also submit your own projects.
-            <br>
-          </div>
+          <i18n 
+            path="showcase.title" 
+            tag="div" 
+            class="body-2" 
+            v-html="$t('showcase.title')" />
         </div>
       </v-flex>
       <v-flex xs12>

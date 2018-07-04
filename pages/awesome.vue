@@ -5,15 +5,11 @@
         <div class="text-xs-center mb-4">
           <img src="~/assets/icons/awesome.svg" alt="" width="500">
           <h1 class="product-sans">Awesomeness!</h1>
-          <div class="body-2">
-            Here you can find amazing frameworks, libraries or modules.
-            <br>
-            You can also find some examples for each awesomeness.
-            <br>
-            This list is incomplete, we will add more awesomeness soon.
-            <br><br>
-            Credit goes to <a href="https://github.com/sindresorhus" target="_blank">sindresorhus</a>
-          </div>
+          <i18n 
+            path="awesome.title" 
+            tag="div" 
+            class="body-2" 
+            v-html="$t('awesome.title')" />
         </div>
         <v-card>
           <v-card-title>

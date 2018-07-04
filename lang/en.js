@@ -59,5 +59,32 @@ export default {
         We will keep you updated so stay tuned!
       `
     }
+  },
+  awesome: {
+    title: `
+      Here you can find amazing frameworks, libraries or modules.
+      <br>
+      You can also find some examples for each <b>awesomeness</b>.
+      <br>
+      This list is incomplete, we will add more awesomeness soon.
+      <br><br>
+      Credit goes to <a href="https://github.com/sindresorhus" target="_blank">sindresorhus</a>
+    `
+  },
+  tutorials: {
+    title: `
+      Here you can find tutorials written by the community.
+      <br>
+      You can also submit your own tutorials.
+      <br>
+    `
+  },
+  showcase: {
+    title: `
+      We will post some open source projects created by the community here.
+      <br>
+      You can also submit your own projects.
+      <br>
+    `
   }
 };
