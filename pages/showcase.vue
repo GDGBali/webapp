@@ -11,15 +11,19 @@
             v-html="$t('showcase.title')" />
         </div>
       </v-flex>
-      <v-flex xs12>
-        <div class="text-xs-center mt-4">
-          <h1 class="product-sans">Coming Soon</h1>
-          <div class="body-2">
-            We will finish this page soon.
-          </div>
-          <v-icon x-large>build</v-icon>
-        </div>
-      </v-flex>
+      
+      <coming-soon />
+
     </v-layout>
   </v-container>
 </template>
+
+<script>
+import ComingSoon from '~/components/shared/ComingSoon';
+
+export default {
+  components: {
+    ComingSoon
+  }
+};
+</script>

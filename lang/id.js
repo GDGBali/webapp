@@ -79,6 +79,9 @@ export default {
       <br>
       Kamu juga bisa taruh tutorial buatanmu sendiri.
       <br>
+    `,
+    submit: `
+      Kamu ingin kami untuk membuat sebuah tutorial?
     `
   },
   showcase: {

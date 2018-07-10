@@ -77,6 +77,9 @@ export default {
       <br>
       You can also submit your own tutorials.
       <br>
+    `,
+    submit: `
+      You want to request a tutorial?
     `
   },
   showcase: {

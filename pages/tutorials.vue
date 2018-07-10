@@ -12,14 +12,28 @@
         </div>
       </v-flex>
       <v-flex xs12>
-        <div class="text-xs-center mt-4">
-          <h1 class="product-sans">Coming Soon</h1>
-          <div class="body-2">
-            We will finish this page soon.
-          </div>
-          <v-icon x-large>build</v-icon>
+        <div class="text-xs-center mb-4">
+          <i18n 
+            path="tutorials.submit" 
+            tag="div" 
+            class="body-2" 
+            v-html="$t('tutorials.submit')" />
+          <v-btn round color="primary" dark>Request</v-btn>
         </div>
       </v-flex>
+
+      <coming-soon />
+
     </v-layout>
   </v-container>
 </template>
+
+<script>
+import ComingSoon from '~/components/shared/ComingSoon';
+
+export default {
+  components: {
+    ComingSoon
+  }
+};
+</script>
