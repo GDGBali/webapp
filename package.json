@@ -39,10 +39,12 @@
     "vue": "2.5.16",
     "vue-meta": "1.5.0",
     "vue-router": "3.0.1",
+    "vuetify": "^1.0.19",
     "vuex": "3.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.51",
+    "@babel/polyfill": "^7.0.0-beta.49",
     "@vue/cli-plugin-babel": "3.0.0-rc.2",
     "@vue/cli-plugin-e2e-cypress": "3.0.0-rc.2",
     "@vue/cli-plugin-eslint": "3.0.0-rc.2",
@@ -54,6 +56,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "23.0.x",
     "babel-loader": "8.0.0-beta.2",
+    "babel-plugin-transform-imports": "^1.4.1",
     "cross-env": "5.2.x",
     "express": "4.16.x",
     "hygen": "1.6.x",
@@ -68,6 +71,9 @@
     "stylelint-config-recess-order": "2.0.x",
     "stylelint-config-standard": "18.2.x",
     "stylelint-scss": "3.1.x",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue-cli-plugin-vuetify": "^0.1.6",
     "vue-jest": "2.6.x",
     "vue-template-compiler": "2.5.16",
     "vuepress": "0.10.x"
