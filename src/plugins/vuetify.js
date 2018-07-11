@@ -11,6 +11,8 @@ import {
   VToolbar,
   VSelect,
   VCard,
+  VDivider,
+  VExpansionPanel,
   transitions,
 } from 'vuetify';
 import colors from 'vuetify/es5/util/colors';
@@ -28,6 +30,8 @@ Vue.use(Vuetify, {
     VToolbar,
     VSelect,
     VCard,
+    VDivider,
+    VExpansionPanel,
     transitions,
   },
   theme: {

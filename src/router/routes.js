@@ -1,10 +1,25 @@
 import store from '@state/store';
 
+const createBasePath = pathName => ({
+  path: `/${pathName}`,
+  name: pathName,
+  component: () => lazyLoadView(import(`@views/${pathName}`)),
+});
+
 export default [
   {
     path: '/',
     name: 'home',
     component: () => lazyLoadView(import('@views/home')),
+  },
+  createBasePath('events'),
+  createBasePath('awesome'),
+  createBasePath('tutorials'),
+  createBasePath('showcase'),
+  {
+    path: '/events/:slug',
+    name: 'event-details',
+    component: () => lazyLoadView(import('@views/event-details')),
   },
   {
     path: '/login',

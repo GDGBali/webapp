@@ -1,6 +1,6 @@
 <template>
   <v-footer height="auto" class="footer">
-    <v-container grid-list-xl>
+    <v-container grid-list-xl fluid>
       <v-layout align-center>
         <v-flex xs7 sm3>
           <v-select

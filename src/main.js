@@ -18,7 +18,7 @@ const app = new Vue({
   created() {
     store.dispatch('changeLocale', {
       i18n,
-      locale: 'id',
+      locale: 'en',
     });
   },
 }).$mount('#app');

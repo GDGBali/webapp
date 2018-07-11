@@ -5,7 +5,7 @@
     "welcomeText":
       "a developer community who are interested in Google's developer technology everything from platforms to product APIs.",
     "description":
-      "\n      GDG Bali is one of hundreds GDGs around the world that is not managed or owned but it is supported by Google.\n      Together with the support of various partners, we organize free conferences,\n      workshops and many other activities and opportunities to learn and get in touch with many professionals from all around Bali.\n    ",
+      "GDG Bali is one of hundreds GDGs around the world that is not managed or owned but it is supported by Google.Together with the support of various partners, we organize free conferences,workshops and many other activities and opportunities to learn and get in touch with many professionals from all around Bali.",
     "whatTodo": {
       "title": "What do you do at GDG ?",
       "learn":
@@ -26,32 +26,32 @@
     "next": "Next Event",
     "io": {
       "description":
-        "\n        Google I/O is Google's annual developer conference, where they share the latest products and technologies.\n        GDG Bali will bring the I/O experience here in Bali with a series of talks and workshops to help professional and \n        student developers deep dive in the new technologies announced during Google I/O 2018. This is FREE, so please sign up early!\n      "
+        "Google I/O is Google's annual developer conference, where they share the latest products and technologies.GDG Bali will bring the I/O experience here in Bali with a series of talks and workshops to help professional and student developers deep dive in the new technologies announced during Google I/O 2018. This is FREE, so please sign up early!"
     },
     "workbox": {
       "description":
-        "\n        In this meetup, we will talk about how to implement service worker the easy way using Workbox.\n        We will integrate it with an existing app using either ReactJS or VueJS.\n        We will keep you updated so stay tuned!\n      "
+        "In this meetup, we will talk about how to implement service worker the easy way using Workbox.We will integrate it with an existing app using either ReactJS or VueJS.We will keep you updated so stay tuned!"
     },
     "flutter": {
       "description":
-        "\n        Flutter is Google's mobile app SDK for crafting high-quality native\n        interfaces on iOS and Android.\n        Flutter Study Jam is a great opportunity to bring members of your\n        community together to learn Flutter in person and support them to\n        complete the course.\n        We will keep you updated so stay tuned!\n      "
+        "Flutter is Google's mobile app SDK for crafting high-quality nativeinterfaces on iOS and Android.Flutter Study Jam is a great opportunity to bring members of yourcommunity together to learn Flutter in person and support them tocomplete the course.We will keep you updated so stay tuned!"
     },
     "devfest": {
       "description":
-        "\n        GDG DevFests are large, community-run events that can offer speaker\n        sessions across multiple product areas, all-day hack-a-thons,\n        codelabs, and more. In 2018, the official DevFest Season runs from\n        August 01st through November 30th.\n        We will keep you updated so stay tuned!\n      "
+        "GDG DevFests are large, community-run events that can offer speakersessions across multiple product areas, all-day hack-a-thons,codelabs, and more. In 2018, the official DevFest Season runs fromAugust 01st through November 30th.We will keep you updated so stay tuned!"
     }
   },
   "awesome": {
     "title":
-      "\n      Here you can find amazing frameworks, libraries or modules.\n      <br>\n      You can also find some examples for each <b>awesomeness</b>.\n      <br>\n      This list is incomplete, we will add more awesomeness soon.\n      <br><br>\n      Credit goes to <a href=\"https://github.com/sindresorhus\" target=\"_blank\">sindresorhus</a>\n    "
+      "Here you can find amazing frameworks, libraries or modules.<br>You can also find some examples for each <b>awesomeness</b>.<br>This list is incomplete, we will add more awesomeness soon.<br><br>Credit goes to <a href=\"https://github.com/sindresorhus\" target=\"_blank\">sindresorhus</a>"
   },
   "tutorials": {
     "title":
-      "\n      Here you can find tutorials written by the community.\n      <br>\n      You can also submit your own tutorials.\n      <br>\n    ",
-    "submit": "\n      You want to request a tutorial?\n    "
+      "Here you can find tutorials written by the community.<br>You can also submit your own tutorials.<br>",
+    "submit": "You want to request a tutorial?"
   },
   "showcase": {
     "title":
-      "\n      We will post some open source projects created by the community here.\n      <br>\n      You can also submit your own projects.\n      <br>\n    "
+      "We will post some open source projects created by the community here.<br>You can also submit your own projects.<br>"
   }
 }

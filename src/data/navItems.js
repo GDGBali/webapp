@@ -1,22 +1,22 @@
 export const navItems = [
   {
     text: 'home',
-    routeName: 'index',
+    path: '/',
   },
   {
     text: 'events',
-    routeName: 'events',
+    path: '/events',
   },
   {
     text: 'awesome!',
-    routeName: 'awesome',
+    path: '/awesome',
   },
   {
     text: 'tutorials',
-    routeName: 'tutorials',
+    path: '/tutorials',
   },
   {
     text: 'showcase',
-    routeName: 'showcase',
+    path: '/showcase',
   },
 ];

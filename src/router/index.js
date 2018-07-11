@@ -5,6 +5,8 @@ import NProgress from 'nprogress/nprogress';
 import store from '@state/store';
 import routes from './routes';
 
+NProgress.configure({ showSpinner: false });
+
 Vue.use(VueRouter);
 Vue.use(VueMeta, {
   keyName: 'metaInfo',

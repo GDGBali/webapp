@@ -23,7 +23,7 @@
     }
   },
   "events": {
-    "next": "Next Event",
+    "next": "Event Berikutnya",
     "io": {
       "description":
         "Google I/O merupakan sebuah konferensi tahunan para developer yang diselenggarakan oleh Google, tempat di mana mereka berbagi produk dan teknologi terbaru.   GDG Bali akan menghadirkan pengalaman I/O di sini di Bali dengan serangkaian diskusi dan workshops   untuk membantu baik para developer profesional dan maupun pelajar untuk mengetahui lebih dalam   tentang teknologi terbaru yang diumumkan selama Google I/O 2018. Acara ini GRATIS, jadi jangan sampai terlewatkan!"
@@ -43,15 +43,15 @@
   },
   "awesome": {
     "title":
-      "Di sini kamu bisa mencari beberapa framework, library atau modul yang sangat menarik.<br>  Kamu juga bisa lihat contoh-contoh pemakaian untuk setiap <b>awesomeness</b>.  <br>  Daftar ini masih tidak lengkap, kami akan segera menambahkannya.  <br><br>  Credit goes to <a href=\"https://github.com/sindresorhus\" target=\"_blank\">sindresorhus</a>"
+      "Di sini kamu bisa mencari beberapa framework, library atau modul yang sangat menarik.<br>Kamu juga bisa lihat contoh-contoh pemakaian untuk setiap <b>awesomeness</b>.  <br>  Daftar ini masih tidak lengkap, kami akan segera menambahkannya.  <br><br>  Credit goes to <a href=\"https://github.com/sindresorhus\" target=\"_blank\">sindresorhus</a>"
   },
   "tutorials": {
     "title":
-      "  Di sini kamu dapat membaca beberapa tutorial yang dibuat oleh komunitas.  <br>  Kamu juga bisa taruh tutorial buatanmu sendiri.  <br>",
+      "Di sini kamu dapat membaca beberapa tutorial yang dibuat oleh komunitas.<br>Kamu juga bisa taruh tutorial buatanmu sendiri.<br>",
     "submit": "  Kamu ingin kami untuk membuat sebuah tutorial?"
   },
   "showcase": {
     "title":
-      "  Kami akan taruh beberapa project open source yang dibuat oleh komunitas di sini.  <br>  Kamu juga bisa taruh project buatanmu sendiri.  <br>"
+      "Kami akan taruh beberapa project open source yang dibuat oleh komunitas di sini.<br>Kamu juga bisa taruh project buatanmu sendiri.<br>"
   }
 }

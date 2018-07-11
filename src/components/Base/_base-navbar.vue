@@ -41,7 +41,7 @@
         <v-btn
           v-for="navItem in navItems"
           :key="navItem.text"
-          :to="navItem.routeName"
+          :to="navItem.path"
           active-class="active--nav"
           exact
           flat>
