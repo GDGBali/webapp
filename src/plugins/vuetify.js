@@ -9,9 +9,11 @@ import {
   VIcon,
   VGrid,
   VToolbar,
+  VSelect,
   transitions,
 } from 'vuetify';
-import 'vuetify/src/stylus/app.styl';
+import colors from 'vuetify/es5/util/colors';
+import '@assets/style/app.styl';
 
 Vue.use(Vuetify, {
   components: {
@@ -23,15 +25,10 @@ Vue.use(Vuetify, {
     VIcon,
     VGrid,
     VToolbar,
+    VSelect,
     transitions,
   },
   theme: {
-    primary: '#ee44aa',
-    secondary: '#424242',
-    accent: '#82B1FF',
-    error: '#FF5252',
-    info: '#2196F3',
-    success: '#4CAF50',
-    warning: '#FFC107',
+    primary: colors.teal.base,
   },
 });

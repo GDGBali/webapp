@@ -1,24 +1,27 @@
-<script>
-import NavBar from '@components/nav-bar'
-
-export default {
-  components: { NavBar },
-}
-</script>
-
 <template>
-  <div :class="$style.container">
-    <NavBar />
-    <slot/>
-  </div>
+  <v-app>
+    <BaseNavbar />
+    <v-content>
+      <slot />
+    </v-content>
+    <BaseFooter />
+  </v-app>
 </template>
 
-<style lang="scss" module>
-@import '@design';
+<script>
+export default {};
+</script>
 
-.container {
-  min-width: $size-content-width-min;
-  max-width: $size-content-width-max;
-  margin: 0 auto;
+<style lang="scss">
+.nav {
+  z-index: 3 !important;
+}
+.footer {
+  color: #cfd8dc !important;
+  background: #303c42 !important;
+  img {
+    width: 24px;
+    margin-right: 10px;
+  }
 }
 </style>

@@ -1,22 +1,22 @@
+<template>
+  <Layout>
+    <HomeHero/>
+    <HomeFeatures/>
+  </Layout>
+</template>
+
 <script>
-import appConfig from '@src/app.config'
-import Layout from '@layouts/main'
+import appConfig from '@src/app.config';
+import Layout from '@layouts/main';
+import HomeHero from '@components/Home/HomeHero';
+import HomeFeatures from '@components/Home/HomeFeatures';
+import HomeNextEvent from '@components/Home/HomeNextEvent';
 
 export default {
-  page: {
+  metaInfo: {
     title: 'Home',
     meta: [{ name: 'description', content: appConfig.description }],
   },
-  components: { Layout },
-}
+  components: { Layout, HomeHero, HomeFeatures, HomeNextEvent },
+};
 </script>
-
-<template>
-  <Layout>
-    <h1>Home Page</h1>
-    <img
-      src="@assets/images/logo.png"
-      alt="Logo"
-    >
-  </Layout>
-</template>
