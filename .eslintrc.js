@@ -12,9 +12,7 @@ module.exports = {
     'prettier',
     'prettier/standard',
   ],
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
   rules: {
     // Only allow debugger in development
     'no-debugger': process.env.PRE_COMMIT ? 'error' : 'off',
@@ -22,7 +20,17 @@ module.exports = {
     'no-console': process.env.PRE_COMMIT
       ? ['error', { allow: ['warn', 'error'] }]
       : 'off',
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'vue/max-attributes-per-line': [
+      2,
+      {
+        singleline: 3,
+        multiline: {
+          max: 1,
+          allowFirstLine: false,
+        },
+      },
+    ],
   },
   overrides: [
     {
@@ -52,4 +60,4 @@ module.exports = {
       },
     },
   ],
-}
+};

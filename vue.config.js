@@ -1,4 +1,4 @@
-const appConfig = require('./src/app.config')
+const appConfig = require('./src/app.config');
 
 module.exports = {
   configureWebpack: {
@@ -9,6 +9,7 @@ module.exports = {
     resolve: {
       alias: require('./aliases.config').webpack,
     },
+    devtool: 'source-map',
   },
   css: {
     // Enable CSS source maps.
@@ -23,4 +24,4 @@ module.exports = {
       : // Proxy API endpoints a local mock API.
         { before: require('./tests/mock-api') }),
   },
-}
+};

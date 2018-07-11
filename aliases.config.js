@@ -1,7 +1,7 @@
-const path = require('path')
+const path = require('path');
 
 function resolveSrc(_path) {
-  return path.join(__dirname, _path)
+  return path.join(__dirname, _path);
 }
 
 const aliases = {
@@ -14,15 +14,15 @@ const aliases = {
   '@utils': 'src/utils',
   '@state': 'src/state',
   '@design': 'src/design/index.scss',
-}
+};
 
 module.exports = {
   webpack: {},
   jest: {},
-}
+};
 
 for (const alias in aliases) {
-  module.exports.webpack[alias] = resolveSrc(aliases[alias])
+  module.exports.webpack[alias] = resolveSrc(aliases[alias]);
   module.exports.jest['^' + alias + '/(.*)$'] =
-    '<rootDir>/' + aliases[alias] + '/$1'
+    '<rootDir>/' + aliases[alias] + '/$1';
 }

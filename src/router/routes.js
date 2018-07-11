@@ -1,4 +1,4 @@
-import store from '@state/store'
+import store from '@state/store';
 
 export default [
   {
@@ -11,13 +11,10 @@ export default [
     name: 'login',
     component: () => lazyLoadView(import('@views/login')),
     beforeEnter(routeTo, routeFrom, next) {
-      // If the user is already logged in
       if (store.getters['auth/loggedIn']) {
-        // Redirect to the home page instead
-        next({ name: 'home' })
+        next({ name: 'home' });
       } else {
-        // Continue to the login page
-        next()
+        next();
       }
     },
   },
@@ -44,15 +41,15 @@ export default [
         .then(user => {
           // Add the user to the route params, so that it can
           // be provided as a prop for the view component below.
-          routeTo.params.user = user
+          routeTo.params.user = user;
           // Continue to the route.
-          next()
+          next();
         })
         .catch(() => {
           // If a user with the provided username could not be
           // found, redirect to the 404 page.
-          next({ name: '404', params: { resource: 'User' } })
-        })
+          next({ name: '404', params: { resource: 'User' } });
+        });
     },
     // Set the user from the route params, once it's set in the
     // beforeEnter route guard.
@@ -65,12 +62,12 @@ export default [
       authRequired: true,
     },
     beforeEnter(routeTo, routeFrom, next) {
-      store.dispatch('auth/logOut')
+      store.dispatch('auth/logOut');
       const authRequiredOnPreviousRoute = routeFrom.matched.some(
         route => route.meta.authRequired
-      )
+      );
       // Navigate back to previous page, or home as a fallback
-      next(authRequiredOnPreviousRoute ? { name: 'home' } : { ...routeFrom })
+      next(authRequiredOnPreviousRoute ? { name: 'home' } : { ...routeFrom });
     },
   },
   {
@@ -88,7 +85,7 @@ export default [
     path: '*',
     redirect: '404',
   },
-]
+];
 
 // Lazy-loads view components, but with better UX. A loading view
 // will be used if the component takes a while to load, falling
@@ -118,14 +115,14 @@ function lazyLoadView(AsyncView) {
     // Time before giving up trying to load the component.
     // Default: Infinity (milliseconds).
     timeout: 10000,
-  })
+  });
 
   return Promise.resolve({
     functional: true,
     render(h, { data, children }) {
       // Transparently pass any props or children
       // to the view component.
-      return h(AsyncHandler, data, children)
+      return h(AsyncHandler, data, children);
     },
-  })
+  });
 }

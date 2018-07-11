@@ -5,4 +5,4 @@
 module.exports = {
   title: 'GDG Bali',
   description: 'Platform for bali developers to get together.',
-}
+};

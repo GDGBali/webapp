@@ -1,5 +1,5 @@
 <script>
-import Layout from '@layouts/main'
+import Layout from '@layouts/main';
 
 export default {
   page() {
@@ -11,7 +11,7 @@ export default {
           content: `The user profile for ${this.user.name}.`,
         },
       ],
-    }
+    };
   },
   components: { Layout },
   props: {
@@ -20,7 +20,7 @@ export default {
       required: true,
     },
   },
-}
+};
 </script>
 
 <template>

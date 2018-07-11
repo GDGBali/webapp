@@ -1,5 +1,5 @@
 <script>
-import Layout from '@layouts/main'
+import Layout from '@layouts/main';
 
 export default {
   page: {
@@ -9,7 +9,7 @@ export default {
     ],
   },
   components: { Layout },
-}
+};
 </script>
 
 <template>

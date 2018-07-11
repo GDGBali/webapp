@@ -1,5 +1,5 @@
 <script>
-import Layout from '@layouts/main'
+import Layout from '@layouts/main';
 
 export default {
   page: {
@@ -7,17 +7,13 @@ export default {
     meta: [{ name: 'description', content: 'Loading page...' }],
   },
   components: { Layout },
-}
+};
 </script>
 
 <template>
   <Layout>
     <transition appear>
-      <BaseIcon
-        :class="$style.loadingIcon"
-        name="sync"
-        spin
-      />
+      <h1>h</h1>
     </transition>
   </Layout>
 </template>
