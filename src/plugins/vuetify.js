@@ -10,6 +10,7 @@ import {
   VGrid,
   VToolbar,
   VSelect,
+  VCard,
   transitions,
 } from 'vuetify';
 import colors from 'vuetify/es5/util/colors';
@@ -26,6 +27,7 @@ Vue.use(Vuetify, {
     VGrid,
     VToolbar,
     VSelect,
+    VCard,
     transitions,
   },
   theme: {

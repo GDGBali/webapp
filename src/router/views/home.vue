@@ -2,6 +2,7 @@
   <Layout>
     <HomeHero/>
     <HomeFeatures/>
+    <HomeNextEvent/>
   </Layout>
 </template>
 

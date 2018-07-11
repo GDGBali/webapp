@@ -12,16 +12,16 @@
               <div class="body-1 mt-3">{{ $t('events.io.description') }}</div>
               <v-layout row wrap>
                 <v-flex xs12>
-                  <v-icon left class="mr-2">location_on</v-icon>
-                  Kembali Innovation Hub
-                </v-flex>
-                <v-flex xs12>
-                  <v-icon left class="mr-2">event</v-icon>
-                  Sat Jun 23 2018, 8:00:00 AM
-                </v-flex>
-                <v-flex xs12>
-                  <v-icon left class="mr-2">people</v-icon>
-                  20 attending members
+                  <v-list>
+                    <v-list-tile v-for="detail in details" :key="detail.title">
+                      <v-list-tile-action>
+                        <v-icon left class="mr-2">{{ detail.icon }}</v-icon>
+                      </v-list-tile-action>
+                      <v-list-tile-content>
+                        <v-list-tile-title v-text="detail.title"/>
+                      </v-list-tile-content>
+                    </v-list-tile>
+                  </v-list>
                 </v-flex>
               </v-layout>
             </v-card-title>
@@ -40,6 +40,24 @@
 
 <script>
 export default {
+  data() {
+    return {
+      details: [
+        {
+          title: 'Kembali Innovation Hub',
+          icon: 'location_on',
+        },
+        {
+          title: 'Sat Jun 23 2018, 8:00:00 AM',
+          icon: 'event',
+        },
+        {
+          title: '20 attending members',
+          icon: 'people',
+        },
+      ],
+    };
+  },
   methods: {
     getImg() {
       return require('@assets/images/events.jpg');
