@@ -42,10 +42,18 @@
               :key="item.title"
               row
               wrap>
-              <v-flex xs1 class="headline product-sans">
+              <v-flex
+                xs3
+                sm2
+                md1
+                class="title product-sans">
                 {{ item.time }}
               </v-flex>
-              <v-flex xs11 class="headline product-sans">
+              <v-flex
+                xs9
+                sm10
+                md11
+                class="subheading product-sans">
                 <div>
                   {{ item.title }}
                 </div>

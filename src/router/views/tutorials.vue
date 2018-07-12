@@ -11,7 +11,7 @@
             v-html="$t('tutorials.title')" />
         </div>
       </v-flex>
-      <v-flex xs12>
+      <!-- <v-flex xs12>
         <div class="text-xs-center mb-4">
           <i18n
             path="tutorials.submit"
@@ -20,7 +20,7 @@
             v-html="$t('tutorials.submit')" />
           <v-btn round color="primary" dark>Request</v-btn>
         </div>
-      </v-flex>
+      </v-flex> -->
 
       <coming-soon />
 

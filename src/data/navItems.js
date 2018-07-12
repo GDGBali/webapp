@@ -1,22 +1,27 @@
 export const navItems = [
   {
-    text: 'home',
+    text: 'Home',
     path: '/',
+    icon: 'home',
   },
   {
-    text: 'events',
+    text: 'Events',
     path: '/events',
+    icon: 'event',
   },
   {
-    text: 'awesome!',
+    text: 'Awesome!',
     path: '/awesome',
+    icon: 'explore',
   },
   {
-    text: 'tutorials',
+    text: 'Tutorials',
     path: '/tutorials',
+    icon: 'code',
   },
   {
-    text: 'showcase',
+    text: 'Showcase',
     path: '/showcase',
+    icon: 'local_activity',
   },
 ];

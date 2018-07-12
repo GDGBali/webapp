@@ -4,20 +4,20 @@
       v-model="drawer"
       fixed
       class="hidden-md-and-up"
+      dark
     >
       <v-list>
         <v-list-tile
-          v-for="(item, i) in items"
-          :to="item.to"
-          :key="i"
-          router
+          v-for="navItem in navItems"
+          :key="navItem.text"
+          :to="navItem.path"
           exact
         >
           <v-list-tile-action>
-            <v-icon v-html="item.icon" />
+            <v-icon v-html="navItem.icon" />
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title v-text="item.title" />
+            <v-list-tile-title v-text="navItem.text" />
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -33,8 +33,7 @@
         <img
           src="@assets/icons/logo.svg"
           alt="logo"
-          width="100"
-          class="mx-4">
+          width="100">
       </router-link>
       <v-spacer class="hidden-sm-and-down" />
       <v-toolbar-items class="hidden-sm-and-down">
@@ -47,15 +46,6 @@
           flat>
           <span>{{ navItem.text }}</span>
         </v-btn>
-        <!-- <v-btn
-          v-for="navItem in navItems"
-          :key="navItem.text"
-          :to="localePath(navItem.routeName)"
-          active-class="active--nav"
-          exact
-          flat>
-          <span>{{ navItem.text }}</span>
-        </v-btn> -->
       </v-toolbar-items>
     </v-toolbar>
   </div>
