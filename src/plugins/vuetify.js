@@ -13,6 +13,7 @@ import {
   VCard,
   VDivider,
   VExpansionPanel,
+  VSnackbar,
   transitions,
 } from 'vuetify';
 import colors from 'vuetify/es5/util/colors';
@@ -32,6 +33,7 @@ Vue.use(Vuetify, {
     VCard,
     VDivider,
     VExpansionPanel,
+    VSnackbar,
     transitions,
   },
   theme: {

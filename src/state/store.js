@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import modules from './modules';
-import { state, mutations, actions } from './locale';
+import { state, mutations, actions } from './global';
 
 Vue.use(Vuex);
 

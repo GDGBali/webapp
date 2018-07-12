@@ -5,6 +5,7 @@
       <slot />
     </v-content>
     <BaseFooter />
+    <BaseSnackbar/>
   </v-app>
 </template>
 
