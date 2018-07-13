@@ -11,10 +11,7 @@ module.exports = {
     },
     devtool: 'source-map',
   },
-  css: {
-    // Enable CSS source maps.
-    sourceMap: true,
-  },
+  productionSourceMap: false,
   // Configure Webpack's dev server.
   // https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md
   devServer: {

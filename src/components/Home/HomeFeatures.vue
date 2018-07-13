@@ -29,55 +29,13 @@
           xs12
           sm6
           md4
-          text-xs-center>
-          <img src="@assets/icons/learn.svg" alt="">
-          <div class="display-1 mb-1 product-sans">Learn</div>
-          <div class="subheading">{{ $t('features.whatTodo.learn') }}</div>
-        </v-flex>
-        <v-flex
-          xs12
-          sm6
-          md4
-          text-xs-center>
-          <img src="@assets/icons/build.svg" alt="">
-          <div class="display-1 mb-1 product-sans">Build</div>
-          <div class="subheading">{{ $t('features.whatTodo.build') }}</div>
-        </v-flex>
-        <v-flex
-          xs12
-          sm6
-          md4
-          text-xs-center>
-          <img src="@assets/icons/share.svg" alt="">
-          <div class="display-1 mb-1 product-sans">Share</div>
-          <div class="subheading">{{ $t('features.whatTodo.share') }}</div>
-        </v-flex>
-        <v-flex
-          xs12
-          sm6
-          md4
-          text-xs-center>
-          <img src="@assets/icons/connect.svg" alt="">
-          <div class="display-1 mb-1 product-sans">Connect</div>
-          <div class="subheading">{{ $t('features.whatTodo.connect') }}</div>
-        </v-flex>
-        <v-flex
-          xs12
-          sm6
-          md4
-          text-xs-center>
-          <img src="@assets/icons/organize.svg" alt="">
-          <div class="display-1 mb-1 product-sans">Organize</div>
-          <div class="subheading">{{ $t('features.whatTodo.organize') }}</div>
-        </v-flex>
-        <v-flex
-          xs12
-          sm6
-          md4
-          text-xs-center>
-          <img src="@assets/icons/fun.svg" alt="">
-          <div class="display-1 mb-1 product-sans">Have Fun</div>
-          <div class="subheading">{{ $t('features.whatTodo.haveFun') }}</div>
+          text-xs-center
+          v-for="feature in features"
+          :key="feature.icon"
+        >
+          <img :src="require(`@assets/icons/${feature.icon}.svg`)" alt="">
+          <div class="display-1 mb-1 product-sans">{{ feature.text }}</div>
+          <div class="subheading">{{ feature.description }}</div>
         </v-flex>
       </v-layout>
     </v-container>
@@ -87,6 +45,40 @@
 <script>
 export default {
   computed: {
+    features() {
+      return [
+        {
+          icon: 'learn',
+          text: 'Learn',
+          description: this.$i18n.t('features.whatTodo.learn'),
+        },
+        {
+          icon: 'build',
+          text: 'Build',
+          description: this.$i18n.t('features.whatTodo.build'),
+        },
+        {
+          icon: 'share',
+          text: 'Share',
+          description: this.$i18n.t('features.whatTodo.share'),
+        },
+        {
+          icon: 'connect',
+          text: 'Connect',
+          description: this.$i18n.t('features.whatTodo.connect'),
+        },
+        {
+          icon: 'organize',
+          text: 'Organize',
+          description: this.$i18n.t('features.whatTodo.organize'),
+        },
+        {
+          icon: 'fun',
+          text: 'Have Fun',
+          description: this.$i18n.t('features.whatTodo.haveFun'),
+        },
+      ];
+    },
     textClass() {
       return this.$vuetify.breakpoint.smAndDown ? 'display-2' : 'display-3';
     },
