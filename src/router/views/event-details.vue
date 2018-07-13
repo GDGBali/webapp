@@ -2,18 +2,15 @@
   <div class="pa-2">
     <v-container fluid>
       <v-layout row wrap>
-        <v-flex
-          xs12
-          sm8
-          md4>
+        <v-flex xs12 sm8 md4>
           <div>
             <img src="@assets/icons/io18.svg" alt="">
           </div>
           <div>
-            <v-btn
-              fab
-              dark
-              small
+            <v-btn 
+              fab 
+              dark 
+              small 
               color="orange accent-4">
               <v-icon>event</v-icon>
             </v-btn>

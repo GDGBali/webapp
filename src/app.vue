@@ -4,15 +4,12 @@
     Even when routes use the same component, treat them
     as distinct and create the component again.
     -->
-    <transition
-      name="slide"
-      mode="out-in">
-      <component :is="LayoutComponent" :key="LayoutComponent.name || LayoutComponent.__file">
-        <transition name="slide" mode="out-in">
-          <router-view :key="$route.fullPath"/>
-        </transition>
-      </component>
-    </transition>
+    <component :is="LayoutComponent" :key="LayoutComponent.name || LayoutComponent.__file">
+      <transition name="slide" mode="out-in" v-if="$route.path !== '/'">
+        <router-view :key="$route.fullPath"/>
+      </transition>
+      <router-view :key="$route.fullPath" v-else/>
+    </component>
   </div>
 </template>
 
