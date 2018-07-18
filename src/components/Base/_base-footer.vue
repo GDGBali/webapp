@@ -70,7 +70,7 @@ export default {
           icon: 'gplus',
         },
         {
-          link: 'https://www.facebook.com/gdgbali/',
+          link: 'https://www.facebook.com/groups/gdgbali/',
           icon: 'facebook',
         },
         {
