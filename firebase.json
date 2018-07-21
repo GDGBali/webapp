@@ -12,6 +12,14 @@
         ]
       }
     ],
+    "redirects": [
+      {
+        "source": "/io18/yt-playlist",
+        "destination":
+          "https://www.youtube.com/playlist?list=PLNYkxOF6rcIC4NQeXpdAy0RbOACI66Hvf",
+        "type": 302
+      }
+    ],
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
