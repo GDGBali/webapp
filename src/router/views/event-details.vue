@@ -71,6 +71,15 @@
               </v-flex>
             </v-layout>
           </v-container>
+          <v-container grid-list-xl>
+            <v-layout column wrap>
+              <v-flex xs12>
+                <div class="display-3 product-sans">
+                  Notes
+                </div>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-flex>
       </v-layout>
     </v-container>
