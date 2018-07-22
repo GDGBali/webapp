@@ -74,9 +74,44 @@
           <v-container grid-list-xl>
             <v-layout column wrap>
               <v-flex xs12>
-                <div class="display-3 product-sans">
+                <img src="@assets/icons/telegram.svg" alt="" class="teleImg">
+                <div class="display-1 product-sans mb-3">
+                  Telegram Groups
+                </div>
+                <div class="subheading product-sans mb-3">
+                  <a href="https://www.petanikode.com/kumpulan-group-channel-bot-telegram/" target="_blank">Source</a>
+                </div>
+                <v-list>
+                  <v-list-tile
+                    v-for="(group, idx) in groups"
+                    :key="`group.text-${idx}`"
+                  >
+                    <v-list-tile-content>
+                      <v-list-tile-title>
+                        <a :href="group.link" target="_blank">{{ group.text }}</a>
+                      </v-list-tile-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
+              </v-flex>
+              <v-flex xs12>
+                <div class="display-1 product-sans">
                   Notes
                 </div>
+                <div class="subheading mb-3">(Build The Future of Web)</div>
+                <v-list>
+                  <v-list-tile
+                    v-for="(note, idx) in notes"
+                    :key="`note.text-${idx}`"
+                  >
+                    <v-list-tile-content>
+                      <v-list-tile-title>
+                        {{ note.description }} :
+                        <a :href="note.link" target="_blank">{{ note.text }}</a>
+                      </v-list-tile-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
               </v-flex>
             </v-layout>
           </v-container>
@@ -131,6 +166,149 @@ export default {
           ],
         },
       ],
+      notes: [
+        {
+          description: 'GDG Bali Repo',
+          link: 'https://github.com/gdg-bali/webapp',
+          text: 'Github',
+        },
+        {
+          description: 'Latest update about JS',
+          link: 'https://twitter.com/v8js',
+          text: 'Twitter',
+        },
+        {
+          description: 'PWA Starter Kit',
+          link: 'https://github.com/polymer/pwa-starter-kit',
+          text: 'Github',
+        },
+        {
+          description: 'PWA by wwwid',
+          link:
+            'https://medium.com/wwwid/progressive-web-app-aplikasi-web-yang-bisa-di-install-bagian-2-c3839df40a8c',
+          text: 'Medium',
+        },
+        {
+          description: 'Workbox',
+          link: 'http://workboxjs.org/',
+          text: 'Docs',
+        },
+        {
+          description: 'Good Mobile Site',
+          link: 'http://bit.ly/mobile-web-principles-dev-guidelines',
+          text: 'Docs',
+        },
+        {
+          description: 'Lighthouse Perf',
+          link: 'http://bit.ly/lighthouse-perf',
+          text: 'Docs',
+        },
+        {
+          description: 'Webpack Bundle Analyzer',
+          link: 'https://github.com/webpack-contrib/webpack-bundle-analyzer',
+          text: 'Github',
+        },
+        {
+          description: 'VSCode Import Cost',
+          link:
+            'https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost',
+          text: 'VSCode',
+        },
+        {
+          description: 'Bundle Phobia',
+          link: 'https://bundlephobia.com/',
+          text: 'Site',
+        },
+        {
+          description: 'Webpack Libs',
+          link: 'http://bit.ly/webpack-libs',
+          text: 'Github',
+        },
+        {
+          description: 'Lazysizes Images',
+          link: 'https://github.com/aFarkas/lazysizes',
+          text: 'Github',
+        },
+        {
+          description: 'Images Guide',
+          link: 'https://images.guide/',
+          text: 'Site',
+        },
+        {
+          description: 'Critical CSS',
+          link: 'https://github.com/addyosmani/critical',
+          text: 'Github',
+        },
+        {
+          description: 'Best Practices',
+          link:
+            'https://medium.com/wwwid/berbagai-best-practice-dalam-memuat-halaman-website-20def6652adf',
+          text: 'Medium',
+        },
+        {
+          description: 'Guess JS',
+          link: 'https://github.com/guess-js/guess',
+          text: 'Github',
+        },
+      ],
+      groups: [
+        {
+          text: 'Android Bandung',
+          link: 'https://t.me/androidDevBdg',
+        },
+        {
+          text: 'PWA Indonesia',
+          link: 'https://t.me/wwwid_pwa',
+        },
+        {
+          text: 'Android Indonesia',
+          link: 'https://t.me/androiddevelopernasional',
+        },
+        {
+          text: 'PHP Indonesia',
+          link: 'https://t.me/PHPIDforStudent',
+        },
+        {
+          text: 'Kotlin Indonesia',
+          link: 'https://t.me/KotlinID',
+        },
+        {
+          text: 'Ruby Indonesia',
+          link: 'https://t.me/RubyID',
+        },
+        {
+          text: 'Python Indonesia',
+          link: 'https://t.me/pythonID',
+        },
+        {
+          text: 'Golang Indonesia',
+          link: 'https://t.me/golangID',
+        },
+        {
+          text: 'VueJS Indonesia',
+          link: 'https://t.me/vuejsid',
+        },
+        {
+          text: 'Polymer Indonesia',
+          link: 'https://t.me/polymer_id',
+        },
+        {
+          text: 'React Indonesia',
+          link: 'https://t.me/react_id',
+        },
+        {
+          text: 'React Native Indonesia',
+          link: 'https://t.me/reactnative_id',
+        },
+        {
+          text: 'Angular Indonesia',
+          link: 'https://t.me/AngularID',
+        },
+        {
+          text: 'Flutter Indonesia',
+          link: 'https://t.me/flutter_id',
+        },
+      ],
     };
   },
 };
@@ -139,5 +317,8 @@ export default {
 <style lang="scss" scoped>
 .header {
   color: #bababa;
+}
+.teleImg {
+  max-width: 50px;
 }
 </style>
