@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "serve": "firebase serve",
     "build:modern": "vue-cli-service build --modern",
     "build": "vue-cli-service build",
     "test": "yarn unit && yarn e2e",
