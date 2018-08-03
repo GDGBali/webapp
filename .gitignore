@@ -28,4 +28,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 .vscode/*
+
 lighthouse/
