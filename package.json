@@ -16,7 +16,8 @@
     "docs": "vuepress dev",
     "test:ci": "yarn lint && yarn unit --coverage --ci && yarn e2e",
     "new": "hygen new",
-    "unit:watch": "yarn unit --watch --notify --notifyMode change"
+    "unit:watch": "yarn unit --watch --notify --notifyMode change",
+    "perf": "lighthouse --output-path=./lighthouse/report.html --view http://localhost:5000/"
   },
   "dependencies": {
     "axios": "0.18.0",
@@ -52,6 +53,7 @@
     "express": "4.16.x",
     "hygen": "^1.6.x",
     "imagemin-lint-staged": "0.3.x",
+    "lighthouse": "^3.0.3",
     "lint-staged": "7.2.x",
     "markdownlint-cli": "^0.12.x",
     "node-sass": "4.9.x",
