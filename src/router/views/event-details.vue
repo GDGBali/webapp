@@ -123,6 +123,9 @@
 
 <script>
 export default {
+  metaInfo: {
+    title: 'Google I/O 2018',
+  },
   data() {
     return {
       schedules: [
@@ -167,6 +170,11 @@ export default {
         },
       ],
       notes: [
+        {
+          description: 'Youtube Playlist',
+          link: '/io18/yt-playlist',
+          text: 'Youtube',
+        },
         {
           description: 'GDG Bali Repo',
           link: 'https://github.com/gdg-bali/webapp',
