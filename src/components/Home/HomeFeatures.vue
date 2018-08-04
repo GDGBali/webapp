@@ -14,7 +14,7 @@
           <div class="subheading">
             <div class="mb-5">
               {{ $t('features.welcomeTitle') }}
-              <a href="https://developers.google.com/programs/community/gdg/" target="_blank">Google Developer Group (GDG)</a>,
+              <a href="https://developers.google.com/programs/community/gdg/" target="_blank" rel="noopener">Google Developer Group (GDG)</a>,
               {{ $t('features.welcomeText') }}
             </div>
             <div class="mb-5">
