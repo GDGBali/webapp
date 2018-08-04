@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="shortcut icon" href="<%= webpackConfig.output.publicPath %>favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100:300,400,500,700,900|Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Product+Sans:400" rel="stylesheet">
-    <title><%= webpackConfig.name %></title>
-  </head>
-  <body>
-    <!-- This is where our app will be mounted. -->
-    <div id="app"></div>
 
-    <!-- Built files will be auto injected here. -->
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="shortcut icon" href="<%= webpackConfig.output.publicPath %>favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100:300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Product+Sans:400" rel="stylesheet">
+  <title>
+    <%= webpackConfig.name %>
+  </title>
+</head>
+
+<body>
+  <!-- This is where our app will be mounted. -->
+  <div id="app"></div>
+  <noscript>
+    <div style="text-align: center; margin-top: 10%; font-family: 'Product Sans', sans-serif">
+      For full functionality of this site it is necessary to enable JavaScript. Here are the
+      <a href="https://www.enable-javascript.com/" target="_blank">
+        instructions how to enable JavaScript in your web browser</a>.
+    </div>
+  </noscript>
+
+  <!-- Built files will be auto injected here. -->
+</body>
+
 </html>
