@@ -17,8 +17,10 @@
     "test:ci": "yarn lint && yarn unit --coverage --ci && yarn e2e",
     "new": "hygen new",
     "unit:watch": "yarn unit --watch --notify --notifyMode change",
-    "perf": "lighthouse --output-path=./lighthouse/report.html --view http://localhost:5000/",
-    "perf:prod": "lighthouse --output-path=./lighthouse/report-production.html --view https://gdgbali.com/"
+    "perf:dev": "lighthouse --output-path=./lighthouse/report-dev.html --view http://localhost:5000/",
+    "perf:staging": "lighthouse --output-path=./lighthouse/report-staging.html --view https://dev-gdg-bali.firebaseapp.com/",
+    "perf:prod": "lighthouse --output-path=./lighthouse/report-production.html --view https://gdgbali.com/",
+    "perf": "lighthouse --output-path=./lighthouse/report-production.html --view https://oodle-demo.firebaseapp.com/"
   },
   "dependencies": {
     "axios": "0.18.0",
@@ -52,6 +54,7 @@
     "babel-plugin-transform-imports": "^1.4.1",
     "cross-env": "5.2.x",
     "express": "4.16.x",
+    "html-critical-webpack-plugin": "^2.1.0",
     "hygen": "^1.6.x",
     "imagemin-lint-staged": "0.3.x",
     "lighthouse": "^3.0.3",

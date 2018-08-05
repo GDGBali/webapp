@@ -1,4 +1,6 @@
+const path = require('path');
 const appConfig = require('./src/app.config');
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 
 module.exports = {
   configureWebpack: {
@@ -10,6 +12,7 @@ module.exports = {
       alias: require('./aliases.config').webpack,
     },
     devtool: 'source-map',
+    plugins: [],
   },
   productionSourceMap: false,
   // Configure Webpack's dev server.
@@ -28,3 +31,21 @@ module.exports = {
     },
   },
 };
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.configureWebpack.plugins.push(
+    new HtmlCriticalWebpackPlugin({
+      base: path.resolve(__dirname, 'dist'),
+      src: 'index.html',
+      dest: 'index.html',
+      inline: true,
+      minify: true,
+      extract: true,
+      width: 375,
+      height: 565,
+      penthouse: {
+        blockJSRequests: false,
+      },
+    })
+  );
+}
