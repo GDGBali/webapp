@@ -11,6 +11,15 @@
         ]
       },
       {
+        "source": "/service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      },
+      {
         "source": "**/*.@(woff2)",
         "headers": [
           {
