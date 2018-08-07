@@ -2,8 +2,8 @@
   <div>
     <v-navigation-drawer
       v-model="drawer"
+      v-if="hideDrawer"
       fixed
-      class="hidden-md-and-up"
       dark
     >
       <v-list>
@@ -27,16 +27,16 @@
       color="white"
       fixed
       class="nav">
-      <v-toolbar-side-icon class="hidden-md-and-up" @click="drawer = !drawer" />
-      <v-spacer class="hidden-md-and-up" />
+      <v-toolbar-side-icon v-if="hideDrawer" @click="drawer = !drawer" />
+      <v-spacer v-if="hideDrawer" />
       <router-link to="/" class="navbrand">
         <img
-          src="@assets/icons/logo.svg"
+          src="/images/logo.svg"
           alt="logo"
           width="100">
       </router-link>
-      <v-spacer class="hidden-sm-and-down" />
-      <v-toolbar-items class="hidden-sm-and-down">
+      <v-spacer v-if="!hideDrawer" />
+      <v-toolbar-items v-if="!hideDrawer">
         <v-btn
           v-for="navItem in navItems"
           :key="navItem.text"
@@ -58,6 +58,7 @@ const isNotRootPath = path => path !== '/';
 
 export default {
   data: () => ({
+    baseUrl: process.env.BASE_URL,
     navItems,
     drawer: false,
     items: [
@@ -68,6 +69,9 @@ export default {
   computed: {
     notRootPath() {
       return isNotRootPath(this.$route.path);
+    },
+    hideDrawer() {
+      return !this.$vuetify.breakpoint.md;
     },
   },
 };
