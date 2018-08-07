@@ -24,6 +24,9 @@ module.exports = {
       : // Proxy API endpoints a local mock API.
         { before: require('./tests/mock-api') }),
   },
+  css: {
+    sourceMap: true,
+  },
   pwa: {
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
@@ -35,7 +38,8 @@ module.exports = {
 if (process.env.NODE_ENV === 'production') {
   module.exports.configureWebpack.plugins.push(
     new HtmlCriticalWebpackPlugin({
-      base: path.resolve(__dirname, 'dist'),
+      base: path.join(path.resolve(__dirname), 'dist'),
+      css: path.join(path.resolve(__dirname), 'dev', 'critical.css'),
       src: 'index.html',
       dest: 'index.html',
       inline: true,
