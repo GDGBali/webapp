@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import './plugins/vuetify';
-import './plugins/vue-lazy-load';
+import './plugins/lazysizes';
 import i18n from './plugins/vue-i18n';
 import App from './app';
 import router from '@router';

@@ -1,11 +1,12 @@
 <template>
   <v-flex xs12 sm6>
     <v-card>
-      <v-card-media
-        :src="event.imgSrc"
-        :contain="event.imgContain"
-        height="200px"
-      />
+      <div class="v-card__media" style="height: 200px">
+        <div 
+          class="v-card__media__background lazyload" 
+          :data-bg="event.imgSrc"
+          :style="`background: center center / ${containImg(event.imgContain)} no-repeat`"/>
+      </div>
       <v-card-title primary-title>
         <div class="headline">{{ event.title }}</div>
       </v-card-title>
@@ -52,5 +53,10 @@ export default {
   data: () => ({
     show: false,
   }),
+  methods: {
+    containImg(imgContain) {
+      return imgContain ? 'contain' : 'cover';
+    },
+  },
 };
 </script>
