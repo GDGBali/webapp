@@ -2,7 +2,7 @@
   <div>
     <v-navigation-drawer
       v-model="drawer"
-      v-if="hideDrawer"
+      v-if="!hideDrawer"
       fixed
       dark
     >
@@ -27,16 +27,16 @@
       color="white"
       fixed
       class="nav">
-      <v-toolbar-side-icon v-if="hideDrawer" @click="drawer = !drawer" />
-      <v-spacer v-if="hideDrawer" />
+      <v-toolbar-side-icon v-if="!hideDrawer" @click="drawer = !drawer" />
+      <v-spacer v-if="!hideDrawer" />
       <router-link to="/" class="navbrand">
         <img
           src="/images/logo.svg"
           alt="logo"
           width="100">
       </router-link>
-      <v-spacer v-if="!hideDrawer" />
-      <v-toolbar-items v-if="!hideDrawer">
+      <v-spacer v-if="hideDrawer" />
+      <v-toolbar-items v-if="hideDrawer">
         <v-btn
           v-for="navItem in navItems"
           :key="navItem.text"
@@ -71,7 +71,7 @@ export default {
       return isNotRootPath(this.$route.path);
     },
     hideDrawer() {
-      return !this.$vuetify.breakpoint.md;
+      return this.$vuetify.breakpoint.mdAndUp;
     },
   },
 };
