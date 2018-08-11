@@ -20,7 +20,7 @@
     "perf:dev": "lighthouse --output-path=./lighthouse/report-dev.html --view http://localhost:5000/",
     "perf:staging": "lighthouse --output-path=./lighthouse/report-staging.html --view https://dev-gdg-bali.firebaseapp.com/",
     "perf:prod": "lighthouse --output-path=./lighthouse/report-production.html --view https://gdgbali.com/",
-    "perf": "lighthouse --output-path=./lighthouse/report-production.html --view https://oodle-demo.firebaseapp.com/"
+    "perf": "lighthouse --output-path=./lighthouse/report.html --view http://localhost:5000/"
   },
   "dependencies": {
     "axios": "0.18.0",
