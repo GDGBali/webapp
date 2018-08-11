@@ -9,6 +9,7 @@
             solo
             hide-details
             @change="changeLocale({i18n: $i18n, locale})"
+            aria-label="change language"
           />
         </v-flex>
         <v-flex

@@ -11,7 +11,7 @@
               justify-center
               align-center>
               <v-flex xs12 sm8 text-xs-center>
-                <GdgIcon />
+                <GdgIcon id-attr="hero" />
               </v-flex>
               <v-flex xs12 text-xs-center>
                 <div class="mt-5">

@@ -8,7 +8,7 @@
         fy="97.9%"
         r="325.4%"
         gradientTransform="matrix(1 0 0 .72027 0 .3)"
-        id="a">
+        id="logo-a">
         <stop stop-color="#BF360C" stop-opacity=".2" offset="0%"/>
         <stop stop-color="#BF360C" stop-opacity="0" offset="100%"/>
       </radialGradient>
@@ -19,7 +19,7 @@
         fy="157.7%"
         r="262.7%"
         gradientTransform="matrix(1 0 0 .6932 0 .5)"
-        id="b">
+        id="logo-b">
         <stop stop-color="#263238" stop-opacity=".2" offset="0%"/>
         <stop stop-color="#263238" stop-opacity="0" offset="100%"/>
       </radialGradient>
@@ -30,7 +30,7 @@
         fy=".8%"
         r="167.9%"
         gradientTransform="matrix(1 0 0 .62499 0 0)"
-        id="c">
+        id="logo-c">
         <stop stop-color="#FFF" stop-opacity=".1" offset="0%"/>
         <stop stop-color="#FFF" stop-opacity="0" offset="100%"/>
       </radialGradient>

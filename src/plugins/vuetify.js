@@ -36,6 +36,6 @@ Vue.use(Vuetify, {
     transitions,
   },
   theme: {
-    primary: colors.teal.base,
+    primary: colors.teal.darken3,
   },
 });

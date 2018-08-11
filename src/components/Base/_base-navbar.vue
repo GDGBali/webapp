@@ -27,7 +27,11 @@
       color="white"
       fixed
       class="nav">
-      <v-toolbar-side-icon v-if="!hideDrawer" @click="drawer = !drawer" />
+      <v-toolbar-side-icon 
+        v-if="!hideDrawer" 
+        @click="drawer = !drawer" 
+        role="button" 
+        aria-label="menu" />
       <v-spacer v-if="!hideDrawer" />
       <router-link to="/" class="navbrand">
         <img
