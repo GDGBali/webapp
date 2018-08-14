@@ -32,7 +32,8 @@
             :key="socialLink.icon"
             :href="socialLink.link">
             <img
-              :src="require(`@assets/icons/${socialLink.icon}.svg`)"
+              class="lazyload"
+              :data-src="require(`@assets/icons/${socialLink.icon}.svg`)"
               :alt="`icon-${socialLink.icon}`">
           </a>
         </v-flex>

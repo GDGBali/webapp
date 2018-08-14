@@ -2,7 +2,6 @@
   <section 
     class="lazyload bgImage" 
     :data-bgset="imgSrc"
-    :data-bg="require('@assets/images/hero.webp')"
     data-sizes="auto"
     :id="imgName">
     <slot/>
@@ -35,7 +34,6 @@ export default {
 
 <style scoped>
 .bgImage {
-  background-color: #008080;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

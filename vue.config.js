@@ -12,7 +12,21 @@ module.exports = {
       alias: require('./aliases.config').webpack,
     },
     devtool: 'source-map',
-    plugins: [],
+    plugins: [
+      new HtmlCriticalWebpackPlugin({
+        base: path.join(path.resolve(__dirname), 'dist'),
+        css: path.join(path.resolve(__dirname), 'dev', 'critical.css'),
+        src: 'index.html',
+        dest: 'index.html',
+        inline: true,
+        minify: true,
+        width: 1300,
+        height: 900,
+        penthouse: {
+          blockJSRequests: false,
+        },
+      }),
+    ],
   },
   productionSourceMap: false,
   // Configure Webpack's dev server.
@@ -34,22 +48,3 @@ module.exports = {
     },
   },
 };
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports.configureWebpack.plugins.push(
-    new HtmlCriticalWebpackPlugin({
-      base: path.join(path.resolve(__dirname), 'dist'),
-      css: path.join(path.resolve(__dirname), 'dev', 'critical.css'),
-      src: 'index.html',
-      dest: 'index.html',
-      inline: true,
-      minify: true,
-      extract: true,
-      width: 375,
-      height: 565,
-      penthouse: {
-        blockJSRequests: false,
-      },
-    })
-  );
-}

@@ -33,7 +33,7 @@
           v-for="feature in features"
           :key="feature.icon"
         >
-          <img :src="require(`@assets/icons/${feature.icon}.svg`)" alt="">
+          <img :data-src="require(`@assets/icons/${feature.icon}.svg`)" alt="" class="lazyload">
           <div class="display-1 mb-1 product-sans">{{ feature.text }}</div>
           <div class="subheading">{{ feature.description }}</div>
         </v-flex>
