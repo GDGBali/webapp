@@ -9,6 +9,7 @@
             solo
             hide-details
             @change="changeLocale({i18n: $i18n, locale})"
+            aria-label="change language"
           />
         </v-flex>
         <v-flex
@@ -31,7 +32,8 @@
             :key="socialLink.icon"
             :href="socialLink.link">
             <img
-              :src="require(`@assets/icons/${socialLink.icon}.svg`)"
+              class="lazyload"
+              :data-src="require(`@assets/icons/${socialLink.icon}.svg`)"
               :alt="`icon-${socialLink.icon}`">
           </a>
         </v-flex>

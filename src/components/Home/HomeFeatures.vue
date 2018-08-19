@@ -14,7 +14,7 @@
           <div class="subheading">
             <div class="mb-5">
               {{ $t('features.welcomeTitle') }}
-              <a href="https://developers.google.com/programs/community/gdg/" target="_blank">Google Developer Group (GDG)</a>,
+              <a href="https://developers.google.com/programs/community/gdg/" target="_blank" rel="noopener">Google Developer Group (GDG)</a>,
               {{ $t('features.welcomeText') }}
             </div>
             <div class="mb-5">
@@ -33,7 +33,7 @@
           v-for="feature in features"
           :key="feature.icon"
         >
-          <img :src="require(`@assets/icons/${feature.icon}.svg`)" alt="">
+          <img :data-src="require(`@assets/icons/${feature.icon}.svg`)" alt="" class="lazyload">
           <div class="display-1 mb-1 product-sans">{{ feature.text }}</div>
           <div class="subheading">{{ feature.description }}</div>
         </v-flex>

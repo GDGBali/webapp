@@ -1,4 +1,6 @@
+const path = require('path');
 const appConfig = require('./src/app.config');
+const HtmlCriticalWebpackPlugin = require('html-critical-webpack-plugin');
 
 module.exports = {
   configureWebpack: {
@@ -10,6 +12,21 @@ module.exports = {
       alias: require('./aliases.config').webpack,
     },
     devtool: 'source-map',
+    plugins: [
+      new HtmlCriticalWebpackPlugin({
+        base: path.join(path.resolve(__dirname), 'dist'),
+        css: path.join(path.resolve(__dirname), 'dev', 'critical.css'),
+        src: 'index.html',
+        dest: 'index.html',
+        inline: true,
+        minify: true,
+        width: 1300,
+        height: 900,
+        penthouse: {
+          blockJSRequests: false,
+        },
+      }),
+    ],
   },
   productionSourceMap: false,
   // Configure Webpack's dev server.
@@ -20,6 +37,9 @@ module.exports = {
         { proxy: { '/api': { target: process.env.API_BASE_URL } } }
       : // Proxy API endpoints a local mock API.
         { before: require('./tests/mock-api') }),
+  },
+  css: {
+    sourceMap: true,
   },
   pwa: {
     workboxPluginMode: 'InjectManifest',

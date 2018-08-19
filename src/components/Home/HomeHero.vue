@@ -1,5 +1,5 @@
 <template>
-  <section v-lazy:background-image="require('@assets/images/hero.jpg')" id="hero" data-imgname="hero">
+  <BaseLazyBg img-name="hero">
     <div class="heroOverlay" />
     <v-container fill-height class="heroContent">
       <v-layout align-center>
@@ -11,7 +11,7 @@
               justify-center
               align-center>
               <v-flex xs12 sm8 text-xs-center>
-                <GdgIcon />
+                <GdgIcon id-attr="hero" />
               </v-flex>
               <v-flex xs12 text-xs-center>
                 <div class="mt-5">
@@ -26,7 +26,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </section>
+  </BaseLazyBg>
 </template>
 
 <script>
@@ -62,10 +62,7 @@ export default {
 #hero {
   position: relative;
   min-height: 100vh;
-  background-color: #008080;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background-image: url('~@assets/images/hero_blur.jpg');
 }
 
 .heroContent {

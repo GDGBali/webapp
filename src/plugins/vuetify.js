@@ -17,7 +17,6 @@ import {
   transitions,
 } from 'vuetify';
 import colors from 'vuetify/es5/util/colors';
-import '@assets/style/app.styl';
 
 Vue.use(Vuetify, {
   components: {
@@ -37,6 +36,6 @@ Vue.use(Vuetify, {
     transitions,
   },
   theme: {
-    primary: colors.teal.base,
+    primary: colors.teal.darken3,
   },
 });

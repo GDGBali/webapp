@@ -1,12 +1,13 @@
 import Vue from 'vue';
 import './plugins/vuetify';
-import './plugins/vue-lazy-load';
+import './plugins/lazysizes';
 import i18n from './plugins/vue-i18n';
 import App from './app';
 import router from '@router';
 import store from '@state/store';
 import '@components/_globals';
 import './registerServiceWorker';
+import '@assets/style/app.styl';
 
 // Don't warn about using the dev version of Vue in development
 Vue.config.productionTip = process.env.NODE_ENV === 'production';

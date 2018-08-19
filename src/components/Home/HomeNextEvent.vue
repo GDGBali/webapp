@@ -1,5 +1,5 @@
 <template>
-  <section v-lazy:background-image="require('@assets/images/events.jpg')" id="events" data-imgname="events">
+  <BaseLazyBg img-name="events">
     <v-container grid-list-xl>
       <v-layout row wrap>
         <v-flex xs12>
@@ -35,7 +35,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </section>
+  </BaseLazyBg>
 </template>
 
 <script>
@@ -58,19 +58,5 @@ export default {
       ],
     };
   },
-  methods: {
-    getImg() {
-      return require('@assets/images/events.jpg');
-    },
-  },
 };
 </script>
-
-<style scoped>
-#events {
-  background-color: #008080;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-}
-</style>
