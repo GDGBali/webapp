@@ -4,7 +4,6 @@
       v-model="drawer"
       v-if="!hideDrawer"
       fixed
-      dark
     >
       <v-list>
         <v-list-tile
