@@ -25,18 +25,21 @@
       :app="notRootPath"
       color="white"
       fixed
-      class="nav">
+      class="nav"
+    >
       <v-toolbar-side-icon 
         v-if="!hideDrawer" 
         @click="drawer = !drawer" 
         role="button" 
-        aria-label="menu" />
+        aria-label="menu"
+      />
       <v-spacer v-if="!hideDrawer" />
       <router-link to="/" class="navbrand">
         <img
           src="/images/logo.svg"
           alt="logo"
-          width="100">
+          width="100"
+        >
       </router-link>
       <v-spacer v-if="hideDrawer" />
       <v-toolbar-items v-if="hideDrawer">
@@ -46,7 +49,8 @@
           :to="navItem.path"
           active-class="active--nav"
           exact
-          flat>
+          flat
+        >
           <span>{{ navItem.text }}</span>
         </v-btn>
       </v-toolbar-items>

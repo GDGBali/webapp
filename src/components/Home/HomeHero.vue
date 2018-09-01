@@ -9,7 +9,8 @@
               row
               wrap
               justify-center
-              align-center>
+              align-center
+            >
               <v-flex xs12 sm8 text-xs-center>
                 <GdgIcon id-attr="hero" />
               </v-flex>

@@ -17,7 +17,8 @@
           sm4
           offset-sm5
           md3
-          offset-md6>
+          offset-md6
+        >
           <GdgIcon />
         </v-flex>
       </v-layout>
@@ -25,16 +26,19 @@
         row
         wrap
         align-center
-        justify-space-between>
+        justify-space-between
+      >
         <v-flex xs12 class="text-xs-right">
           <a
             v-for="socialLink in socialLinks"
             :key="socialLink.icon"
-            :href="socialLink.link">
+            :href="socialLink.link"
+          >
             <img
               class="lazyload"
               :data-src="require(`@assets/icons/${socialLink.icon}.svg`)"
-              :alt="`icon-${socialLink.icon}`">
+              :alt="`icon-${socialLink.icon}`"
+            >
           </a>
         </v-flex>
         <v-flex xs12>
