@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8.11.1"
+  - "10.8.0"
 cache: yarn
 branches:
   only:
@@ -10,7 +10,6 @@ install:
   - yarn
 
 script:
-  - yarn lint
   - yarn build
 after_success:
 - firebase use --token ${FIREBASE_TOKEN}
