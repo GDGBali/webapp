@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "gdg-bali",
+    "develop": "dev-gdg-bali"
+  }
+}
