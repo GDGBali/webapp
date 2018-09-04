@@ -101,7 +101,9 @@
         font-size="55.3"
         transform="translate(0 -4)"
       >
-        <tspan x="120.2" y="105.4">Bali</tspan>
+        <tspan x="120.2" y="105.4">
+          Bali
+        </tspan>
       </text>
       <text
         :fill="iconColor"
@@ -109,7 +111,9 @@
         font-size="58.7"
         transform="translate(0 -4)"
       >
-        <tspan x="88.2" y="56">GDG</tspan>
+        <tspan x="88.2" y="56">
+          GDG
+        </tspan>
       </text>
     </g>
   </svg>

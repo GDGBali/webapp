@@ -3,8 +3,9 @@
     class="lazyload bgImage" 
     :data-bgset="imgSrc"
     data-sizes="auto"
-    :id="imgName">
-    <slot/>
+    :id="imgName"
+  >
+    <slot />
   </section>
 </template>
 

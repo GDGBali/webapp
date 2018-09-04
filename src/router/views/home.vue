@@ -1,8 +1,8 @@
 <template>
   <div>
-    <HomeHero/>
-    <HomeFeatures/>
-    <HomeNextEvent/>
+    <HomeHero />
+    <HomeFeatures />
+    <HomeNextEvent />
   </div>
 </template>
 

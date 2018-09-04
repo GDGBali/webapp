@@ -1,31 +1,35 @@
 <template>
   <section>
-    <v-container fill-height grid-list-xl>
-      <v-layout row wrap justify-center>
-        <v-flex text-xs-center xs12>
+    <VContainer fill-height grid-list-xl>
+      <VLayout row wrap justify-center>
+        <VFlex text-xs-center xs12>
           <div
             :class="textClass"
             class="product-sans"
           >
             {{ $t('features.whatGdg') }}
           </div>
-        </v-flex>
-        <v-flex text-xs-center xs12 sm7>
+        </VFlex>
+        <VFlex text-xs-center xs12 sm7>
           <div class="subheading">
             <div class="mb-5">
               {{ $t('features.welcomeTitle') }}
-              <a href="https://developers.google.com/programs/community/gdg/" target="_blank" rel="noopener">Google Developer Group (GDG)</a>,
+              <a href="https://developers.google.com/programs/community/gdg/" target="_blank" rel="noopener">
+                Google Developer Group (GDG)
+              </a>,
               {{ $t('features.welcomeText') }}
             </div>
             <div class="mb-5">
               {{ $t('features.description') }}
             </div>
           </div>
-        </v-flex>
-        <v-flex text-xs-center xs12 sm10>
-          <div :class="textClass" class="product-sans">{{ $t('features.whatTodo.title') }}</div>
-        </v-flex>
-        <v-flex
+        </VFlex>
+        <VFlex text-xs-center xs12 sm10>
+          <div :class="textClass" class="product-sans">
+            {{ $t('features.whatTodo.title') }}
+          </div>
+        </VFlex>
+        <VFlex
           xs12
           sm6
           md4
@@ -34,11 +38,15 @@
           :key="feature.icon"
         >
           <img :data-src="require(`@assets/icons/${feature.icon}.svg`)" alt="" class="lazyload">
-          <div class="display-1 mb-1 product-sans">{{ feature.text }}</div>
-          <div class="subheading">{{ feature.description }}</div>
-        </v-flex>
-      </v-layout>
-    </v-container>
+          <div class="display-1 mb-1 product-sans">
+            {{ feature.text }}
+          </div>
+          <div class="subheading">
+            {{ feature.description }}
+          </div>
+        </VFlex>
+      </VLayout>
+    </VContainer>
   </section>
 </template>
 

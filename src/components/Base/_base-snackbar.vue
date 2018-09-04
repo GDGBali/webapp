@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar
+  <VSnackbar
     v-model="snackbar.visible"
     color=""
     :timeout="snackbar.timeout"
@@ -8,7 +8,7 @@
     <div class="subheading">
       {{ snackbar.titleText }}
     </div>
-    <v-btn
+    <VBtn
       v-if="snackbar.buttonText"
       dark
       flat
@@ -16,8 +16,8 @@
       @click="snackbar.onClick"
     >
       {{ snackbar.buttonText }}
-    </v-btn>
-  </v-snackbar>
+    </VBtn>
+  </VSnackbar>
 </template>
 
 <script>

@@ -1,17 +1,20 @@
 <template>
-  <v-container grid-list-xl>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <h1 class="product-sans mb-5 text-xs-center">Events</h1>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap>
+  <VContainer grid-list-xl>
+    <VLayout row wrap>
+      <VFlex xs12>
+        <h1 class="product-sans mb-5 text-xs-center">
+          Events
+        </h1>
+      </VFlex>
+    </VLayout>
+    <VLayout row wrap>
       <FutureEvents
         v-for="event in events"
         :key="event.title"
-        :event="event" />
-    </v-layout>
-  </v-container>
+        :event="event"
+      />
+    </VLayout>
+  </VContainer>
 </template>
 
 <script>

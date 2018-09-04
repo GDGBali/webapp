@@ -4,21 +4,19 @@
     Even when routes use the same component, treat them
     as distinct and create the component again.
     -->
-    <component :is="LayoutComponent" :key="LayoutComponent.name || LayoutComponent.__file">
-      <transition name="slide" mode="out-in" v-if="$route.path !== '/'">
-        <router-view :key="$route.fullPath"/>
-      </transition>
-      <router-view :key="$route.fullPath" v-else/>
-    </component>
+    <Component :is="LayoutComponent" :key="LayoutComponent.name || LayoutComponent.__file">
+      <Transition name="slide" mode="out-in" v-if="$route.path !== '/'">
+        <router-view :key="$route.fullPath" />
+      </Transition>
+      <router-view :key="$route.fullPath" v-else />
+    </Component>
   </div>
 </template>
 
 <script>
 import appConfig from '@src/app.config';
-import Layout from '@layouts/main';
 
 export default {
-  components: { Layout },
   page: {
     // All subcomponent titles will be injected into this template.
     titleTemplate(title) {

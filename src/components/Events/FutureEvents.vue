@@ -1,45 +1,54 @@
 <template>
-  <v-flex xs12 sm6>
-    <v-card>
+  <VFlex xs12 sm6>
+    <VCard>
       <div class="v-card__media" style="height: 200px">
         <div 
           class="v-card__media__background lazyload" 
           :data-bg="event.imgSrc"
-          :style="`background: center center / ${containImg(event.imgContain)} no-repeat`"/>
+          :style="`background: center center / ${containImg(event.imgContain)} no-repeat`"
+        />
       </div>
-      <v-card-title primary-title>
-        <div class="headline">{{ event.title }}</div>
-      </v-card-title>
-      <v-card-actions>
-        <v-btn
+      <VCardTitle primary-title>
+        <div class="headline">
+          {{ event.title }}
+        </div>
+      </VCardTitle>
+      <VCardActions>
+        <VBtn
           v-if="event.details"
           flat
           to="/events/io18"
-          color="primary">
-          <v-icon left>info</v-icon>
+          color="primary"
+        >
+          <VIcon left>
+            info
+          </VIcon>
           Details
-        </v-btn>
-        <v-btn
+        </VBtn>
+        <VBtn
           v-else
           flat
-          disabled>
-          <v-icon left>info</v-icon>
+          disabled
+        >
+          <VIcon left>
+            info
+          </VIcon>
           TBA
-        </v-btn>
-        <v-spacer />
-        <v-btn flat @click="show = !show">
+        </VBtn>
+        <VSpacer />
+        <VBtn flat @click="show = !show">
           info
-          <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-        </v-btn>
-      </v-card-actions>
+          <VIcon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</VIcon>
+        </VBtn>
+      </VCardActions>
 
-      <v-slide-y-transition>
-        <v-card-text v-show="show">
+      <VSlideYTransition>
+        <VCardText v-show="show">
           {{ event.description }}
-        </v-card-text>
-      </v-slide-y-transition>
-    </v-card>
-  </v-flex>
+        </VCardText>
+      </VSlideYTransition>
+    </VCard>
+  </VFlex>
 </template>
 
 <script>

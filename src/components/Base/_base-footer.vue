@@ -1,9 +1,9 @@
 <template>
-  <v-footer height="auto" class="footer">
-    <v-container grid-list-xl fluid>
-      <v-layout align-center>
-        <v-flex xs7 sm3>
-          <v-select
+  <VFooter height="auto" class="footer">
+    <VContainer grid-list-xl fluid>
+      <VLayout align-center>
+        <VFlex xs7 sm3>
+          <VSelect
             :items="localeItems"
             v-model="locale"
             solo
@@ -11,8 +11,8 @@
             @change="changeLocale({i18n: $i18n, locale})"
             aria-label="change language"
           />
-        </v-flex>
-        <v-flex
+        </VFlex>
+        <VFlex
           xs5
           sm4
           offset-sm5
@@ -20,15 +20,15 @@
           offset-md6
         >
           <GdgIcon />
-        </v-flex>
-      </v-layout>
-      <v-layout
+        </VFlex>
+      </VLayout>
+      <VLayout
         row
         wrap
         align-center
         justify-space-between
       >
-        <v-flex xs12 class="text-xs-right">
+        <VFlex xs12 class="text-xs-right">
           <a
             v-for="socialLink in socialLinks"
             :key="socialLink.icon"
@@ -40,15 +40,15 @@
               :alt="`icon-${socialLink.icon}`"
             >
           </a>
-        </v-flex>
-        <v-flex xs12>
+        </VFlex>
+        <VFlex xs12>
           <div class="caption text-xs-right">
             Designed & Develop by GDG Bali.
           </div>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-footer>
+        </VFlex>
+      </VLayout>
+    </VContainer>
+  </VFooter>
 </template>
 
 <script>

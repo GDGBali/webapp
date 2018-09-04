@@ -1,7 +1,7 @@
 <template>
-  <transition appear>
+  <Transition appear>
     <h1>LOADINGGGGGGGG</h1>
-  </transition>
+  </Transition>
 </template>
 
 <script>

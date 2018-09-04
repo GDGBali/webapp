@@ -1,56 +1,61 @@
 <template>
   <div class="pa-2">
-    <v-container fluid>
-      <v-layout row wrap>
-        <v-flex xs12 sm8 md4>
+    <VContainer fluid>
+      <VLayout row wrap>
+        <VFlex xs12 sm8 md4>
           <div>
             <img src="@assets/icons/io18.svg" alt="">
           </div>
           <div>
-            <v-btn 
+            <VBtn 
               fab 
               dark 
               small 
-              color="orange accent-4">
-              <v-icon>event</v-icon>
-            </v-btn>
+              color="orange accent-4"
+            >
+              <VIcon>event</VIcon>
+            </VBtn>
             22 July 2018
           </div>
           <div>
-            <v-btn
+            <VBtn
               href="https://goo.gl/maps/UznLp1j1C8z"
               target="_blank"
               fab
               dark
               small
-              color="orange accent-4">
-              <v-icon>directions</v-icon>
-            </v-btn>
+              color="orange accent-4"
+            >
+              <VIcon>directions</VIcon>
+            </VBtn>
             Kembali Innovation Hub
           </div>
-        </v-flex>
-        <v-flex xs12 class="mt-5">
+        </VFlex>
+        <VFlex xs12 class="mt-5">
           <div class="display-3 product-sans">
             Schedule
           </div>
-          <v-container fluid grid-list-xl>
-            <v-layout
+          <VContainer fluid grid-list-xl>
+            <VLayout
               v-for="item in schedules"
               :key="item.title"
               row
-              wrap>
-              <v-flex
+              wrap
+            >
+              <VFlex
                 xs3
                 sm2
                 md1
-                class="title product-sans">
+                class="title product-sans"
+              >
                 {{ item.time }}
-              </v-flex>
-              <v-flex
+              </VFlex>
+              <VFlex
                 xs9
                 sm10
                 md11
-                class="subheading product-sans">
+                class="subheading product-sans"
+              >
                 <div>
                   {{ item.title }}
                 </div>
@@ -65,59 +70,67 @@
                     {{ codelab.speaker }}
                   </div>
                 </div>
-              </v-flex>
-              <v-flex xs12>
-                <v-divider />
-              </v-flex>
-            </v-layout>
-          </v-container>
-          <v-container grid-list-xl>
-            <v-layout column wrap>
-              <v-flex xs12>
+              </VFlex>
+              <VFlex xs12>
+                <VDivider />
+              </VFlex>
+            </VLayout>
+          </VContainer>
+          <VContainer grid-list-xl>
+            <VLayout column wrap>
+              <VFlex xs12>
                 <img src="@assets/icons/telegram.svg" alt="" class="teleImg">
                 <div class="display-1 product-sans mb-3">
                   Telegram Groups
                 </div>
                 <div class="subheading product-sans mb-3">
-                  <a href="https://www.petanikode.com/kumpulan-group-channel-bot-telegram/" target="_blank">Source</a>
+                  <a href="https://www.petanikode.com/kumpulan-group-channel-bot-telegram/" target="_blank">
+                    Source
+                  </a>
                 </div>
-                <v-list>
-                  <v-list-tile
+                <VList>
+                  <VListTile
                     v-for="(group, idx) in groups"
                     :key="`group.text-${idx}`"
                   >
-                    <v-list-tile-content>
-                      <v-list-tile-title>
-                        <a :href="group.link" target="_blank">{{ group.text }}</a>
-                      </v-list-tile-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                </v-list>
-              </v-flex>
-              <v-flex xs12>
+                    <VListTileContent>
+                      <VListTileTitle>
+                        <a :href="group.link" target="_blank">
+                          {{ group.text }}
+                        </a>
+                      </VListTileTitle>
+                    </VListTileContent>
+                  </VListTile>
+                </VList>
+              </VFlex>
+              <VFlex xs12>
                 <div class="display-1 product-sans">
                   Notes
                 </div>
-                <div class="subheading mb-3">(Build The Future of Web)</div>
-                <v-list>
-                  <v-list-tile
+                <div class="subheading mb-3">
+                  (Build The Future of Web)
+                </div>
+                <VList>
+                  <VListTile
                     v-for="(note, idx) in notes"
                     :key="`note.text-${idx}`"
                   >
-                    <v-list-tile-content>
-                      <v-list-tile-title>
+                    <VListTileContent>
+                      <VListTileTitle>
                         {{ note.description }} :
-                        <a :href="note.link" target="_blank">{{ note.text }}</a>
-                      </v-list-tile-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                </v-list>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-flex>
-      </v-layout>
-    </v-container>
+                        <a :href="note.link" target="_blank">
+                          {{ note.text }}
+                        </a>
+                      </VListTileTitle>
+                    </VListTileContent>
+                  </VListTile>
+                </VList>
+              </VFlex>
+            </VLayout>
+          </VContainer>
+        </VFlex>
+      </VLayout>
+    </VContainer>
   </div>
 </template>
 
