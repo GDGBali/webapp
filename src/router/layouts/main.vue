@@ -1,16 +1,24 @@
 <template>
   <VApp>
-    <BaseNavbar />
+    <NavBar />
     <VContent>
       <slot />
     </VContent>
-    <BaseFooter />
+    <MainFooter />
     <BaseSnackbar />
   </VApp>
 </template>
 
 <script>
-export default {};
+import NavBar from '@components/NavBar';
+import MainFooter from '@components/Footer';
+
+export default {
+  components: {
+    NavBar,
+    MainFooter,
+  },
+};
 </script>
 
 <style lang="scss">
