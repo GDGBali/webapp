@@ -1,5 +1,7 @@
-import * as types from './mutationTypes';
 import axios from 'axios';
+import * as types from './mutationTypes';
+
+axios.defaults.baseURL = 'http://localhost:3007/api/v1';
 
 export const state = {
   locale: 'id',
