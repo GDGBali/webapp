@@ -1,3 +1,4 @@
+import { EVENTS_REQ } from '@state/networkTypes';
 import actions from './actions';
 import getters from './getters';
 import mutations from './mutations';
@@ -13,6 +14,11 @@ export default {
   namespaced: true,
   state,
   getters,
-  mutations,
-  actions,
+  mutations: {
+    [EVENTS_REQ.PENDING]: mutations.requestPending,
+    [EVENTS_REQ.SUCCESS]: mutations.requestSuccess,
+  },
+  actions: {
+    [EVENTS_REQ.START]: actions.makeRequest,
+  },
 };
