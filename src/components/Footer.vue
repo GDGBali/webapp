@@ -2,22 +2,10 @@
   <v-footer height="auto" class="footer">
     <v-container grid-list-xl fluid>
       <v-layout align-center>
-        <v-flex xs7 sm3>
-          <v-select
-            :items="localeItems"
-            v-model="locale"
-            solo
-            hide-details
-            @change="changeLocale({i18n: $i18n, locale})"
-            aria-label="change language"
-          />
-        </v-flex>
         <v-flex
           xs5
           sm4
-          offset-sm5
           md3
-          offset-md6
         >
           <GdgIcon />
         </v-flex>
