@@ -1,5 +1,5 @@
 <template>
-  <VFlex xs12>
+  <v-flex xs12>
     <div class="text-xs-center mt-4">
       <h1 class="product-sans">
         Coming Soon
@@ -11,5 +11,5 @@
         We will finish this section soon.
       </div>
     </div>
-  </VFlex>
+  </v-flex>
 </template>

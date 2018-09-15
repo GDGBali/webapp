@@ -1,13 +1,13 @@
 <template>
   <BaseLazyBg img-name="events">
-    <VContainer grid-list-xl>
-      <VLayout row wrap>
-        <VFlex xs12>
+    <v-container grid-list-xl>
+      <v-layout row wrap>
+        <v-flex xs12>
           <div class="product-sans display-2 white--text">
             {{ $t('events.next') }}
           </div>
-        </VFlex>
-        <VFlex xs12>
+        </v-flex>
+        <v-flex xs12>
           <VCard>
             <VCardTitle primary-title>
               <div class="headline mb-0 product-sans">
@@ -16,8 +16,8 @@
               <div class="body-1 mt-3">
                 {{ $t('events.io.description') }}
               </div>
-              <VLayout row wrap>
-                <VFlex xs12>
+              <v-layout row wrap>
+                <v-flex xs12>
                   <VList>
                     <VListTile v-for="detail in details" :key="detail.title">
                       <VListTileAction>
@@ -30,8 +30,8 @@
                       </VListTileContent>
                     </VListTile>
                   </VList>
-                </VFlex>
-              </VLayout>
+                </v-flex>
+              </v-layout>
             </VCardTitle>
             <VCardActions class="justify-end">
               <VBtn to="/events/io18" color="primary">
@@ -42,9 +42,9 @@
               </VBtn>
             </VCardActions>
           </VCard>
-        </VFlex>
-      </VLayout>
-    </VContainer>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </BaseLazyBg>
 </template>
 

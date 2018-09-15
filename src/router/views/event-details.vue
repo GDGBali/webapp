@@ -1,8 +1,8 @@
 <template>
   <div class="pa-2">
-    <VContainer fluid>
-      <VLayout row wrap>
-        <VFlex xs12 sm8 md4>
+    <v-container fluid>
+      <v-layout row wrap>
+        <v-flex xs12 sm8 md4>
           <div>
             <img src="@assets/icons/io18.svg" alt="">
           </div>
@@ -30,27 +30,27 @@
             </VBtn>
             Kembali Innovation Hub
           </div>
-        </VFlex>
-        <VFlex xs12 class="mt-5">
+        </v-flex>
+        <v-flex xs12 class="mt-5">
           <div class="display-3 product-sans">
             Schedule
           </div>
-          <VContainer fluid grid-list-xl>
-            <VLayout
+          <v-container fluid grid-list-xl>
+            <v-layout
               v-for="item in schedules"
               :key="item.title"
               row
               wrap
             >
-              <VFlex
+              <v-flex
                 xs3
                 sm2
                 md1
                 class="title product-sans"
               >
                 {{ item.time }}
-              </VFlex>
-              <VFlex
+              </v-flex>
+              <v-flex
                 xs9
                 sm10
                 md11
@@ -70,15 +70,15 @@
                     {{ codelab.speaker }}
                   </div>
                 </div>
-              </VFlex>
-              <VFlex xs12>
+              </v-flex>
+              <v-flex xs12>
                 <VDivider />
-              </VFlex>
-            </VLayout>
-          </VContainer>
-          <VContainer grid-list-xl>
-            <VLayout column wrap>
-              <VFlex xs12>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <v-container grid-list-xl>
+            <v-layout column wrap>
+              <v-flex xs12>
                 <img src="@assets/icons/telegram.svg" alt="" class="teleImg">
                 <div class="display-1 product-sans mb-3">
                   Telegram Groups
@@ -102,8 +102,8 @@
                     </VListTileContent>
                   </VListTile>
                 </VList>
-              </VFlex>
-              <VFlex xs12>
+              </v-flex>
+              <v-flex xs12>
                 <div class="display-1 product-sans">
                   Notes
                 </div>
@@ -125,12 +125,12 @@
                     </VListTileContent>
                   </VListTile>
                 </VList>
-              </VFlex>
-            </VLayout>
-          </VContainer>
-        </VFlex>
-      </VLayout>
-    </VContainer>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 

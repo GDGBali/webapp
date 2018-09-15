@@ -1,20 +1,20 @@
 <template>
   <BaseLazyBg img-name="hero">
     <div class="heroOverlay" />
-    <VContainer fill-height class="heroContent">
-      <VLayout align-center>
-        <VFlex xs12>
-          <VContainer>
-            <VLayout
+    <v-container fill-height class="heroContent">
+      <v-layout align-center>
+        <v-flex xs12>
+          <v-container>
+            <v-layout
               row
               wrap
               justify-center
               align-center
             >
-              <VFlex xs12 sm8 text-xs-center>
+              <v-flex xs12 sm8 text-xs-center>
                 <GdgIcon id-attr="hero" />
-              </VFlex>
-              <VFlex xs12 text-xs-center>
+              </v-flex>
+              <v-flex xs12 text-xs-center>
                 <div class="mt-5">
                   <VBtn to="/events" class="primary--text">
                     <VIcon left>
@@ -23,12 +23,12 @@
                     Events
                   </VBtn>
                 </div>
-              </VFlex>
-            </VLayout>
-          </VContainer>
-        </VFlex>
-      </VLayout>
-    </VContainer>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </BaseLazyBg>
 </template>
 

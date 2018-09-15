@@ -1,16 +1,16 @@
 <template>
   <section>
-    <VContainer fill-height grid-list-xl>
-      <VLayout row wrap justify-center>
-        <VFlex text-xs-center xs12>
+    <v-container fill-height grid-list-xl>
+      <v-layout row wrap justify-center>
+        <v-flex text-xs-center xs12>
           <div
             :class="textClass"
             class="product-sans"
           >
             {{ $t('features.whatGdg') }}
           </div>
-        </VFlex>
-        <VFlex text-xs-center xs12 sm7>
+        </v-flex>
+        <v-flex text-xs-center xs12 sm7>
           <div class="subheading">
             <div class="mb-5">
               {{ $t('features.welcomeTitle') }}
@@ -23,13 +23,13 @@
               {{ $t('features.description') }}
             </div>
           </div>
-        </VFlex>
-        <VFlex text-xs-center xs12 sm10>
+        </v-flex>
+        <v-flex text-xs-center xs12 sm10>
           <div :class="textClass" class="product-sans">
             {{ $t('features.whatTodo.title') }}
           </div>
-        </VFlex>
-        <VFlex
+        </v-flex>
+        <v-flex
           xs12
           sm6
           md4
@@ -44,9 +44,9 @@
           <div class="subheading">
             {{ feature.description }}
           </div>
-        </VFlex>
-      </VLayout>
-    </VContainer>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </section>
 </template>
 

@@ -1,19 +1,19 @@
 <template>
-  <VContainer fluid grid-list-xl>
-    <VLayout row wrap justify-center>
-      <VFlex xs12>
+  <v-container fluid grid-list-xl>
+    <v-layout row wrap justify-center>
+      <v-flex xs12>
         <div class="text-xs-center mb-4">
           <h1 class="product-sans">
             Tutorials
           </h1>
-          <I18n
+          <i18n
             path="tutorials.title"
             tag="div"
             class="body-2"
             v-html="$t('tutorials.title')"
           />
         </div>
-      </VFlex>
+      </v-flex>
       <!-- <v-flex xs12>
         <div class="text-xs-center mb-4">
           <i18n
@@ -26,8 +26,8 @@
       </v-flex> -->
 
       <ComingSoon />
-    </VLayout>
-  </VContainer>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

@@ -1,13 +1,13 @@
 <template>
-  <VContainer fluid grid-list-xl>
-    <VLayout row wrap>
-      <VFlex xs12>
+  <v-container fluid grid-list-xl>
+    <v-layout row wrap>
+      <v-flex xs12>
         <div class="text-xs-center mb-4">
           <img src="@assets/icons/awesome.svg" alt="" width="500">
           <h1 class="product-sans">
             Awesomeness!
           </h1>
-          <I18n
+          <i18n
             path="awesome.title"
             tag="div"
             class="body-2"
@@ -53,9 +53,9 @@
             </VExpansionPanelContent>
           </VExpansionPanel>
         </VCard>
-      </VFlex>
-    </VLayout>
-  </VContainer>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>

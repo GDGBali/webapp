@@ -1,25 +1,47 @@
 <template>
-  <VContainer grid-list-xl>
-    <VLayout row wrap>
-      <VFlex xs12>
+  <v-container grid-list-xl>
+    <v-layout row wrap justify-center>
+      <v-flex xs12>
         <h1 class="product-sans mb-5 text-xs-center">
           Events
+          {{ eventsTab }}
         </h1>
-      </VFlex>
-    </VLayout>
-    <VLayout row wrap>
-      <FutureEvents
-        v-for="event in events"
-        :key="event.title"
-        :event="event"
-      />
-    </VLayout>
-  </VContainer>
+        <v-tabs
+          centered 
+          grow 
+          color="primary"
+          dark
+          slider-color="secondary"
+          v-model="eventsTab"
+        >
+          <v-tab ripple>
+            Future
+          </v-tab>
+          <v-tab ripple>
+            Past
+          </v-tab>
+          <v-tab ripple>
+            All
+          </v-tab>
+
+          <v-tab-item lazy id="future-events">
+            <EventsList />
+          </v-tab-item>
+          <v-tab-item lazy id="past-events">
+            <EventsList when="past" />
+          </v-tab-item>
+          <v-tab-item lazy id="all-events">
+            <EventsList when="all" />
+          </v-tab-item>
+        </v-tabs>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 import appConfig from '@src/app.config';
-import FutureEvents from '@components/Events/FutureEvents';
+import EventsList from '@components/Events/EventsList';
 
 export default {
   metaInfo: {
@@ -27,39 +49,10 @@ export default {
     meta: [{ name: 'description', content: appConfig.description }],
   },
   components: {
-    FutureEvents,
+    EventsList,
   },
-  computed: {
-    events() {
-      return [
-        {
-          title: 'Google I/O 2018 Extended',
-          description: this.$i18n.t('events.io.description'),
-          imgSrc: require('@assets/images/events/ioStage.jpeg'),
-          details: true,
-        },
-        {
-          title: 'GDG Meetup Workbox',
-          description: this.$i18n.t('events.workbox.description'),
-          imgSrc: require('@assets/images/events/workbox.png'),
-          details: false,
-          imgContain: true,
-        },
-        {
-          title: 'Flutter Study Jam',
-          description: this.$i18n.t('events.flutter.description'),
-          imgSrc: require('@assets/images/events/flutter.jpg'),
-          details: false,
-          imgContain: true,
-        },
-        {
-          title: 'DevFest 2018',
-          description: this.$i18n.t('events.devfest.description'),
-          imgSrc: require('@assets/images/events/devfest.jpg'),
-          details: false,
-        },
-      ];
-    },
-  },
+  data: () => ({
+    eventsTab: 'future',
+  }),
 };
 </script>
