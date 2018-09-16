@@ -17,7 +17,7 @@ export default [
   createBasePath('tutorials'),
   createBasePath('showcase'),
   {
-    path: '/events/:slug',
+    path: '/events/:slug_url',
     name: 'event-details',
     component: () => lazyLoadView(import('@views/event-details')),
   },

@@ -5,6 +5,8 @@ import mutations from './mutations';
 
 const state = {
   isRequesting: false,
+  details: null,
+  reqVerb: 'GET_LIST',
   future: [],
   past: [],
   all: [],
@@ -15,6 +17,7 @@ export default {
   state,
   getters,
   mutations: {
+    [EVENTS_REQ.VERB]: mutations.requestVerb,
     [EVENTS_REQ.PENDING]: mutations.requestPending,
     [EVENTS_REQ.SUCCESS]: mutations.requestSuccess,
   },

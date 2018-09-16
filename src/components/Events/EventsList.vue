@@ -35,7 +35,10 @@ export default {
     EventCard,
   },
   created() {
-    this.$store.dispatch(EVENTS_REQ_START, { url: '/events', when: this.when });
+    this.$store.dispatch(EVENTS_REQ_START, {
+      endpoint: '/events',
+      when: this.when,
+    });
   },
   data: () => ({
     show: false,

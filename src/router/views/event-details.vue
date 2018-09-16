@@ -135,9 +135,17 @@
 </template>
 
 <script>
+import { EVENTS_REQ_START } from '@state/networkTypes';
+
 export default {
   metaInfo: {
     title: 'Google I/O 2018',
+  },
+  created() {
+    this.$store.dispatch(EVENTS_REQ_START, {
+      endpoint: `/events/${this.$route.params.slug_url}`,
+      verb: 'GET_SINGLE',
+    });
   },
   data() {
     return {
