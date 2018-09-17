@@ -1,7 +1,7 @@
 <template>
   <section>
     <v-container fill-height grid-list-xl>
-      <v-layout row wrap justify-center>
+      <v-layout wrap justify-center>
         <v-flex text-xs-center xs12>
           <div
             :class="textClass"

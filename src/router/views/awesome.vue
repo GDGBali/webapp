@@ -1,6 +1,6 @@
 <template>
   <v-container fluid grid-list-xl>
-    <v-layout row wrap>
+    <v-layout wrap>
       <v-flex xs12>
         <div class="text-xs-center mb-4">
           <img src="@assets/icons/awesome.svg" alt="" width="500">

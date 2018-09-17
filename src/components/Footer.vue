@@ -10,7 +10,6 @@
         </v-flex>
         <v-flex xs8 md10>
           <v-layout
-            row
             wrap
             align-center
             justify-space-between

@@ -1,6 +1,6 @@
 <template>
   <v-container fluid grid-list-xl>
-    <v-layout row wrap justify-center>
+    <v-layout wrap justify-center>
       <v-flex xs12>
         <div class="text-xs-center mb-4">
           <h1 class="product-sans">

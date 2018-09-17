@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-xl>
-    <v-layout row wrap justify-center>
+    <v-layout wrap justify-center>
       <v-flex xs12>
         <h1 class="product-sans mb-5 text-xs-center">
           Next Events

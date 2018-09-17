@@ -1,7 +1,7 @@
 <template>
   <BaseLazyBg img-name="events">
     <v-container grid-list-xl>
-      <v-layout row wrap>
+      <v-layout wrap>
         <v-flex xs12>
           <div class="product-sans display-2 white--text">
             {{ $t('events.next') }}
@@ -16,7 +16,7 @@
               <div class="body-1 mt-3">
                 {{ $t('events.io.description') }}
               </div>
-              <v-layout row wrap>
+              <v-layout wrap>
                 <v-flex xs12>
                   <VList>
                     <VListTile v-for="detail in details" :key="detail.title">
