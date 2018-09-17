@@ -1,151 +1,43 @@
 <template>
   <div class="pa-2">
     <v-container fluid>
-      <v-layout row wrap>
-        <v-flex xs12 sm8 md4>
-          <div>
-            <img src="@assets/icons/io18.svg" alt="">
-          </div>
-          <div>
-            <VBtn 
-              fab 
-              dark 
-              small 
-              color="orange accent-4"
-            >
-              <VIcon>event</VIcon>
-            </VBtn>
-            22 July 2018
-          </div>
-          <div>
-            <VBtn
-              href="https://goo.gl/maps/UznLp1j1C8z"
-              target="_blank"
-              fab
-              dark
-              small
-              color="orange accent-4"
-            >
-              <VIcon>directions</VIcon>
-            </VBtn>
-            Kembali Innovation Hub
-          </div>
-        </v-flex>
-        <v-flex xs12 class="mt-5">
-          <div class="display-3 product-sans">
-            Schedule
-          </div>
-          <v-container fluid grid-list-xl>
-            <v-layout
-              v-for="item in schedules"
-              :key="item.title"
-              row
-              wrap
-            >
-              <v-flex
-                xs3
-                sm2
-                md1
-                class="title product-sans"
-              >
-                {{ item.time }}
-              </v-flex>
-              <v-flex
-                xs9
-                sm10
-                md11
-                class="subheading product-sans"
-              >
-                <div>
-                  {{ item.title }}
-                </div>
-                <div class="body-2">
-                  {{ item.speaker }}
-                </div>
-                <div v-for="codelab in item.codelabs" :key="codelab.title" class="mt-3">
-                  <div>
-                    {{ codelab.title }}
-                  </div>
-                  <div class="body-2">
-                    {{ codelab.speaker }}
-                  </div>
-                </div>
-              </v-flex>
-              <v-flex xs12>
-                <VDivider />
-              </v-flex>
-            </v-layout>
-          </v-container>
-          <v-container grid-list-xl>
-            <v-layout column wrap>
-              <v-flex xs12>
-                <img src="@assets/icons/telegram.svg" alt="" class="teleImg">
-                <div class="display-1 product-sans mb-3">
-                  Telegram Groups
-                </div>
-                <div class="subheading product-sans mb-3">
-                  <a href="https://www.petanikode.com/kumpulan-group-channel-bot-telegram/" target="_blank">
-                    Source
-                  </a>
-                </div>
-                <VList>
-                  <VListTile
-                    v-for="(group, idx) in groups"
-                    :key="`group.text-${idx}`"
-                  >
-                    <VListTileContent>
-                      <VListTileTitle>
-                        <a :href="group.link" target="_blank">
-                          {{ group.text }}
-                        </a>
-                      </VListTileTitle>
-                    </VListTileContent>
-                  </VListTile>
-                </VList>
-              </v-flex>
-              <v-flex xs12>
-                <div class="display-1 product-sans">
-                  Notes
-                </div>
-                <div class="subheading mb-3">
-                  (Build The Future of Web)
-                </div>
-                <VList>
-                  <VListTile
-                    v-for="(note, idx) in notes"
-                    :key="`note.text-${idx}`"
-                  >
-                    <VListTileContent>
-                      <VListTileTitle>
-                        {{ note.description }} :
-                        <a :href="note.link" target="_blank">
-                          {{ note.text }}
-                        </a>
-                      </VListTileTitle>
-                    </VListTileContent>
-                  </VListTile>
-                </VList>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-flex>
-      </v-layout>
+      <div class="text-xs-center" v-if="isRequesting">
+        <v-progress-circular
+          :size="60"
+          :width="6"
+          color="primary"
+          indeterminate
+        />
+      </div>
+      <EventDetails :event="event" v-else />
     </v-container>
   </div>
 </template>
 
 <script>
 import { EVENTS_REQ_START } from '@state/networkTypes';
+import EventDetails from '@components/Events/EventDetails';
 
 export default {
   metaInfo: {
-    title: 'Google I/O 2018',
+    title: 'Events',
+  },
+  components: {
+    EventDetails,
   },
   created() {
     this.$store.dispatch(EVENTS_REQ_START, {
       endpoint: `/events/${this.$route.params.slug_url}`,
       verb: 'GET_SINGLE',
     });
+  },
+  computed: {
+    event() {
+      return this.$store.state.events.details;
+    },
+    isRequesting() {
+      return this.$store.state.events.isRequesting;
+    },
   },
   data() {
     return {
