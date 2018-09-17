@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 const eventList = data =>
   data.map(item => {
     const details = !(
@@ -21,7 +23,7 @@ export default {
     state.reqVerb = verb;
   },
   requestPending: (state, { value }) => {
-    state.isRequesting = value;
+    Vue.set(state, 'isRequesting', value);
   },
   requestSuccess: (state, { data }) => {
     switch (state.reqVerb) {

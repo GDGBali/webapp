@@ -1,11 +1,11 @@
 import { EVENTS_REQ } from '@state/networkTypes';
 import request from '@utils/apiRequest';
 
-const makeRequest = async (store, { endpoint, when, verb }) => {
+const makeRequest = async (store, { endpoint, when, verb = 'GET_LIST' }) => {
   let url;
+  await store.commit(EVENTS_REQ.VERB, { verb });
   switch (verb) {
     case 'GET_SINGLE':
-      await store.commit(EVENTS_REQ.VERB, { verb });
       url = endpoint;
       break;
 
