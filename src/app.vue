@@ -5,10 +5,7 @@
     as distinct and create the component again.
     -->
     <Component :is="LayoutComponent" :key="LayoutComponent.name || LayoutComponent.__file">
-      <Transition name="slide" mode="out-in" v-if="$route.path !== '/'">
-        <router-view :key="$route.fullPath" />
-      </Transition>
-      <router-view :key="$route.fullPath" v-else />
+      <router-view :key="$route.fullPath" />
     </Component>
   </div>
 </template>
