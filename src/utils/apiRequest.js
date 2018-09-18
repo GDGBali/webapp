@@ -5,8 +5,8 @@ const request = async (store, { url, types }) => {
 
   try {
     const response = await axios(url, {});
-    const data = response.data.data;
-    return store.commit(types.SUCCESS, { data });
+    const responseData = response.data;
+    return store.commit(types.SUCCESS, { responseData });
   } catch (error) {
     // return store.commit(types.FAILURE, { data });
     console.error(error.message);

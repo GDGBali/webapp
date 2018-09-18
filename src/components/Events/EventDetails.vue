@@ -69,3 +69,9 @@ export default {
   },
 };
 </script>
+
+<style lang="stylus" scoped>
+.description {
+  white-space: pre-line;
+}
+</style>

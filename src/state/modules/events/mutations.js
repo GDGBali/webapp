@@ -12,11 +12,12 @@ const eventList = data =>
     };
   });
 
-const eventSingle = data => ({
+const eventSingle = ({ data, included: [venue] }) => ({
   ...data.attributes,
+  venue: {
+    ...venue.attributes,
+  },
 });
-
-// const eventSingle = data =>
 
 export default {
   requestVerb: (state, { verb }) => {
@@ -25,13 +26,13 @@ export default {
   requestPending: (state, { value }) => {
     Vue.set(state, 'isRequesting', value);
   },
-  requestSuccess: (state, { data }) => {
+  requestSuccess: (state, { responseData }) => {
     switch (state.reqVerb) {
       case 'GET_SINGLE':
-        state.details = eventSingle(data);
+        state.details = eventSingle(responseData);
         break;
       default:
-        state.future = eventList(data);
+        state.future = eventList(responseData.data);
         break;
     }
   },
