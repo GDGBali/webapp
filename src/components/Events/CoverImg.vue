@@ -24,7 +24,10 @@
       fill-height 
       class="white--text pb-4 overlay"
     >
-      <div class="product-sans text-xs-center eventName primary" :class="[isMobile ? 'headline' : 'display-1']">
+      <div 
+        class="product-sans text-xs-center eventName primary" 
+        :class="[isMobile ? 'headline' : 'display-1']"
+      >
         {{ name }}
       </div>
     </v-layout>

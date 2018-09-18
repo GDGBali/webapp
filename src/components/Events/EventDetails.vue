@@ -9,57 +9,15 @@
             <FabOrange icon="directions" content="Kembali Innovation Hub" />
           </v-layout>
         </v-flex>
-        <v-flex xs12 class="mt-5">
-          <v-layout justify-space-between align-center>
-            <div class="display-3 product-sans">
-              Schedule
-            </div>
-            <v-btn color="primary">
-              join
-            </v-btn>
-          </v-layout>
-          <v-container fluid grid-list-xl>
-            <v-layout
-              v-for="item in schedules"
-              :key="item.title"
-              row
-              wrap
-            >
-              <v-flex
-                xs3
-                sm2
-                md1
-                class="title product-sans"
-              >
-                {{ item.time }}
-              </v-flex>
-              <v-flex
-                xs9
-                sm10
-                md11
-                class="subheading product-sans"
-              >
-                <div>
-                  {{ item.title }}
-                </div>
-                <div class="body-2">
-                  {{ item.speaker }}
-                </div>
-                <div v-for="codelab in item.codelabs" :key="codelab.title" class="mt-3">
-                  <div>
-                    {{ codelab.title }}
-                  </div>
-                  <div class="body-2">
-                    {{ codelab.speaker }}
-                  </div>
-                </div>
-              </v-flex>
-              <v-flex xs12>
-                <VDivider />
-              </v-flex>
-            </v-layout>
-          </v-container>
+        <v-flex xs12 class="description mt-5 subheading">
+          {{ event.description }}
         </v-flex>
+        <v-flex xs12 sm3 class="text-xs-center my-4">
+          <v-btn color="primary" large="" block>
+            join event
+          </v-btn>
+        </v-flex>
+        <Schedule :schedules="schedules" />
       </v-layout>
     </v-container>
   </div>
@@ -68,10 +26,13 @@
 <script>
 import FabOrange from './FabOrange';
 import CoverImg from './CoverImg';
+import Schedule from './Schedule';
+
 export default {
   components: {
     FabOrange,
     CoverImg,
+    Schedule,
   },
   props: {
     event: {
@@ -91,34 +52,16 @@ export default {
         },
         {
           time: '10:00',
-          title: 'Building App Using Kotlin',
-          speaker: 'Wayan Dharmana',
-        },
-        { time: '10:30', title: 'Ice Breaker' },
-        {
-          time: '10:35',
-          title: 'Journey with Flutter & Dart',
-          speaker: 'Asep Bagja',
-        },
-        {
-          time: '11:05',
-          title: 'Tensor Flow & ML Kit',
-          speaker: 'Sidiq Permana',
-        },
-        { time: '11:35', title: 'Lunch Break' },
-        {
-          time: '12:35',
-          title: 'Build the Future of Web',
-          speaker: 'Prabu Rangki',
-        },
-        { time: '13:05', title: 'Networking' },
-        {
-          time: '13:25',
-          title: 'Codelabs',
-          isCodelabs: true,
-          codelabs: [
-            { title: 'Using Workbox with ReactJS', speaker: 'Prabu Rangki' },
-            { title: 'ML Kit', speaker: 'Sidiq Permana' },
+          isParallel: true,
+          items: [
+            {
+              title: 'Building App Using Kotlin',
+              speaker: 'Wayan Dharmana',
+            },
+            {
+              title: 'Building App Using Jetpack',
+              speaker: 'Ketut Sambrag',
+            },
           ],
         },
       ],

@@ -48,7 +48,6 @@
           :key="navItem.text"
           :to="navItem.path"
           active-class="active--nav"
-          exact
           flat
         >
           <span>{{ navItem.text }}</span>
