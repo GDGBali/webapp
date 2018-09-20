@@ -8,8 +8,8 @@
             <FabOrange icon="event">
               {{ event.startsAt | date }}
             </FabOrange>
-            <FabOrange icon="directions">
-              <!-- {{ event.venue.name }} -->
+            <FabOrange icon="directions" :href="event.venue.mapsUrl">
+              {{ event.venue.name }}
             </FabOrange>
           </v-layout>
         </v-flex>

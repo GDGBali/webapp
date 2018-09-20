@@ -6,6 +6,8 @@
       small 
       color="orange accent-4"
       :class="{'mb-3': isColumn }"
+      target="_blank"
+      :href="href"
     >
       <v-icon>{{ icon }}</v-icon>
     </v-btn>
@@ -24,10 +26,17 @@ export default {
       type: String,
       default: '',
     },
+    href: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     isColumn() {
       return !this.$vuetify.breakpoint.xsOnly;
+    },
+    hasLinks() {
+      return this.href !== '';
     },
   },
 };

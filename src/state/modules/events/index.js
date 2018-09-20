@@ -4,7 +4,10 @@ import getters from './getters';
 import mutations from './mutations';
 
 const state = {
-  details: {},
+  details: {
+    venue: {},
+    sessions: [],
+  },
   reqVerb: 'GET_LIST',
   future: [],
   past: [],

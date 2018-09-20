@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import partition from 'lodash/partition';
 
 const eventList = data =>
   data.map(item => {
@@ -12,12 +13,20 @@ const eventList = data =>
     };
   });
 
-const eventSingle = ({ data, included: [venue] }) => ({
-  ...data.attributes,
-  venue: {
-    ...venue.attributes,
-  },
-});
+const eventSingle = ({ data, included }) => {
+  const [sessions, [venue]] = partition(
+    included,
+    item => item.type === 'session'
+  );
+
+  return {
+    ...data.attributes,
+    venue: {
+      ...venue.attributes,
+    },
+    sessions: sessions.map(session => session.attributes),
+  };
+};
 
 export default {
   requestVerb: (state, { verb }) => {
