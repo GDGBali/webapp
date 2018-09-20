@@ -9,14 +9,14 @@
     <v-container fluid grid-list-xl>
       <v-layout
         v-for="item in schedules"
-        :key="item.title"
+        :key="item.id"
         wrap
       >
         <v-flex 
           class="product-sans shrink"
           :class="[isMobile ? 'headline' : 'display-1']"
         >
-          {{ item.time }}
+          {{ item.beginsAt | beginsAt }}
         </v-flex>
         <v-flex>
           <v-layout 
@@ -27,10 +27,10 @@
             v-if="!item.isParallel"
           >
             <div class="title product-sans">
-              {{ item.title }}
+              {{ item.name }}
             </div>
-            <div class="subheading mt-2" v-if="item.speaker">
-              {{ item.speaker }}
+            <div class="subheading mt-2" v-if="item.user">
+              {{ item.user.fullName }}
             </div>
           </v-layout>
           <div 
@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import format from 'date-fns/format';
+
 export default {
   props: {
     schedules: {
@@ -66,6 +68,11 @@ export default {
   computed: {
     isMobile() {
       return this.$vuetify.breakpoint.xsOnly;
+    },
+  },
+  filters: {
+    beginsAt(value) {
+      return format(value, 'HH:mm');
     },
   },
 };

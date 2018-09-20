@@ -44,32 +44,15 @@ export default {
       default: () => ({}),
     },
   },
-  data() {
-    return {
-      schedules: [
-        { time: '09:00', title: 'Registration' },
-        { time: '09:30', title: 'Google Keynote', speaker: 'Leonard Papilaya' },
-        {
-          time: '09:50',
-          title: 'Journey at Google I/O',
-          speaker: 'Dennis Alund',
-        },
-        {
-          time: '10:00',
-          isParallel: true,
-          items: [
-            {
-              title: 'Building App Using Kotlin',
-              speaker: 'Wayan Dharmana',
-            },
-            {
-              title: 'Building App Using Jetpack',
-              speaker: 'Ketut Sambrag',
-            },
-          ],
-        },
-      ],
-    };
+  computed: {
+    schedules() {
+      const registration = {
+        name: 'Registration',
+        beginsAt: this.event.startsAt,
+      };
+
+      return [registration, ...this.event.sessions];
+    },
   },
 };
 </script>
