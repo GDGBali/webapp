@@ -5,8 +5,12 @@
       <v-layout wrap justify-center>
         <v-flex xs12 sm9>
           <v-layout wrap>
-            <FabOrange icon="event" content="22 July 2018" />
-            <FabOrange icon="directions" content="Kembali Innovation Hub" />
+            <FabOrange icon="event">
+              {{ event.startsAt | date }}
+            </FabOrange>
+            <FabOrange icon="directions">
+              <!-- {{ event.venue.name }} -->
+            </FabOrange>
           </v-layout>
         </v-flex>
         <v-flex xs12 class="description mt-5 subheading">

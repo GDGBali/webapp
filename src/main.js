@@ -8,6 +8,7 @@ import store from '@state/store';
 import '@components/_globals';
 import './registerServiceWorker';
 import '@assets/style/app.styl';
+import '@utils/filter';
 
 // Don't warn about using the dev version of Vue in development
 Vue.config.productionTip = process.env.NODE_ENV === 'production';

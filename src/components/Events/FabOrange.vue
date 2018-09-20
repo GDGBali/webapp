@@ -9,7 +9,7 @@
     >
       <v-icon>{{ icon }}</v-icon>
     </v-btn>
-    {{ content }}
+    <slot />
   </v-layout>
 </template>
 
