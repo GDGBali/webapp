@@ -1,38 +1,47 @@
 <template>
   <div>
-    <VNavigationDrawer
+    <v-navigation-drawer
       v-model="drawer"
       v-if="!hideDrawer"
       fixed
     >
-      <VList>
-        <VListTile
+      <div class="pa-2">
+        <img
+          src="/images/logo.svg"
+          alt="logo"
+          width="100"
+        >
+      </div>
+      <v-divider />
+      <v-list>
+        <v-list-tile
           v-for="navItem in navItems"
           :key="navItem.text"
           :to="navItem.path"
           exact
         >
-          <VListTileAction>
-            <VIcon v-html="navItem.icon" />
-          </VListTileAction>
-          <VListTileContent>
-            <VListTileTitle v-text="navItem.text" />
-          </VListTileContent>
-        </VListTile>
-      </VList>
-    </VNavigationDrawer>
-    <VToolbar
+          <v-list-tile-action>
+            <v-icon v-html="navItem.icon" />
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title v-text="navItem.text" />
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar
       app
       fixed
       class="nav"
+      color="success"
     >
-      <VToolbarSideIcon 
+      <v-toolbar-side-icon
         v-if="!hideDrawer" 
         @click="drawer = !drawer" 
         role="button" 
         aria-label="menu"
       />
-      <VSpacer v-if="!hideDrawer" />
+      <v-spacer v-if="!hideDrawer" />
       <router-link to="/" class="navbrand">
         <img
           src="/images/logo.svg"
@@ -40,9 +49,9 @@
           width="100"
         >
       </router-link>
-      <VSpacer v-if="hideDrawer" />
-      <VToolbarItems v-if="hideDrawer">
-        <VBtn
+      <v-spacer v-if="hideDrawer" />
+      <v-toolbar-items v-if="hideDrawer">
+        <v-btn
           v-for="navItem in navItems"
           :key="navItem.text"
           :to="navItem.path"
@@ -50,9 +59,9 @@
           flat
         >
           <span>{{ navItem.text }}</span>
-        </VBtn>
-      </VToolbarItems>
-    </VToolbar>
+        </v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
   </div>
 </template>
 

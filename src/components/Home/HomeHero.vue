@@ -15,12 +15,17 @@
               </v-flex>
               <v-flex xs12 text-xs-center>
                 <div class="mt-5">
-                  <VBtn to="/events" class="primary--text">
-                    <VIcon left>
+                  <v-btn 
+                    to="/events" 
+                    class="primary--text" 
+                    light 
+                    round
+                  >
+                    <v-icon left>
                       local_activity
-                    </VIcon>
+                    </v-icon>
                     Events
-                  </VBtn>
+                  </v-btn>
                 </div>
               </v-flex>
             </v-layout>

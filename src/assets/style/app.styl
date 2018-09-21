@@ -1,8 +1,9 @@
 @require '~vuetify/src/stylus/app'
 @import 'variables'
 
-.theme--dark.application
-  background: #131A1F
+.theme--dark
+ &.application, &.v-navigation-drawer, &.v-list
+  background: $colors.background
   color: #eaeaea
 
 .product-sans

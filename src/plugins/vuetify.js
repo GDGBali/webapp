@@ -42,5 +42,6 @@ Vue.use(Vuetify, {
   theme: {
     primary: colors.teal.darken3,
     secondary: colors.orange.base,
+    success: '#131A1F',
   },
 });
