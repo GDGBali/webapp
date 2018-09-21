@@ -1,12 +1,12 @@
 <template>
-  <VApp>
+  <v-app dark>
     <NavBar />
-    <VContent>
+    <v-content>
       <slot />
-    </VContent>
+    </v-content>
     <MainFooter />
     <BaseSnackbar />
-  </VApp>
+  </v-app>
 </template>
 
 <script>

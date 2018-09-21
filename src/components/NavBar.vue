@@ -22,8 +22,7 @@
       </VList>
     </VNavigationDrawer>
     <VToolbar
-      :app="notRootPath"
-      color="white"
+      app
       fixed
       class="nav"
     >
@@ -60,22 +59,13 @@
 <script>
 import { navItems } from '@src/data/navItems';
 
-const isNotRootPath = path => path !== '/';
-
 export default {
   data: () => ({
     baseUrl: process.env.BASE_URL,
     navItems,
     drawer: false,
-    items: [
-      { icon: 'apps', title: 'Welcome', to: '/' },
-      { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' },
-    ],
   }),
   computed: {
-    notRootPath() {
-      return isNotRootPath(this.$route.path);
-    },
     hideDrawer() {
       return this.$vuetify.breakpoint.mdAndUp;
     },
