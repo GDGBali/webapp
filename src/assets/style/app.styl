@@ -2,7 +2,7 @@
 @import 'variables'
 
 .theme--dark
- &.application, &.v-navigation-drawer, &.v-list
+ &.application, &.v-navigation-drawer, &.v-list, &.v-card
   background: $colors.background
   color: #eaeaea
 
@@ -27,3 +27,7 @@ a
   .v-btn__content
     text-align: center
     height: auto !important
+
+.v-card {
+  box-shadow: 2px -1px 7px 0 rgba(57,204,204,1), -2px 3px 8px 0  rgba(34,122,122,1)
+}

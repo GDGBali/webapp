@@ -15,6 +15,8 @@ import {
   VExpansionPanel,
   VSnackbar,
   VProgressCircular,
+  VCarousel,
+  VAvatar,
   VImg,
   transitions,
 } from 'vuetify';
@@ -36,6 +38,8 @@ Vue.use(Vuetify, {
     VExpansionPanel,
     VSnackbar,
     VProgressCircular,
+    VCarousel,
+    VAvatar,
     VImg,
     transitions,
   },
