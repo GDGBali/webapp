@@ -8,6 +8,7 @@
       :class="{'mb-3': isColumn }"
       target="_blank"
       :href="href"
+      :disabled="tbd"
     >
       <v-icon>{{ icon }}</v-icon>
     </v-btn>
@@ -29,6 +30,10 @@ export default {
     href: {
       type: String,
       default: '',
+    },
+    tbd: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

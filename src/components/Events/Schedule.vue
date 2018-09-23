@@ -60,14 +60,26 @@ import format from 'date-fns/format';
 
 export default {
   props: {
-    schedules: {
+    sessions: {
       type: Array,
       default: () => [],
+    },
+    startsAt: {
+      type: String,
+      default: '',
     },
   },
   computed: {
     isMobile() {
       return this.$vuetify.breakpoint.xsOnly;
+    },
+    schedules() {
+      const registration = {
+        name: 'Registration',
+        beginsAt: this.startsAt,
+      };
+
+      return [registration, ...this.sessions];
     },
   },
   filters: {

@@ -19,12 +19,18 @@ const eventSingle = ({ data, included }) => {
     item => item.type === 'session'
   );
 
+  if (data.attributes.startsAt) {
+    return {
+      ...data.attributes,
+      venue: {
+        ...venue.attributes,
+      },
+      sessions: sessions.map(session => session.attributes),
+    };
+  }
+
   return {
     ...data.attributes,
-    venue: {
-      ...venue.attributes,
-    },
-    sessions: sessions.map(session => session.attributes),
   };
 };
 
