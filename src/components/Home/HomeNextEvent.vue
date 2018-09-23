@@ -7,7 +7,7 @@
         </div>
       </v-flex>
       <v-flex xs12>
-        <v-card>
+        <v-card class="pa-3 cardContainer">
           <v-card-title primary-title>
             <div class="headline mb-0 product-sans">
               Google I/O 2018 Extended
@@ -64,3 +64,9 @@ export default {
   },
 };
 </script>
+
+<style lang="stylus" scoped>
+.cardContainer {
+  box-shadow: 2px -1px 7px 0 rgba(57, 204, 204, 1), -2px 3px 8px 0 rgba(34, 122, 122, 1);
+}
+</style>

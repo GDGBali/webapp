@@ -1,10 +1,9 @@
 <template>
-  <v-card>
+  <v-card light class="cardContainer">
     <v-img
       class="lazyload"
       :src="event.coverImgUrl"
       aspect-ratio="2.75"
-      contain
     />
     <v-card-title primary-title>
       <div class="headline">
@@ -57,3 +56,10 @@ export default {
   }),
 };
 </script>
+<style scoped>
+.cardContainer {
+  background: #eaeaea;
+  box-shadow: 2px -1px 7px 0 rgba(57, 204, 204, 1),
+    -2px 3px 8px 0 rgba(34, 122, 122, 1);
+}
+</style>

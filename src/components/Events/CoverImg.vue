@@ -3,6 +3,7 @@
     class="lazyload"
     :src="imgSrc"
     height="400"
+    aspect-ratio="2.75"
   >
     <v-layout
       slot="placeholder"
@@ -62,6 +63,6 @@ export default {
 }
 
 .overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(18, 25, 30, 0.2);
 }
 </style>
