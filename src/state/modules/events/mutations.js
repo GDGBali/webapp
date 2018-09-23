@@ -25,7 +25,10 @@ const eventSingle = ({ data, included }) => {
       venue: {
         ...venue.attributes,
       },
-      sessions: sessions.map(session => session.attributes),
+      sessions: sessions.map(({ id, attributes }) => ({
+        id,
+        ...attributes,
+      })),
     };
   }
 
