@@ -12,6 +12,13 @@
         </v-layout>
       </v-container>
     </div>
+    <div v-else-if="event.error">
+      <v-container fill-height>
+        <v-layout align-center justify-center>
+          Event not found
+        </v-layout>
+      </v-container>
+    </div>
     <EventDetails :event="event" v-else />
   </div>
 </template>

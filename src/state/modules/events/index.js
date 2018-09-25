@@ -22,6 +22,7 @@ export default {
     [EVENTS_REQ.VERB]: mutations.requestVerb,
     [EVENTS_REQ.PENDING]: mutations.requestPending,
     [EVENTS_REQ.SUCCESS]: mutations.requestSuccess,
+    [EVENTS_REQ.FAILURE]: mutations.requestFailed,
   },
   actions: {
     [EVENTS_REQ.START]: actions.makeRequest,

@@ -72,4 +72,10 @@ export default {
         break;
     }
   },
+  requestFailed: (state, { error }) => {
+    state.details = {
+      error: true,
+      status: error.status,
+    };
+  },
 };

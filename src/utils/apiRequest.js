@@ -8,8 +8,7 @@ const request = async (store, { url, types }) => {
     const responseData = response.data;
     return store.commit(types.SUCCESS, { responseData });
   } catch (error) {
-    // return store.commit(types.FAILURE, { data });
-    console.error(error.message);
+    return store.commit(types.FAILURE, { error: error.response });
   } finally {
     store.commit(types.PENDING, { value: false });
   }
