@@ -15,7 +15,7 @@
       <v-btn
         v-if="event.details"
         flat
-        :to="`events/${event.slugUrl}`"
+        :to="`/events/${event.slugUrl}`"
         color="primary"
       >
         <v-icon left>info</v-icon>

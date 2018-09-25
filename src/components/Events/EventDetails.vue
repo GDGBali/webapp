@@ -21,12 +21,16 @@
             </FabOrange>
           </v-layout>
         </v-flex>
-        <v-flex xs12 class="description mt-5 subheading">
-          {{ event.description }}
-        </v-flex>
+        <v-flex xs12 class="description mt-5 subheading" v-html="event.description" />
         <template v-if="event.startsAt">
           <v-flex xs12 sm3 class="text-xs-center my-4">
-            <v-btn color="primary" large="" block>
+            <v-btn 
+              color="primary" 
+              large 
+              block 
+              :href="event.meetupUrl"
+              target="_blank"
+            >
               join event
             </v-btn>
           </v-flex>
@@ -60,5 +64,9 @@ export default {
 <style lang="stylus" scoped>
 .description {
   white-space: pre-line;
+
+  >>> a {
+    color: #00ffdf;
+  }
 }
 </style>
