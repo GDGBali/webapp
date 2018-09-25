@@ -45,7 +45,7 @@
               </div>
               <div class="subheading" v-if="subSession.user">
                 <v-avatar>
-                  <img src="https://i2.wp.com/drogaspoliticacultura.net/wp-content/uploads/2017/09/placeholder-user.jpg" alt="">
+                  <img :data-src="userAvatar(subSession.user.avatarUrl)" alt="" class="lazyload">
                 </v-avatar>
                 <span class="ml-3">
                   {{ subSession.user.fullName }}
@@ -71,6 +71,14 @@ export default {
     startsAt: {
       type: String,
       default: '',
+    },
+  },
+  methods: {
+    userAvatar(imgSrc) {
+      return (
+        imgSrc ||
+        'https://i2.wp.com/drogaspoliticacultura.net/wp-content/uploads/2017/09/placeholder-user.jpg'
+      );
     },
   },
   computed: {

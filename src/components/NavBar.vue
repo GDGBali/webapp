@@ -70,7 +70,6 @@ import { navItems } from '@src/data/navItems';
 
 export default {
   data: () => ({
-    baseUrl: process.env.BASE_URL,
     navItems,
     drawer: false,
   }),

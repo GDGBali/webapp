@@ -2,6 +2,7 @@
   <v-card light class="cardContainer">
     <v-img
       class="lazyload"
+      :lazy-src="require('@assets/images/sangkep_blur.jpg')"
       :src="event.coverImgUrl"
       aspect-ratio="2.75"
     />
