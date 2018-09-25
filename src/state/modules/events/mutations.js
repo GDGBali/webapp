@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import partition from 'lodash/partition';
+import groupBy from 'lodash/groupBy';
+import map from 'lodash/map';
+import format from 'date-fns/format';
 
 const eventList = data =>
   data.map(item => {
@@ -14,9 +17,27 @@ const eventList = data =>
   });
 
 const eventSingle = ({ data, included }) => {
-  const [sessions, [venue]] = partition(
+  const [sessionsRes, [venue]] = partition(
     included,
     item => item.type === 'session'
+  );
+
+  const sessions = map(
+    groupBy(
+      sessionsRes.map(({ id, attributes }) => ({
+        id,
+        ...attributes,
+      })),
+      'startsAt'
+    ),
+    (session, key) => ({
+      hours: format(key, 'HH'),
+      minutes: format(key, 'mm'),
+      id: `session-${format(key, 'HH:mm')}`,
+      subSessions: session.map(({ startsAt, ...rest }) => ({
+        ...rest,
+      })),
+    })
   );
 
   if (data.attributes.startsAt) {
@@ -25,10 +46,7 @@ const eventSingle = ({ data, included }) => {
       venue: {
         ...venue.attributes,
       },
-      sessions: sessions.map(({ id, attributes }) => ({
-        id,
-        ...attributes,
-      })),
+      sessions,
     };
   }
 
