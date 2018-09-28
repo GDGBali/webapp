@@ -23,28 +23,7 @@
             <div class="body-1 mt-3" v-html="eventDescription" />
             <v-layout wrap>
               <v-flex xs12>
-                <v-list>
-                  <v-list-tile>
-                    <v-list-tile-action>
-                      <v-icon left class="mr-2">location_on</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                      <v-list-tile-title>
-                        {{ event.venue.name || '' }}
-                      </v-list-tile-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                  <v-list-tile>
-                    <v-list-tile-action>
-                      <v-icon left class="mr-2">event</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                      <v-list-tile-title>
-                        {{ event.startsAt | dateTime }}
-                      </v-list-tile-title>
-                    </v-list-tile-content>
-                  </v-list-tile>
-                </v-list>
+                <EventCardDetails :event="event" />
               </v-flex>
             </v-layout>
           </v-card-title>
@@ -61,9 +40,13 @@
 </template>
 
 <script>
+import EventCardDetails from '@components/Events/EventCardDetails';
 import apiActions from '@api/apiActions';
 
 export default {
+  components: {
+    EventCardDetails,
+  },
   created() {
     apiActions.requestFutureEvents(this);
   },
