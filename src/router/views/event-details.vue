@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import { EVENTS_REQ_START } from '@state/networkTypes';
 import EventDetails from '@components/Events/EventDetails';
+import apiActions from '@api/apiActions';
 
 export default {
   metaInfo: {
@@ -35,10 +35,7 @@ export default {
     EventDetails,
   },
   created() {
-    this.$store.dispatch(EVENTS_REQ_START, {
-      endpoint: `/events/${this.$route.params.slug_url}`,
-      verb: 'GET_SINGLE',
-    });
+    apiActions.requestSingleEvent(this);
   },
   computed: {
     event() {

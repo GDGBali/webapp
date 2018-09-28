@@ -13,7 +13,7 @@
     </v-card-title>
     <v-card-actions>
       <v-btn
-        v-if="event.details"
+        v-if="event.startsAt"
         flat
         :to="`/events/${event.slugUrl}`"
         color="primary"
@@ -37,9 +37,7 @@
     </v-card-actions>
 
     <v-slide-y-transition>
-      <v-card-text v-show="show" class="description">
-        {{ event.description }}
-      </v-card-text>
+      <v-card-text v-show="show" class="description" v-html="eventDescription" />
     </v-slide-y-transition>
   </v-card>
 </template>
@@ -55,6 +53,11 @@ export default {
   data: () => ({
     show: false,
   }),
+  computed: {
+    eventDescription() {
+      return this.event.description.split('\n')[0] + '.........';
+    },
+  },
 };
 </script>
 <style scoped>
