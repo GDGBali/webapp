@@ -7,8 +7,6 @@ const createTypes = type => {
     SUCCESS: `${BASE}_SUCCESS`,
     FAILURE: `${BASE}_FAILURE`,
     VERB: `${BASE}_VERB`,
-    loadingKey: `${BASE}Pending`,
-    dataKey: `${BASE}Data`,
   };
 };
 

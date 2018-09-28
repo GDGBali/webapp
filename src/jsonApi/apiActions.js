@@ -12,6 +12,7 @@ const requestFutureEvents = vue => {
         include: 'venue',
         filter: { when: 'future' },
       },
+      idbStore: 'events',
     },
   });
 };
@@ -24,6 +25,7 @@ const requestSingleEvent = vue => {
       params: {
         include: 'venue',
       },
+      idbStore: 'eventSessions',
     },
     verb: 'GET_SINGLE',
   });
