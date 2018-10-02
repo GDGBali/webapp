@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import format from 'date-fns/format';
+import formatDate from '@utils/formatDate';
 
 export default {
   props: {
@@ -86,10 +86,12 @@ export default {
       return this.$vuetify.breakpoint.xsOnly;
     },
     schedules() {
+      const formattedDate = formatDate(this.startsAt);
+
       const registration = {
         id: 'registration',
-        hours: format(this.startsAt, 'HH'),
-        minutes: format(this.startsAt, 'mm'),
+        hours: formattedDate.hours,
+        minutes: formattedDate.minutes,
         subSessions: [
           {
             name: 'Registration',

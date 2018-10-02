@@ -1,17 +1,21 @@
 import Vue from 'vue';
 import groupBy from 'lodash/groupBy';
 import map from 'lodash/map';
-import format from 'date-fns/format';
+import formatDate from '@utils/formatDate';
 
 const mapSubSessions = data => {
-  const sessions = map(groupBy(data.sessions, 'startsAt'), (session, key) => ({
-    hours: format(key, 'HH'),
-    minutes: format(key, 'mm'),
-    id: `session-${format(key, 'HH:mm')}`,
-    subSessions: session.map(({ startsAt, ...rest }) => ({
-      ...rest,
-    })),
-  }));
+  const sessions = map(groupBy(data.sessions, 'startsAt'), (session, key) => {
+    const { hours, minutes, HHmm } = formatDate(key);
+
+    return {
+      hours,
+      minutes,
+      id: `session-${HHmm}`,
+      subSessions: session.map(({ startsAt, ...rest }) => ({
+        ...rest,
+      })),
+    };
+  });
 
   if (data.startsAt) {
     return {
