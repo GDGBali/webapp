@@ -45,7 +45,7 @@
               </div>
               <div class="subheading" v-if="subSession.user">
                 <v-avatar>
-                  <img src="https://i2.wp.com/drogaspoliticacultura.net/wp-content/uploads/2017/09/placeholder-user.jpg" alt="">
+                  <img :data-src="userAvatar(subSession.user.avatarUrl)" alt="" class="lazyload">
                 </v-avatar>
                 <span class="ml-3">
                   {{ subSession.user.fullName }}
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import format from 'date-fns/format';
+import formatDate from '@utils/formatDate';
 
 export default {
   props: {
@@ -73,15 +73,25 @@ export default {
       default: '',
     },
   },
+  methods: {
+    userAvatar(imgSrc) {
+      return (
+        imgSrc ||
+        'https://i2.wp.com/drogaspoliticacultura.net/wp-content/uploads/2017/09/placeholder-user.jpg'
+      );
+    },
+  },
   computed: {
     isMobile() {
       return this.$vuetify.breakpoint.xsOnly;
     },
     schedules() {
+      const formattedDate = formatDate(this.startsAt);
+
       const registration = {
         id: 'registration',
-        hours: format(this.startsAt, 'HH'),
-        minutes: format(this.startsAt, 'mm'),
+        hours: formattedDate.hours,
+        minutes: formattedDate.minutes,
         subSessions: [
           {
             name: 'Registration',

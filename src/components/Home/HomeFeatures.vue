@@ -143,4 +143,8 @@ export default {
 .swiper-button-next {
   top: 15%;
 }
+
+a {
+  color: #00ffdf;
+}
 </style>

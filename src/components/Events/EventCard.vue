@@ -2,6 +2,7 @@
   <v-card light class="cardContainer">
     <v-img
       class="lazyload"
+      :lazy-src="require('@assets/images/sangkep_blur.jpg')"
       :src="event.coverImgUrl"
       aspect-ratio="2.75"
     />
@@ -12,9 +13,9 @@
     </v-card-title>
     <v-card-actions>
       <v-btn
-        v-if="event.details"
+        v-if="event.startsAt"
         flat
-        :to="`events/${event.slugUrl}`"
+        :to="`/events/${event.slugUrl}`"
         color="primary"
       >
         <v-icon left>info</v-icon>
@@ -36,14 +37,19 @@
     </v-card-actions>
 
     <v-slide-y-transition>
-      <v-card-text v-show="show" class="description">
-        {{ event.description }}
-      </v-card-text>
+      <div v-show="show">
+        <v-card-text v-show="show" class="description">
+          <div v-html="eventDescription" />
+          <EventCardDetails v-if="event.startsAt" :event="event" />
+        </v-card-text>
+      </div>
     </v-slide-y-transition>
   </v-card>
 </template>
 
 <script>
+import EventCardDetails from '@components/Events/EventCardDetails';
+
 export default {
   props: {
     event: {
@@ -51,17 +57,25 @@ export default {
       default: () => ({}),
     },
   },
+  components: {
+    EventCardDetails,
+  },
   data: () => ({
     show: false,
   }),
+  computed: {
+    eventDescription() {
+      return this.event.description.split('\n')[0] + '.........';
+    },
+  },
 };
 </script>
-<style scoped>
+<style lang="stylus" scoped>
 .cardContainer {
   background: #eaeaea;
-  box-shadow: 2px -1px 7px 0 rgba(57, 204, 204, 1),
-    -2px 3px 8px 0 rgba(34, 122, 122, 1);
+  box-shadow: 2px -1px 7px 0 rgba(57, 204, 204, 1), -2px 3px 8px 0 rgba(34, 122, 122, 1);
 }
+
 .description {
   white-space: pre-line;
 }

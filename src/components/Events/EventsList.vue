@@ -22,23 +22,14 @@
 
 <script>
 import EventCard from './EventCard';
-import { EVENTS_REQ_START } from '@state/networkTypes';
+import apiActions from '@api/apiActions';
 
 export default {
-  props: {
-    when: {
-      type: String,
-      default: 'future',
-    },
-  },
   components: {
     EventCard,
   },
   created() {
-    this.$store.dispatch(EVENTS_REQ_START, {
-      endpoint: '/events',
-      when: this.when,
-    });
+    apiActions.requestFutureEvents(this);
   },
   data: () => ({
     show: false,

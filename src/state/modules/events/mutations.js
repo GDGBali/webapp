@@ -1,57 +1,31 @@
 import Vue from 'vue';
-import partition from 'lodash/partition';
 import groupBy from 'lodash/groupBy';
 import map from 'lodash/map';
-import format from 'date-fns/format';
+import formatDate from '@utils/formatDate';
 
-const eventList = data =>
-  data.map(item => {
-    const details = !(
-      item.attributes.startsAt === null || item.attributes.endsAt === null
-    );
+const mapSubSessions = data => {
+  const sessions = map(groupBy(data.sessions, 'startsAt'), (session, key) => {
+    const { hours, minutes, HHmm } = formatDate(key);
+
     return {
-      id: `${item.type}-${item.id}`,
-      ...item.attributes,
-      details,
-    };
-  });
-
-const eventSingle = ({ data, included }) => {
-  const [sessionsRes, [venue]] = partition(
-    included,
-    item => item.type === 'session'
-  );
-
-  const sessions = map(
-    groupBy(
-      sessionsRes.map(({ id, attributes }) => ({
-        id,
-        ...attributes,
-      })),
-      'startsAt'
-    ),
-    (session, key) => ({
-      hours: format(key, 'HH'),
-      minutes: format(key, 'mm'),
-      id: `session-${format(key, 'HH:mm')}`,
+      hours,
+      minutes,
+      id: `session-${HHmm}`,
       subSessions: session.map(({ startsAt, ...rest }) => ({
         ...rest,
       })),
-    })
-  );
+    };
+  });
 
-  if (data.attributes.startsAt) {
+  if (data.startsAt) {
     return {
-      ...data.attributes,
-      venue: {
-        ...venue.attributes,
-      },
+      ...data,
       sessions,
     };
   }
 
   return {
-    ...data.attributes,
+    ...data,
   };
 };
 
@@ -65,11 +39,17 @@ export default {
   requestSuccess: (state, { responseData }) => {
     switch (state.reqVerb) {
       case 'GET_SINGLE':
-        state.details = eventSingle(responseData);
+        state.details = mapSubSessions(responseData);
         break;
       default:
-        state.future = eventList(responseData.data);
+        state.future = responseData;
         break;
     }
+  },
+  requestFailed: (state, { error }) => {
+    state.details = {
+      error: true,
+      status: error.status,
+    };
   },
 };

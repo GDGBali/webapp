@@ -12,13 +12,20 @@
         </v-layout>
       </v-container>
     </div>
+    <div v-else-if="event.error">
+      <v-container fill-height>
+        <v-layout align-center justify-center>
+          Event not found
+        </v-layout>
+      </v-container>
+    </div>
     <EventDetails :event="event" v-else />
   </div>
 </template>
 
 <script>
-import { EVENTS_REQ_START } from '@state/networkTypes';
 import EventDetails from '@components/Events/EventDetails';
+import apiActions from '@api/apiActions';
 
 export default {
   metaInfo: {
@@ -28,10 +35,7 @@ export default {
     EventDetails,
   },
   created() {
-    this.$store.dispatch(EVENTS_REQ_START, {
-      endpoint: `/events/${this.$route.params.slug_url}`,
-      verb: 'GET_SINGLE',
-    });
+    apiActions.requestSingleEvent(this);
   },
   computed: {
     event() {
