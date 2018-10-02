@@ -41,7 +41,6 @@
         role="button" 
         aria-label="menu"
       />
-      <v-spacer v-if="!hideDrawer" />
       <router-link to="/" class="navbrand">
         <img
           src="/images/logo.svg"
@@ -49,7 +48,7 @@
           width="100"
         >
       </router-link>
-      <v-spacer v-if="hideDrawer" />
+      <v-spacer />
       <v-toolbar-items v-if="hideDrawer">
         <v-btn
           v-for="navItem in navItems"
@@ -61,6 +60,7 @@
           <span>{{ navItem.text }}</span>
         </v-btn>
       </v-toolbar-items>
+      <BaseAuth />
     </v-toolbar>
   </div>
 </template>

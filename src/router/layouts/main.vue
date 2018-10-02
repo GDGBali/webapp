@@ -6,6 +6,7 @@
     </v-content>
     <MainFooter />
     <BaseSnackbar />
+    <BaseAuthDialog />
   </v-app>
 </template>
 

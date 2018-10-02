@@ -2,6 +2,8 @@
 export const SET_LOCALE = 'SET_LOCALE';
 export const SHOW_SNACKBAR = 'SHOW_SNACKBAR';
 export const HIDE_SNACKBAR = 'HIDE_SNACKBAR';
+export const SHOW_AUTH_DIALOG = 'SHOW_AUTH_DIALOG';
+export const HIDE_AUTH_DIALOG = 'HIDE_AUTH_DIALOG';
 
 // Event Types
 export const FETCH_PAST_EVENTS = 'FETCH_PAST_EVENTS';

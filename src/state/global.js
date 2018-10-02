@@ -11,6 +11,9 @@ export const state = {
     onClick: null,
     visible: false,
   },
+  authDialog: {
+    visible: false,
+  },
 };
 
 export const mutations = {
@@ -22,6 +25,12 @@ export const mutations = {
   },
   [types.HIDE_SNACKBAR](state) {
     state.snackbar.visible = false;
+  },
+  [types.SHOW_AUTH_DIALOG](state) {
+    state.authDialog.visible = true;
+  },
+  [types.HIDE_AUTH_DIALOG](state) {
+    state.authDialog.visible = false;
   },
 };
 
