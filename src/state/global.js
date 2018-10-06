@@ -21,6 +21,7 @@ export const mutations = {
     state.locale = locale;
   },
   [types.SHOW_SNACKBAR](state, payload) {
+    state.snackbar.visible = true;
     state.snackbar = { ...state.snackbar, ...payload };
   },
   [types.HIDE_SNACKBAR](state) {

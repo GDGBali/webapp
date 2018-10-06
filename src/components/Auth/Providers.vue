@@ -9,6 +9,7 @@
         class="providerBtn" 
         :class="provider.title"
         block
+        @click="authenticate(provider.title)"
         v-if="provider.title === 'google'"
       >
         <component :is="provider.icon" />
@@ -20,6 +21,7 @@
           class="providerBtn" 
           :class="provider.title"
           slot="activator"
+          @click="authenticate(provider.title)"
           block
         >
           <component :is="provider.icon" />
@@ -30,11 +32,13 @@
     </div>
   </v-layout>
 </template>
- <script>
+<script>
 import GoogleIcon from '@components/Icons/Google';
 import FacebookIcon from '@components/Icons/Facebook';
 import TwitterIcon from '@components/Icons/Twitter';
 import GithubIcon from '@components/Icons/Github';
+import { LOGIN_START } from '@state/mutationTypes';
+
 export default {
   data: () => ({
     providers: [
@@ -56,8 +60,14 @@ export default {
       },
     ],
   }),
+  methods: {
+    authenticate: function(provider) {
+      this.$store.dispatch(`auth/${LOGIN_START}`, { provider, vue: this });
+    },
+  },
 };
 </script>
+
 <style lang="stylus" scoped>
 @import '~@assets/style/variables';
 

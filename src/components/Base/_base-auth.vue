@@ -38,7 +38,7 @@
           </div>
           <v-divider />
           <div class="py-1">
-            <v-btn color="error">
+            <v-btn color="error" @click="logout">
               <v-icon left>power_settings_new</v-icon>
               Logout
             </v-btn>
@@ -50,7 +50,7 @@
 </template>
  <script>
 import { authComputed } from '@state/helpers';
-import { SHOW_AUTH_DIALOG } from '@state/mutationTypes';
+import { SHOW_AUTH_DIALOG, LOGOUT } from '@state/mutationTypes';
 import { mapMutations } from 'vuex';
 export default {
   data: () => ({
@@ -58,6 +58,9 @@ export default {
   }),
   methods: {
     ...mapMutations([SHOW_AUTH_DIALOG]),
+    logout() {
+      this.$store.dispatch(`auth/${LOGOUT}`);
+    },
   },
   computed: {
     ...authComputed,

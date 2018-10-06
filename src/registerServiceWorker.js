@@ -17,10 +17,7 @@ const readyOfflineOptions = {
 };
 
 const notifyUserUpdate = options =>
-  store.dispatch('showSnackbar', {
-    ...options,
-    visible: true,
-  });
+  store.dispatch('showSnackbar', { ...options });
 
 const onNewServiceWorker = (registration, callback) => {
   if (registration.waiting) return callback();

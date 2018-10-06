@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import './plugins/vuetify';
 import './plugins/lazysizes';
+import './plugins/googleAuth';
 import i18n from './plugins/vue-i18n';
 import App from './app';
 import router from '@router';
