@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  page: {
+  metaInfo: {
     title: 'Loading page...',
     meta: [{ name: 'description', content: 'Loading page...' }],
   },
