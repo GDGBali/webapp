@@ -6,6 +6,17 @@ const createBasePath = pathName => ({
   component: () => lazyLoadView(import(`@views/${pathName}`)),
 });
 
+const adminRoutes = (path, name, component) => {
+  return {
+    path,
+    name,
+    component: () => lazyLoadView(import(`@views/${component}`)),
+    meta: {
+      layout: require('@layouts/admin').default,
+    },
+  };
+};
+
 export default [
   {
     path: '/',
@@ -22,13 +33,11 @@ export default [
     component: () => lazyLoadView(import('@views/event-details')),
   },
   {
-    path: '/kelian',
-    name: 'admin',
-    component: () => lazyLoadView(import('@views/admin')),
-    meta: {
-      authRequired: true,
-      roles: ['kelian admin'],
-    },
+    ...adminRoutes('/kelian', '', 'admin/index'),
+    children: [
+      adminRoutes('', 'adminHome', 'admin/home'),
+      adminRoutes('events', 'adminEvents', 'admin/events'),
+    ],
   },
   // {
   //   path: '/profile',
@@ -74,6 +83,10 @@ export default [
     // Allows props to be passed to the 404 page through route
     // params, such as `resource` to define what wasn't found.
     props: true,
+  },
+  {
+    path: '*',
+    redirect: '404',
   },
 ];
 
