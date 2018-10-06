@@ -11,6 +11,9 @@ export const state = {
     onClick: null,
     visible: false,
   },
+  authDialog: {
+    visible: false,
+  },
 };
 
 export const mutations = {
@@ -18,10 +21,17 @@ export const mutations = {
     state.locale = locale;
   },
   [types.SHOW_SNACKBAR](state, payload) {
+    state.snackbar.visible = true;
     state.snackbar = { ...state.snackbar, ...payload };
   },
   [types.HIDE_SNACKBAR](state) {
     state.snackbar.visible = false;
+  },
+  [types.SHOW_AUTH_DIALOG](state) {
+    state.authDialog.visible = true;
+  },
+  [types.HIDE_AUTH_DIALOG](state) {
+    state.authDialog.visible = false;
   },
 };
 

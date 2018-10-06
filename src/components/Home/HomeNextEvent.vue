@@ -23,7 +23,7 @@
             <div class="body-1 mt-3" v-html="eventDescription" />
             <v-layout wrap>
               <v-flex xs12>
-                <EventCardDetails :event="event" />
+                <EventCardDetails :event="event" v-if="event.venue" />
               </v-flex>
             </v-layout>
           </v-card-title>

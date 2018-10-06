@@ -21,18 +21,15 @@ export default [
     name: 'event-details',
     component: () => lazyLoadView(import('@views/event-details')),
   },
-  // {
-  //   path: '/login',
-  //   name: 'login',
-  //   component: () => lazyLoadView(import('@views/login')),
-  //   beforeEnter(routeTo, routeFrom, next) {
-  //     if (store.getters['auth/loggedIn']) {
-  //       next({ name: 'home' });
-  //     } else {
-  //       next();
-  //     }
-  //   },
-  // },
+  {
+    path: '/kelian',
+    name: 'admin',
+    component: () => lazyLoadView(import('@views/admin')),
+    meta: {
+      authRequired: true,
+      roles: ['kelian admin'],
+    },
+  },
   // {
   //   path: '/profile',
   //   name: 'profile',
@@ -69,21 +66,6 @@ export default [
   //   // Set the user from the route params, once it's set in the
   //   // beforeEnter route guard.
   //   props: route => ({ user: route.params.user }),
-  // },
-  // {
-  //   path: '/logout',
-  //   name: 'logout',
-  //   meta: {
-  //     authRequired: true,
-  //   },
-  //   beforeEnter(routeTo, routeFrom, next) {
-  //     store.dispatch('auth/logOut');
-  //     const authRequiredOnPreviousRoute = routeFrom.matched.some(
-  //       route => route.meta.authRequired
-  //     );
-  //     // Navigate back to previous page, or home as a fallback
-  //     next(authRequiredOnPreviousRoute ? { name: 'home' } : { ...routeFrom });
-  //   },
   // },
   {
     path: '/404',

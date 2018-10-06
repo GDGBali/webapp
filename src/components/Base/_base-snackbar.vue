@@ -1,6 +1,6 @@
 <template>
   <VSnackbar
-    v-model="snackbar.visible"
+    v-model="visible"
     color=""
     :timeout="snackbar.timeout"
     multi-line
@@ -21,16 +21,20 @@
 </template>
 
 <script>
+import { HIDE_SNACKBAR } from '@state/mutationTypes';
 import { mapState } from 'vuex';
 
 export default {
-  data() {
-    return {
-      timeout: 0,
-    };
-  },
   computed: {
     ...mapState(['snackbar']),
+    visible: {
+      get() {
+        return this.$store.state.snackbar.visible;
+      },
+      set(value) {
+        this.$store.commit(HIDE_SNACKBAR);
+      },
+    },
   },
 };
 </script>
