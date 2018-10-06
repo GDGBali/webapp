@@ -8,7 +8,7 @@ to: "src/router/views/<%= h.inflection.dasherize(name) %>.vue"
 import Layout from '@layouts/main'
 
 export default {
-  page: {
+  metaInfo: {
     title: '<%= importName %>',
     meta: [{ name: 'description', content: '<%= importName %>' }],
   },
