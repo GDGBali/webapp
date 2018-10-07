@@ -38,6 +38,8 @@ export default [
       adminRoutes('', 'adminHome', 'admin/home'),
       adminRoutes('events', 'adminEvents', 'admin/events/index'),
       adminRoutes('events/new', 'adminEventsNew', 'admin/events/new'),
+      adminRoutes('venues', 'adminVenues', 'admin/venues/index'),
+      adminRoutes('venues/new', 'adminVenuesNew', 'admin/venues/new'),
     ],
   },
   // {
