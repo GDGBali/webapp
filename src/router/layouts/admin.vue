@@ -53,7 +53,7 @@
       app
     >
       <v-toolbar-side-icon dark="dark" @click.native.stop="drawer = !drawer" />
-      <v-toolbar-title>GDG Bali Admin</v-toolbar-title>
+      <v-toolbar-title>{{ pageTitle }}</v-toolbar-title>
       <v-spacer />
     </v-toolbar>
     <v-content>
@@ -66,6 +66,7 @@
 
 <script>
 import adminItems from '@src/data/adminItems';
+import { mapState } from 'vuex';
 
 export default {
   data: () => ({
@@ -76,6 +77,9 @@ export default {
   }),
   mounted() {
     this.menus = adminItems;
+  },
+  computed: {
+    ...mapState('admin', ['pageTitle']),
   },
 };
 </script>

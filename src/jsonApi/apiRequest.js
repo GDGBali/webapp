@@ -1,5 +1,6 @@
 import jsonApi from '@api';
 import db from '@api/database';
+import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
 const getFromNetwork = (reqVerb, resource, { params, id }) => {
   switch (reqVerb) {
@@ -35,6 +36,19 @@ const request = async (
   } finally {
     commit(types.PENDING, { value: false });
   }
+};
+
+// TECHNICAL DEBT - Refactor to vuex
+export const postRequest = async ({ commit }, router, resource, payload) => {
+  await jsonApi.create(resource, { ...payload });
+
+  commit(SHOW_SNACKBAR, {
+    titleText: 'Venue Created',
+    buttonText: 'dismiss',
+    onClick: () => commit(HIDE_SNACKBAR),
+  });
+
+  router.push('/kelian');
 };
 
 export default request;

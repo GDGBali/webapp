@@ -1,7 +1,7 @@
 <template>
   <v-layout justify-center>
     <div class="display-1">
-      Events
+      {{ title }}
     </div>
     <div>
       <v-btn
@@ -12,6 +12,7 @@
         right
         color="secondary"
         class="addBtn"
+        :to="addHref"
       >
         <v-icon>add</v-icon>
       </v-btn>
@@ -20,7 +21,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    addHref: {
+      type: String,
+      default: '',
+    },
+  },
+};
 </script>
 
 <style lang="stylus" scoped>

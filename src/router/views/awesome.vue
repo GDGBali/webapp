@@ -61,6 +61,7 @@
 <script>
 import { awesomeness } from '@src/data/awesomeness';
 import appConfig from '@src/app.config';
+import axios from 'axios';
 
 export default {
   metaInfo: {
@@ -72,6 +73,9 @@ export default {
       active: null,
       awesomeness,
     };
+  },
+  mounted() {
+    axios.get('http://localhost:3007/api/v1/profile');
   },
 };
 </script>
