@@ -12,6 +12,7 @@
         right
         color="secondary"
         class="addBtn"
+        to="/kelian/events/new"
       >
         <v-icon>add</v-icon>
       </v-btn>
@@ -20,8 +21,15 @@
 </template>
 
 <script>
-export default {};
+import { setPageTitle } from '@utils/adminPage';
+
+export default {
+  created() {
+    setPageTitle(this, 'Events');
+  },
+};
 </script>
+
 
 <style lang="stylus" scoped>
 .addBtn {

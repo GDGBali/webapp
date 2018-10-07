@@ -36,7 +36,8 @@ export default [
     ...adminRoutes('/kelian', '', 'admin/index'),
     children: [
       adminRoutes('', 'adminHome', 'admin/home'),
-      adminRoutes('events', 'adminEvents', 'admin/events'),
+      adminRoutes('events', 'adminEvents', 'admin/events/index'),
+      adminRoutes('events/new', 'adminEventsNew', 'admin/events/new'),
     ],
   },
   // {
