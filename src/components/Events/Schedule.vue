@@ -7,7 +7,7 @@
       Schedule
     </div>
     
-    <v-layout wrap>
+    <v-layout wrap v-if="sessions.length !== 0">
       <v-flex
         v-for="session in schedules"
         :key="session.id"
@@ -55,6 +55,11 @@
           </v-flex>
         </v-layout>
       </v-flex>
+    </v-layout>
+    <v-layout v-else>
+      <div :class="[isMobile ? 'display-1' : 'display-2']">
+        TBA
+      </div>
     </v-layout>
   </v-flex>
 </template>

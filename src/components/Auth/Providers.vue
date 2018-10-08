@@ -61,7 +61,7 @@ export default {
     ],
   }),
   methods: {
-    authenticate: function(provider) {
+    authenticate(provider) {
       this.$store.dispatch(`auth/${LOGIN_START}`, { provider, vue: this });
     },
   },

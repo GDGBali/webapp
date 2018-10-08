@@ -5,7 +5,7 @@
   >
     <v-card light>
       <v-card-title class="headline justify-center">
-        Login
+        {{ authDialog.titleText }}
       </v-card-title>
       <Providers />
     </v-card>

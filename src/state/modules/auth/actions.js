@@ -6,7 +6,7 @@ import {
 } from '@state/mutationTypes';
 import { setDefaultAuthHeaders } from './';
 
-const googeLogin = ({ commit }, vue) => {
+const googeLogin = ({ commit, rootState }, vue) => {
   const globalStore = vue.$store;
   vue.$gAuth.getAuthCode(
     async authCode => {
@@ -19,12 +19,15 @@ const googeLogin = ({ commit }, vue) => {
       });
 
       const { data } = response.data;
-      commit(SET_CURRENT_USER, {
+      await commit(SET_CURRENT_USER, {
         user: {
           id: data.id,
           ...data.attributes,
         },
       });
+
+      const { name, params } = rootState.authDialog.redirectTo;
+      vue.$router.push({ name, params });
     },
     err => {
       globalStore.commit(SHOW_SNACKBAR, {

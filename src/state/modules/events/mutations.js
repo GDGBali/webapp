@@ -17,10 +17,13 @@ const mapSubSessions = data => {
     };
   });
 
+  const venue = data.venue || {};
+
   if (data.startsAt) {
     return {
       ...data,
       sessions,
+      venue,
     };
   }
 

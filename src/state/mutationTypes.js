@@ -11,6 +11,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const IS_LOGGED_IN = 'IS_LOGGED_IN';
 
 // Admin Types
 export const SET_ADMIN_TITLE = 'SET_ADMIN_TITLE';
