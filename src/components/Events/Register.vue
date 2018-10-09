@@ -18,28 +18,37 @@
           <v-layout wrap>
             <v-flex xs12>
               <v-text-field
-                v-model="fields.fullName"
+                v-model="form.fullName"
                 label="Full Name"
                 required
+                :error-messages="nameErrors"
+                @input="$v.form.fullName.$touch()"
+                @blur="$v.form.fullName.$touch()"
               />
             </v-flex>
             <v-flex xs12>
               <v-text-field
-                v-model="fields.email"
+                v-model="form.email"
                 label="Email"
                 required
+                :error-messages="emailErrors"
+                @input="$v.form.email.$touch()"
+                @blur="$v.form.email.$touch()"
               />
             </v-flex>
             <v-flex xs12>
               <v-text-field
-                v-model="fields.phone"
+                v-model="form.phone"
                 label="Phone"
                 required
+                :error-messages="phoneErrors"
+                @input="$v.form.phone.$touch()"
+                @blur="$v.form.phone.$touch()"
               />
             </v-flex>
             <v-flex xs12>
               <v-text-field
-                v-model="fields.institution"
+                v-model="form.institution"
                 label="Institution / Company"
               />
             </v-flex>
@@ -67,6 +76,9 @@
 </template>
 
 <script>
+import { validationMixin } from 'vuelidate';
+import { required, email } from 'vuelidate/lib/validators';
+
 export default {
   props: {
     registerDialog: {
@@ -74,10 +86,18 @@ export default {
       default: false,
     },
   },
+  mixins: [validationMixin],
+  validations: {
+    form: {
+      fullName: { required },
+      email: { required, email },
+      phone: { required },
+    },
+  },
   data: () => ({
     valid: false,
     isSubmitting: false,
-    fields: {
+    form: {
       fullName: '',
       email: '',
       phone: '',
@@ -93,19 +113,43 @@ export default {
         this.$emit('update:registerDialog', false);
       },
     },
+    nameErrors() {
+      const errors = [];
+      const { fullName } = this.$v.form;
+      if (!fullName.$dirty) return errors;
+      !fullName.required && errors.push('Full Name is required.');
+      return errors;
+    },
+    emailErrors() {
+      const errors = [];
+      const { email } = this.$v.form;
+      if (!email.$dirty) return errors;
+      !email.email && errors.push('Must be valid e-mail');
+      !email.required && errors.push('E-mail is required');
+      return errors;
+    },
+    phoneErrors() {
+      const errors = [];
+      const { phone } = this.$v.form;
+      if (!phone.$dirty) return errors;
+      !phone.required && errors.push('Phone is required');
+      return errors;
+    },
   },
   methods: {
-    submit() {
-      this.isSubmitting = true;
-      if (this.$refs.form.validate()) {
-        // Native form submission is not yet supported
-        // axios.post('/api/submit', {
-        //   name: this.name,
-        // });
+    async submit() {
+      const { form } = this.$v;
+      form.$touch();
+
+      if (!form.$invalid) {
+        this.isSubmitting = true;
+        await fetch('https://jsonplaceholder.typicode.com/todos/122');
+        this.isSubmitting = false;
       }
     },
     clear() {
       this.$refs.form.reset();
+      this.$v.form.$reset();
     },
   },
 };
