@@ -34,7 +34,7 @@
               color="primary" 
               large 
               block
-              @click="registerEvent"
+              @click="registerDialog = true"
             >
               join event
             </v-btn>
@@ -43,17 +43,19 @@
         </template>
       </v-layout>
     </v-container>
+    <Register :register-dialog.sync="registerDialog" />
   </div>
 </template>
 
 <script>
+import Register from './Register';
 import FabOrange from './FabOrange';
 import CoverImg from './CoverImg';
 import Schedule from './Schedule';
-import { IS_LOGGED_IN, SHOW_AUTH_DIALOG } from '@state/mutationTypes';
 
 export default {
   components: {
+    Register,
     FabOrange,
     CoverImg,
     Schedule,
@@ -65,26 +67,10 @@ export default {
     },
   },
   data: () => ({
+    registerDialog: false,
     searchName: '',
     notes: [],
   }),
-  methods: {
-    registerEvent() {
-      const isLoggedIn = this.$store.getters[`auth/${IS_LOGGED_IN}`];
-      const nextRoute = {
-        name: 'event-register',
-        params: this.$route.params,
-      };
-      if (isLoggedIn) {
-        this.$router.push(nextRoute);
-      } else {
-        this.$store.commit(SHOW_AUTH_DIALOG, {
-          titleText: 'Please Login to Continue',
-          redirectTo: nextRoute,
-        });
-      }
-    },
-  },
 };
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <v-menu
+    lazy
     v-model="profileMenu"
     offset-y
   >

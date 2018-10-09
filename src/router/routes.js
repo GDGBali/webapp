@@ -33,14 +33,6 @@ export default [
     component: () => lazyLoadView(import('@views/event-details')),
   },
   {
-    path: '/events/:slugUrl/register',
-    name: 'event-register',
-    component: () => lazyLoadView(import('@views/events/register')),
-    meta: {
-      authRequired: true,
-    },
-  },
-  {
     ...adminRoutes('/kelian', '', 'admin/index'),
     children: [
       adminRoutes('', 'adminHome', 'admin/home'),

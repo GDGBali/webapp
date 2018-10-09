@@ -2,9 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueMeta from 'vue-meta';
 import NProgress from 'nprogress/nprogress';
-import store from '@state/store';
+// import store from '@state/store';
 import routes from './routes';
-import { IS_LOGGED_IN, SHOW_AUTH_DIALOG } from '@state/mutationTypes';
+// import { IS_LOGGED_IN, SHOW_AUTH_DIALOG } from '@state/mutationTypes';
 
 NProgress.configure({ showSpinner: false });
 
@@ -36,21 +36,21 @@ router.beforeEach((routeTo, routeFrom, next) => {
   if (!authRequired) return next();
 
   // If auth is required and the user is NOT currently logged in, redirect.
-  redirectTo();
+  // redirectTo();
 
-  function redirectTo() {
-    if (routeTo.name === 'event-register') {
-      if (store.getters[`auth/${IS_LOGGED_IN}`]) {
-        return next();
-      }
+  // function redirectTo() {
+  //   if (routeTo.name === 'event-register') {
+  //     if (store.getters[`auth/${IS_LOGGED_IN}`]) {
+  //       return next();
+  //     }
 
-      store.commit(SHOW_AUTH_DIALOG, {
-        titleText: 'Please Login to Continue',
-        redirectTo: routeTo,
-      });
-      return next({ name: 'event-details', params: routeTo.params });
-    }
-  }
+  //     store.commit(SHOW_AUTH_DIALOG, {
+  //       titleText: 'Please Login to Continue',
+  //       redirectTo: routeTo,
+  //     });
+  //     return next({ name: 'event-details', params: routeTo.params });
+  //   }
+  // }
 });
 
 // After navigation is confirmed, but before resolving...

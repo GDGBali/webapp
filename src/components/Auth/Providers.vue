@@ -15,7 +15,7 @@
         <component :is="provider.icon" />
         {{ provider.title }} Login
       </v-btn>
-      <v-tooltip bottom v-else>
+      <v-tooltip lazy bottom v-else>
         <v-btn
           dark
           class="providerBtn" 

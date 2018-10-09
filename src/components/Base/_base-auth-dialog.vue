@@ -1,5 +1,6 @@
 <template>
   <v-dialog
+    lazy
     v-model="showDialog"
     max-width="320"
   >
