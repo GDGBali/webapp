@@ -18,16 +18,17 @@
           <v-layout wrap>
             <v-flex xs12>
               <v-text-field
-                v-model="form.fullName"
+                v-model="form.name"
                 label="Full Name"
                 required
                 :error-messages="nameErrors"
-                @input="$v.form.fullName.$touch()"
-                @blur="$v.form.fullName.$touch()"
+                @input="$v.form.name.$touch()"
+                @blur="$v.form.name.$touch()"
               />
             </v-flex>
             <v-flex xs12>
               <v-text-field
+                type="email"
                 v-model="form.email"
                 label="Email"
                 required
@@ -38,6 +39,7 @@
             </v-flex>
             <v-flex xs12>
               <v-text-field
+                type="tel"
                 v-model="form.phone"
                 label="Phone"
                 required
@@ -78,6 +80,7 @@
 <script>
 import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
+import api from '@api';
 
 export default {
   props: {
@@ -89,7 +92,7 @@ export default {
   mixins: [validationMixin],
   validations: {
     form: {
-      fullName: { required },
+      name: { required },
       email: { required, email },
       phone: { required },
     },
@@ -98,7 +101,7 @@ export default {
     valid: false,
     isSubmitting: false,
     form: {
-      fullName: '',
+      name: '',
       email: '',
       phone: '',
       institution: '',
@@ -115,16 +118,16 @@ export default {
     },
     nameErrors() {
       const errors = [];
-      const { fullName } = this.$v.form;
-      if (!fullName.$dirty) return errors;
-      !fullName.required && errors.push('Full Name is required.');
+      const { name } = this.$v.form;
+      if (!name.$dirty) return errors;
+      !name.required && errors.push('Full Name is required.');
       return errors;
     },
     emailErrors() {
       const errors = [];
       const { email } = this.$v.form;
       if (!email.$dirty) return errors;
-      !email.email && errors.push('Must be valid e-mail');
+      !email.email && errors.push('Must be a valid e-mail');
       !email.required && errors.push('E-mail is required');
       return errors;
     },
@@ -142,8 +145,18 @@ export default {
       form.$touch();
 
       if (!form.$invalid) {
+        // TECHNICAL DEBT, use graphQL in the future
         this.isSubmitting = true;
-        await fetch('https://jsonplaceholder.typicode.com/todos/122');
+        await api.post('/attendees', {
+          data: {
+            registeredAt: new Date(),
+            user: {
+              ...this.form,
+            },
+            eventId: this.$store.state.events.details.id,
+          },
+        });
+
         this.isSubmitting = false;
       }
     },

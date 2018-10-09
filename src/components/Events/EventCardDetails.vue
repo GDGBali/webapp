@@ -6,7 +6,7 @@
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
-          {{ event.venue.name || '' }}
+          {{ (event.venue || {}).name }}
         </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -28,7 +28,9 @@ export default {
   props: {
     event: {
       type: Object,
-      default: () => ({}),
+      default: () => ({
+        venue: {},
+      }),
     },
   },
 };

@@ -1,38 +1,38 @@
-import jsonApi from '@api';
-import db from '@api/database';
+// import db from '@api/database';
+import api from '@api';
 import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
-const getFromNetwork = (reqVerb, resource, { params, id }) => {
+const getFromNetwork = (reqVerb, endpoint, { params, id }) => {
   switch (reqVerb) {
     case 'GET_LIST':
-      return jsonApi.findAll(resource, params);
+      return api.get(`${endpoint}?when=${params.when}`);
     default:
-      return jsonApi.find(resource, id, params);
+      return api.get(`${endpoint}/${id}`);
   }
 };
 
 const request = async (
   { commit, state: { reqVerb } },
-  { resource, options, types }
+  { endpoint, options, types }
 ) => {
   commit(types.PENDING, { value: true });
 
-  const { idbStore, id } = options;
+  // const { idbStore, id } = options;
 
   try {
-    const response = await getFromNetwork(reqVerb, resource, options);
+    const response = await getFromNetwork(reqVerb, endpoint, options);
 
     const responseData = response.data;
-    await db.save(reqVerb, idbStore, responseData);
+    // await db.save(reqVerb, idbStore, responseData);
     commit(types.SUCCESS, { responseData });
   } catch (error) {
     if (error.response) {
       commit(types.FAILURE, { error: error.response });
     }
 
-    const data = await db.getFromLocal(reqVerb, idbStore, id);
+    // const data = await db.getFromLocal(reqVerb, idbStore, id);
 
-    commit(types.SUCCESS, { responseData: data });
+    // commit(types.SUCCESS, { responseData: data });
   } finally {
     commit(types.PENDING, { value: false });
   }
@@ -40,8 +40,6 @@ const request = async (
 
 // TECHNICAL DEBT - Refactor to vuex
 export const postRequest = async ({ commit }, router, resource, payload) => {
-  await jsonApi.create(resource, { ...payload });
-
   commit(SHOW_SNACKBAR, {
     titleText: 'Venue Created',
     buttonText: 'dismiss',
