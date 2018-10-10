@@ -1,3 +1,14 @@
+<style lang="stylus" scoped>
+.divider {
+  width: 100px;
+  height: 1px;
+  background: #000;
+  border: none;
+  border-radius: 10px;
+}
+</style>
+
+
 <template>
   <v-dialog 
     lazy
@@ -75,13 +86,32 @@
           </v-container>
         </v-form>
       </div>
-      <vue-qr 
-        v-else
-        :bg-src="require('@assets/images/qrgdg.jpg')" 
-        :text="qrData"
-        :size="800"
-        :dot-scale="0.5"
-      />
+      <v-container v-else>
+        <v-layout align-center wrap column>
+          <div class="body-2">
+            Tunjukkan QR Code ini pada saat registrasi
+          </div>
+          <vue-qr 
+            :bg-src="require('@assets/images/qrgdg.jpg')" 
+            :text="qrData"
+            :size="450"
+            :dot-scale="0.5"
+            :callback="setQrImg"
+          />
+          <div>
+            <v-btn color="primary" download="devfest.png" :href="qrImg">
+              download
+            </v-btn>
+          </div>
+          <hr class="divider my-3">
+          <div class="subheading text-xs-center mb-2">
+            Kamu juga bisa login untuk mempermudah registrasi untuk event-event berikutnya.
+          </div>
+          <v-btn color="primary" @click="SHOW_AUTH_DIALOG">
+            login
+          </v-btn>
+        </v-layout>
+      </v-container>
     </v-card>
   </v-dialog>
 </template>
@@ -91,6 +121,8 @@ import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
 import VueQr from 'vue-qr';
 import { registerEvent } from '@api/apiRequest';
+import { SHOW_AUTH_DIALOG } from '@state/mutationTypes';
+import { mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -115,6 +147,7 @@ export default {
     isSubmitting: false,
     submitSuccess: false,
     userId: '',
+    qrImg: '',
     form: {
       name: '',
       email: '',
@@ -182,6 +215,10 @@ export default {
       this.$refs.form.reset();
       this.$v.form.$reset();
     },
+    setQrImg(dataUrl, id) {
+      this.qrImg = dataUrl;
+    },
+    ...mapMutations([SHOW_AUTH_DIALOG]),
   },
 };
 </script>
