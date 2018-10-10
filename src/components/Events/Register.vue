@@ -13,66 +13,75 @@
         </v-btn>
         <v-toolbar-title>Register</v-toolbar-title>
       </v-toolbar>
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-container>
-          <v-layout wrap>
-            <v-flex xs12>
-              <v-text-field
-                v-model="form.name"
-                label="Full Name"
-                required
-                :error-messages="nameErrors"
-                @input="$v.form.name.$touch()"
-                @blur="$v.form.name.$touch()"
-              />
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                type="email"
-                v-model="form.email"
-                label="Email"
-                required
-                :error-messages="emailErrors"
-                @input="$v.form.email.$touch()"
-                @blur="$v.form.email.$touch()"
-              />
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                type="tel"
-                v-model="form.phone"
-                label="Phone"
-                required
-                :error-messages="phoneErrors"
-                @input="$v.form.phone.$touch()"
-                @blur="$v.form.phone.$touch()"
-              />
-            </v-flex>
-            <v-flex xs12>
-              <v-text-field
-                v-model="form.institution"
-                label="Institution / Company"
-              />
-            </v-flex>
-            <v-flex xs12>
-              <v-layout justify-space-between>
-                <v-btn
-                  large
-                  :loading="isSubmitting"
-                  :disabled="isSubmitting"
-                  @click="submit"
-                  color="primary"
-                >
-                  submit
-                </v-btn>
-                <v-btn large @click="clear" color="error">
-                  clear
-                </v-btn>
-              </v-layout>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-form>
+      <div v-if="!submitSuccess">
+        <v-form ref="form" v-model="valid" lazy-validation>
+          <v-container>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="form.name"
+                  label="Full Name"
+                  required
+                  :error-messages="nameErrors"
+                  @input="$v.form.name.$touch()"
+                  @blur="$v.form.name.$touch()"
+                />
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field
+                  type="email"
+                  v-model="form.email"
+                  label="Email"
+                  required
+                  :error-messages="emailErrors"
+                  @input="$v.form.email.$touch()"
+                  @blur="$v.form.email.$touch()"
+                />
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field
+                  type="tel"
+                  v-model="form.phone"
+                  label="Phone"
+                  required
+                  :error-messages="phoneErrors"
+                  @input="$v.form.phone.$touch()"
+                  @blur="$v.form.phone.$touch()"
+                />
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="form.institution"
+                  label="Institution / Company"
+                />
+              </v-flex>
+              <v-flex xs12>
+                <v-layout justify-space-between>
+                  <v-btn
+                    large
+                    :loading="isSubmitting"
+                    :disabled="isSubmitting"
+                    @click="submit"
+                    color="primary"
+                  >
+                    submit
+                  </v-btn>
+                  <v-btn large @click="clear" color="error">
+                    clear
+                  </v-btn>
+                </v-layout>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-form>
+      </div>
+      <vue-qr 
+        v-else
+        :bg-src="require('@assets/images/qrgdg.jpg')" 
+        :text="qrData"
+        :size="800"
+        :dot-scale="0.5"
+      />
     </v-card>
   </v-dialog>
 </template>
@@ -80,9 +89,13 @@
 <script>
 import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
-import api from '@api';
+import VueQr from 'vue-qr';
+import { registerEvent } from '@api/apiRequest';
 
 export default {
+  components: {
+    VueQr,
+  },
   props: {
     registerDialog: {
       type: Boolean,
@@ -100,6 +113,8 @@ export default {
   data: () => ({
     valid: false,
     isSubmitting: false,
+    submitSuccess: false,
+    userId: '',
     form: {
       name: '',
       email: '',
@@ -108,6 +123,14 @@ export default {
     },
   }),
   computed: {
+    eventId() {
+      return this.$store.state.events.details.id;
+    },
+    qrData() {
+      return `{"eventId":${this.eventId},"email":"${
+        this.form.email
+      }","userId":${this.userId}}`;
+    },
     dialog: {
       get() {
         return this.registerDialog;
@@ -145,18 +168,13 @@ export default {
       form.$touch();
 
       if (!form.$invalid) {
-        // TECHNICAL DEBT, use graphQL in the future
         this.isSubmitting = true;
-        await api.post('/attendees', {
-          data: {
-            registeredAt: new Date(),
-            user: {
-              ...this.form,
-            },
-            eventId: this.$store.state.events.details.id,
-          },
-        });
 
+        const response = await registerEvent(this.form, this.eventId);
+        if (!response.error) {
+          this.submitSuccess = true;
+          this.userId = response.data.user.id;
+        }
         this.isSubmitting = false;
       }
     },

@@ -49,4 +49,20 @@ export const postRequest = async ({ commit }, router, resource, payload) => {
   router.push('/kelian');
 };
 
+// TECHNICAL DEBT - Refactor to vuex
+export const registerEvent = async (fields, eventId) => {
+  const response = await api
+    .post('/attendees', {
+      data: {
+        registeredAt: new Date(),
+        user: {
+          ...fields,
+        },
+        eventId: eventId,
+      },
+    })
+    .catch(err => ({ error: true, err }));
+  return response;
+};
+
 export default request;

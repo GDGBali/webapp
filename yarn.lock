@@ -12969,6 +12969,13 @@ vue-meta@^1.5.3:
     lodash.isplainobject "^4.0.6"
     object-assign "^4.1.1"
 
+vue-qr@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/vue-qr/-/vue-qr-1.5.2.tgz#a10614ea97f9f2bd55892bbebcd09b708bda1686"
+  dependencies:
+    uuid "^3.3.2"
+    vue "^2.5.16"
+
 vue-router@3.0.1, vue-router@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
