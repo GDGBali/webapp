@@ -13,6 +13,8 @@ export const state = {
   },
   authDialog: {
     visible: false,
+    titleText: 'Login',
+    redirectTo: '/',
   },
 };
 
@@ -27,8 +29,14 @@ export const mutations = {
   [types.HIDE_SNACKBAR](state) {
     state.snackbar.visible = false;
   },
-  [types.SHOW_AUTH_DIALOG](state) {
+  [types.SHOW_AUTH_DIALOG](state, payload = {}) {
     state.authDialog.visible = true;
+    const titleText = payload.titleText || 'Login';
+    state.authDialog.titleText = titleText;
+
+    if (payload.redirectTo) {
+      state.authDialog.redirectTo = payload.redirectTo;
+    }
   },
   [types.HIDE_AUTH_DIALOG](state) {
     state.authDialog.visible = false;

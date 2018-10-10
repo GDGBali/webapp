@@ -1,11 +1,12 @@
 <template>
   <v-dialog
+    lazy
     v-model="showDialog"
     max-width="320"
   >
     <v-card light>
       <v-card-title class="headline justify-center">
-        Login
+        {{ authDialog.titleText }}
       </v-card-title>
       <Providers />
     </v-card>

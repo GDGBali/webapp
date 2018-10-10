@@ -2,8 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueMeta from 'vue-meta';
 import NProgress from 'nprogress/nprogress';
-import store from '@state/store';
+// import store from '@state/store';
 import routes from './routes';
+// import { IS_LOGGED_IN, SHOW_AUTH_DIALOG } from '@state/mutationTypes';
 
 NProgress.configure({ showSpinner: false });
 
@@ -32,27 +33,24 @@ router.beforeEach((routeTo, routeFrom, next) => {
 
   const authRequired = routeTo.matched.some(route => route.meta.authRequired);
 
-  // If auth isn't required for the route, just continue.
   if (!authRequired) return next();
 
-  // If auth is required and the user is logged in...
-  if (store.getters['auth/loggedIn']) {
-    // Validate the local user token...
-    return store.dispatch('auth/validate').then(validUser => {
-      // Then continue if the token still represents a valid user,
-      // otherwise redirect to login.
-      validUser ? next() : redirectToLogin();
-    });
-  }
+  // If auth is required and the user is NOT currently logged in, redirect.
+  // redirectTo();
 
-  // If auth is required and the user is NOT currently logged in,
-  // redirect to login.
-  redirectToLogin();
+  // function redirectTo() {
+  //   if (routeTo.name === 'event-register') {
+  //     if (store.getters[`auth/${IS_LOGGED_IN}`]) {
+  //       return next();
+  //     }
 
-  function redirectToLogin() {
-    // Pass the original route to the login component
-    next({ name: 'login', query: { redirectFrom: routeTo.fullPath } });
-  }
+  //     store.commit(SHOW_AUTH_DIALOG, {
+  //       titleText: 'Please Login to Continue',
+  //       redirectTo: routeTo,
+  //     });
+  //     return next({ name: 'event-details', params: routeTo.params });
+  //   }
+  // }
 });
 
 // After navigation is confirmed, but before resolving...

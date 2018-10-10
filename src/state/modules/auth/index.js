@@ -1,7 +1,12 @@
 import axios from 'axios';
 import actions from './actions';
 import mutations from './mutations';
-import { LOGIN_START, LOGOUT, SET_CURRENT_USER } from '@state/mutationTypes';
+import {
+  LOGIN_START,
+  LOGOUT,
+  SET_CURRENT_USER,
+  IS_LOGGED_IN,
+} from '@state/mutationTypes';
 
 const state = {
   currentUser: getStorage('auth.currentUser'),
@@ -28,7 +33,7 @@ export default {
     [SET_CURRENT_USER]: mutations.setCurrentUser,
   },
   getters: {
-    loggedIn(state) {
+    [IS_LOGGED_IN]: state => {
       return !!state.currentUser;
     },
   },

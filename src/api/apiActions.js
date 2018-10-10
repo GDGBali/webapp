@@ -6,26 +6,20 @@ const dispatchAction = (vue, types, options) => {
 
 const requestFutureEvents = vue => {
   dispatchAction(vue, EVENTS_REQ_START, {
-    resource: 'event',
+    endpoint: 'events',
     options: {
       params: {
-        include: 'venue',
-        filter: { when: 'future' },
+        when: 'future',
       },
-      idbStore: 'events',
     },
   });
 };
 
 const requestSingleEvent = vue => {
   dispatchAction(vue, EVENTS_REQ_START, {
-    resource: 'event',
+    endpoint: 'events',
     options: {
       id: vue.$route.params.slugUrl,
-      params: {
-        include: 'venue',
-      },
-      idbStore: 'eventSessions',
     },
     verb: 'GET_SINGLE',
   });
