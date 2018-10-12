@@ -14,7 +14,7 @@ export const state = {
   authDialog: {
     visible: false,
     titleText: 'Login',
-    redirectTo: '/',
+    redirectTo: null,
   },
 };
 

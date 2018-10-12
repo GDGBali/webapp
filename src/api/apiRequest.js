@@ -65,4 +65,17 @@ export const registerEvent = async (fields, eventId) => {
   return response;
 };
 
+// TECHNICAL DEBT - Refactor to vuex
+export const registerVolunteer = async fields => {
+  const response = await api
+    .post('/users', {
+      data: {
+        ...fields,
+        isVolunteer: true,
+      },
+    })
+    .catch(err => ({ error: true, err }));
+  return response;
+};
+
 export default request;

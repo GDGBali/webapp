@@ -1,27 +1,13 @@
+const createItem = (text, path, icon) => ({
+  text,
+  path,
+  icon,
+});
+
 export const navItems = [
-  {
-    text: 'Home',
-    path: '/',
-    icon: 'home',
-  },
-  {
-    text: 'Events',
-    path: '/events',
-    icon: 'event',
-  },
-  {
-    text: 'Awesome!',
-    path: '/awesome',
-    icon: 'explore',
-  },
-  {
-    text: 'Tutorials',
-    path: '/tutorials',
-    icon: 'code',
-  },
-  {
-    text: 'Showcase',
-    path: '/showcase',
-    icon: 'local_activity',
-  },
+  createItem('Home', '/', 'home'),
+  createItem('Events', '/events', 'event'),
+  createItem('Teams', '/teams', 'people'),
+  createItem('Tutorials', '/tutorials', 'code'),
+  createItem('Showcase', '/showcase', 'local_activity'),
 ];

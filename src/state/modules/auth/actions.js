@@ -18,16 +18,15 @@ const googeLogin = ({ commit, rootState }, vue) => {
         onClick: () => commit('HIDE_SNACKBAR'),
       });
 
-      const { data } = response.data;
-      await commit(SET_CURRENT_USER, {
-        user: {
-          id: data.id,
-          ...data.attributes,
-        },
-      });
+      const { data: user } = response;
 
-      const { name, params } = rootState.authDialog.redirectTo;
-      vue.$router.push({ name, params });
+      await commit(SET_CURRENT_USER, { user });
+
+      const { redirectTo } = rootState.authDialog;
+      if (redirectTo) {
+        const { name, params } = redirectTo;
+        vue.$router.push({ name, params });
+      }
     },
     err => {
       globalStore.commit(SHOW_SNACKBAR, {

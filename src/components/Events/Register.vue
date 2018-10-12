@@ -120,6 +120,7 @@
 import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
 import VueQr from 'vue-qr';
+import storage from '@utils/storage';
 import { registerEvent } from '@api/apiRequest';
 import { SHOW_AUTH_DIALOG } from '@state/mutationTypes';
 import { mapMutations } from 'vuex';
@@ -133,6 +134,11 @@ export default {
       type: Boolean,
       default: false,
     },
+  },
+  mounted() {
+    const { name, email } = storage.getStorage('auth.currentUser');
+    this.form.name = name;
+    this.form.email = email;
   },
   mixins: [validationMixin],
   validations: {
