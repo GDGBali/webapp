@@ -24,7 +24,7 @@ export default [
     component: () => lazyLoadView(import('@views/home')),
   },
   createBasePath('events'),
-  createBasePath('awesome'),
+  createBasePath('teams'),
   createBasePath('tutorials'),
   createBasePath('showcase'),
   {
@@ -46,9 +46,9 @@ export default [
   //   path: '/profile',
   //   name: 'profile',
   //   component: () => lazyLoadView(import('@views/profile')),
-  //   meta: {
-  //     authRequired: true,
-  //   },
+  // meta: {
+  //   authRequired: true,
+  // },
   //   props: route => ({ user: store.state.auth.currentUser }),
   // },
   // {

@@ -1,4 +1,6 @@
+import { getAuthUrl } from '@api/config';
 import axios from 'axios';
+
 const googleLogin = async authCode => {
   const data = {
     code: authCode,
@@ -11,7 +13,7 @@ const googleLogin = async authCode => {
 
   return axios({
     method: 'post',
-    url: 'http://localhost:3007/auth/google_oauth2/callback',
+    url: getAuthUrl(),
     data: searchParams,
     headers: {
       'X-Requested-With': 'XMLHttpRequest',

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import actions from './actions';
 import mutations from './mutations';
+import storage from '@utils/storage';
 import {
   LOGIN_START,
   LOGOUT,
@@ -9,16 +10,8 @@ import {
 } from '@state/mutationTypes';
 
 const state = {
-  currentUser: getStorage('auth.currentUser'),
+  currentUser: storage.getStorage('auth.currentUser'),
 };
-
-function getStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
-
-export function setStorage(key, state) {
-  localStorage.setItem(key, JSON.stringify(state));
-}
 
 export function setDefaultAuthHeaders(currentUser) {
   axios.defaults.headers.common.Authorization = currentUser
