@@ -25,29 +25,6 @@ install_save_cache: &install_save_cache
 
 jobs:
 
-  test:
-    <<: *vm_settings
-    steps:
-      - checkout
-
-      # Install dependencies
-      - restore_cache: *install_restore_cache
-      - run: *install_run
-      - save_cache: *install_save_cache
-
-      - run:
-          name: Run tests
-          # Install libgconf, needed by Cypress' Electron, then run tests
-          command: sudo apt-get install libgconf-2-4 && yarn test:ci
-
-      # Store test artifacts
-      - store_artifacts:
-          path: tests/unit/coverage
-      - store_artifacts:
-          path: tests/e2e/videos
-      - store_artifacts:
-          path: tests/e2e/screenshots
-
   build:
     <<: *vm_settings
     steps:
@@ -66,31 +43,41 @@ jobs:
       - store_artifacts:
           path: dist
 
-  # deploy:
-  #   <<: *vm_settings
-  #   steps:
-  #     # Install dependencies
-  #     - restore_cache: *install_restore_cache
-  #     - run: *install_run
-  #     - save_cache: *install_save_cache
-
-  #     # Build the app for production
-  #     - run: yarn build
-
-  #     ADD YOUR DEPLOYMENT PROCESS HERE
-  #     https://circleci.com/docs/2.0/deployment-integrations/
+  deploy_develop:
+    <<: *vm_settings
+    branches:
+      only:
+        - develop
+    steps:
+      - run: ./node_modules/.bin/firebase use develop --token $FIREBASE_TOKEN
+      - run: ./node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN
+  
+  deploy_master:
+    <<: *vm_settings
+    branches:
+      only:
+        - master
+    steps:
+      - run: ./node_modules/.bin/firebase use default --token $FIREBASE_TOKEN
+      - run: ./node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN
 
 workflows:
   version: 2
-  test_and_deploy:
+  deploy_develop:
     jobs:
-      - test
       - build
-      # - deploy:
-      #     # Only deploy if tests pass
-      #     requires:
-      #       - test
-      #     # Only deploy the master branch
-      #     filters:
-      #       branches:
-      #         only: master
+      - deploy_develop:
+          requires:
+            - build
+          filters:
+            branches:
+              only: develop
+  deploy_master:
+    jobs:
+      - build
+      - deploy_master:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

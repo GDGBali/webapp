@@ -60,6 +60,7 @@
     "cross-env": "5.2.x",
     "eslint-plugin-vue": "5.0.0-beta.3",
     "express": "4.16.x",
+    "firebase-tools": "^5.0.1",
     "html-critical-webpack-plugin": "^2.1.0",
     "hygen": "^1.6.x",
     "imagemin-lint-staged": "0.3.x",
