@@ -28,6 +28,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 .vscode/*
+.firebase
 
 lighthouse/
 jsconfig.json
