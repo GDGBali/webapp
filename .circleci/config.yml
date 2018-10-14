@@ -68,6 +68,7 @@ workflows:
               only: develop
   deploy_master:
     jobs:
+      - build
       - deploy_master:
           requires:
             - build
