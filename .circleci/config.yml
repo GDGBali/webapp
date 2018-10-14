@@ -45,12 +45,18 @@ jobs:
 
   deploy_develop:
     <<: *vm_settings
+    branches:
+      only:
+        - develop
     steps:
       - run: ./node_modules/.bin/firebase use develop --token $FIREBASE_TOKEN
       - run: ./node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN
   
   deploy_master:
     <<: *vm_settings
+    branches:
+      only:
+        - master
     steps:
       - run: ./node_modules/.bin/firebase use default --token $FIREBASE_TOKEN
       - run: ./node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN
