@@ -10,8 +10,8 @@ export const getApiUrl = () => {
 export const getAuthUrl = () => {
   switch (process.env.NODE_ENV) {
     case 'production':
-      return 'https://gdg-bali.herokuapp.com/auth/google_oauth2/callback';
+      return 'https://gdg-bali.herokuapp.com';
     default:
-      return 'http://localhost:3007/auth/google_oauth2/callback';
+      return 'http://localhost:3007';
   }
 };

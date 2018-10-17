@@ -20,7 +20,6 @@
             >
               <v-img
                 :src="person.imgUrl"
-                lazy-src="red"
                 aspect-ratio="1"
                 class="primary"
               />

@@ -1,35 +1,106 @@
+<template>
+  <v-container>
+    <v-layout wrap>
+      <v-flex xs12>
+        <div class="text-xs-center">
+          <v-avatar
+            size="128"
+          >
+            <template v-if="currentUser.avatarUrl">
+              <v-img
+                :src="currentUser.avatarUrl"
+                aspect-ratio="1"
+                class="primary"
+              />
+            </template>
+            <v-icon
+              v-else
+              size="100"
+              class="primary"
+            >
+              person
+            </v-icon>
+          </v-avatar>
+          <div class="headline mt-4">
+            <div>
+              {{ currentUser.name }}
+            </div>
+          </div>
+        </div>
+      </v-flex>
+      <v-flex xs12 class="mt-5" v-if="currentUser.attendingEvents.length !== 0">
+        <v-expansion-panel popout>
+          <v-expansion-panel-content class="primary">
+            <div slot="header">
+              Tickets
+            </div>
+            <v-card light>
+              <v-card-text>
+                <v-layout column align-center>
+                  <div v-for="event in currentUser.attendingEvents" :key="event.id">
+                    <v-btn color="primary" @click="openQr(currentUser, event)">
+                      {{ event.name }}
+                    </v-btn>
+                  </div>
+                </v-layout>
+              </v-card-text>
+            </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-dialog
+          lazy
+          v-model="showQr"
+          max-width="320"
+        >
+          <v-card light>
+            <v-card-text>
+              <QrCode :qr-data="qrData" />
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+      </v-flex>
+    </v-layout>
+  </v-container>
+</template>
+
 <script>
-import Layout from '@layouts/main';
+import QrCode from '@components/Events/QrCode';
 
 export default {
-  page() {
+  metaInfo() {
     return {
-      title: this.user.name,
+      title: this.currentUser.name,
       meta: [
         {
           name: 'description',
-          content: `The user profile for ${this.user.name}.`,
+          content: `The user profile for ${this.currentUser.name}.`,
         },
       ],
     };
   },
-  components: { Layout },
+  components: {
+    QrCode,
+  },
   props: {
-    user: {
+    currentUser: {
       type: Object,
-      required: true,
+      default: () => ({}),
+    },
+  },
+  data: () => ({
+    showQr: false,
+    eventId: null,
+    qrData: {},
+  }),
+  methods: {
+    openQr(currentUser, event) {
+      this.qrData = {
+        eventId: event.id,
+        email: currentUser.email,
+        userId: currentUser.id,
+      };
+      this.showQr = true;
     },
   },
 };
 </script>
-
-<template>
-  <Layout>
-    <h1>
-      <BaseIcon name="user" />
-      {{ user.name }}
-      Profile
-    </h1>
-    <pre>{{ user }}</pre>
-  </Layout>
-</template>
