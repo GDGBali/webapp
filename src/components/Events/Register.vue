@@ -91,18 +91,7 @@
           <div class="body-2">
             Tunjukkan QR Code ini pada saat registrasi
           </div>
-          <vue-qr 
-            :bg-src="require('@assets/images/qrgdg.jpg')" 
-            :text="qrData"
-            :size="450"
-            :dot-scale="0.5"
-            :callback="setQrImg"
-          />
-          <div>
-            <v-btn color="primary" download="devfest.png" :href="qrImg">
-              download
-            </v-btn>
-          </div>
+          <QrCode :qr-data="qrData" />
           <hr class="divider my-3">
           <template v-if="!loggedIn">
             <div class="subheading text-xs-center mb-2">
@@ -129,16 +118,16 @@
 <script>
 import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
-import VueQr from 'vue-qr';
 import storage from '@utils/storage';
 import { registerEvent } from '@api/apiRequest';
 import { SHOW_AUTH_DIALOG } from '@state/mutationTypes';
 import { mapMutations } from 'vuex';
 import { authComputed } from '@state/helpers';
+import QrCode from '@components/Events/QrCode';
 
 export default {
   components: {
-    VueQr,
+    QrCode,
   },
   props: {
     registerDialog: {
@@ -163,8 +152,7 @@ export default {
     valid: false,
     isSubmitting: false,
     submitSuccess: false,
-    userId: '',
-    qrImg: '',
+    qrData: {},
     form: {
       name: '',
       email: '',
@@ -176,11 +164,6 @@ export default {
     ...authComputed,
     eventId() {
       return this.$store.state.events.details.id;
-    },
-    qrData() {
-      return `{"eventId":${this.eventId},"email":"${
-        this.form.email
-      }","userId":${this.userId}}`;
     },
     dialog: {
       get() {
@@ -224,7 +207,12 @@ export default {
         const response = await registerEvent(this.form, this.eventId);
         if (!response.error) {
           this.submitSuccess = true;
-          this.userId = response.data.user.id;
+          const { email, id: userId } = response.data.user;
+          this.qrData = {
+            eventId: this.eventId,
+            email,
+            userId,
+          };
         }
         this.isSubmitting = false;
       }
@@ -232,9 +220,6 @@ export default {
     clear() {
       this.$refs.form.reset();
       this.$v.form.$reset();
-    },
-    setQrImg(dataUrl, id) {
-      this.qrImg = dataUrl;
     },
     ...mapMutations([SHOW_AUTH_DIALOG]),
   },
