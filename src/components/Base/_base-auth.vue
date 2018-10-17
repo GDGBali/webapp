@@ -32,7 +32,7 @@
       >
         <v-flex xs12 text-xs-center>
           <div class="py-1">
-            <v-btn color="primary">
+            <v-btn color="primary" @click="$router.push('/profile')">
               <v-icon left>account_circle</v-icon>
               Profile
             </v-btn>
@@ -49,7 +49,8 @@
     </v-card>
   </v-menu>
 </template>
- <script>
+
+<script>
 import { authComputed } from '@state/helpers';
 import { SHOW_AUTH_DIALOG, LOGOUT } from '@state/mutationTypes';
 import { mapMutations } from 'vuex';

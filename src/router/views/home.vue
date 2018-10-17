@@ -14,7 +14,6 @@ import HomeNextEvent from '@components/Home/HomeNextEvent';
 
 export default {
   metaInfo: {
-    title: 'GDG Bali',
     meta: [{ name: 'description', content: appConfig.description }],
   },
   components: { HomeHero, HomeFeatures, HomeNextEvent },

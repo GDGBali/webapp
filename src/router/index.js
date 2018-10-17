@@ -49,6 +49,8 @@ router.beforeEach((routeTo, routeFrom, next) => {
       });
       return next({ name: 'teams' });
     }
+
+    return next('/');
   }
 });
 

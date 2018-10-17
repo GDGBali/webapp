@@ -68,12 +68,21 @@ export const registerEvent = async (fields, eventId) => {
 // TECHNICAL DEBT - Refactor to vuex
 export const registerVolunteer = async fields => {
   const response = await api
-    .post('/users', {
+    .post('/volunteers', {
       data: {
+        registeredAt: new Date(),
         ...fields,
         isVolunteer: true,
       },
     })
+    .catch(err => ({ error: true, err }));
+  return response;
+};
+
+// TECHNICAL DEBT - Refactor to vuex
+export const getUserProfile = async () => {
+  const response = await api
+    .get('/profile')
     .catch(err => ({ error: true, err }));
   return response;
 };

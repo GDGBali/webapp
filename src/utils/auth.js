@@ -13,7 +13,7 @@ const googleLogin = async authCode => {
 
   return axios({
     method: 'post',
-    url: getAuthUrl(),
+    url: `${getAuthUrl()}/auth/google_oauth2/callback`,
     data: searchParams,
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
