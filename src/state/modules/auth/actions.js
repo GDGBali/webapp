@@ -1,3 +1,4 @@
+import router from '@router';
 import Auth from '@utils/auth';
 import {
   HIDE_AUTH_DIALOG,
@@ -5,6 +6,7 @@ import {
   SET_CURRENT_USER,
 } from '@state/mutationTypes';
 import { setDefaultAuthHeaders } from './';
+// import { rootEndpoint } from '@api';
 
 const googeLogin = ({ commit, rootState }, vue) => {
   const globalStore = vue.$store;
@@ -43,8 +45,6 @@ const init = ({ state: { currentUser }, dispatch }) => {
   // dispatch('validate');
 };
 
-const validate = () => {};
-
 const loginStart = (store, { provider, vue }) => {
   switch (provider) {
     case 'google':
@@ -56,11 +56,14 @@ const loginStart = (store, { provider, vue }) => {
 
 const logOut = ({ commit }) => {
   commit('SET_CURRENT_USER', { user: null });
+
+  if (router.currentRoute.meta.authRequired) {
+    router.push('/');
+  }
 };
 
 export default {
   init,
-  validate,
   loginStart,
   logOut,
 };
