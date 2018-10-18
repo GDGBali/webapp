@@ -10,6 +10,7 @@ import '@components/_globals';
 import './registerServiceWorker';
 import '@assets/style/app.styl';
 import '@utils/filter';
+import { createProvider } from './vue-apollo';
 
 // Don't warn about using the dev version of Vue in development
 Vue.config.productionTip = process.env.NODE_ENV === 'production';
@@ -19,6 +20,8 @@ const app = new Vue({
   router,
   store,
   render: h => h(App),
+  apolloProvider: createProvider(),
+
   created() {
     store.dispatch('changeLocale', {
       i18n,

@@ -9,4 +9,4 @@ module.exports = {
   jsxBracketSameLine: false,
   arrowParens: 'avoid',
   proseWrap: 'never',
-}
+};

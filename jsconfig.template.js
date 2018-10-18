@@ -11,4 +11,4 @@ module.exports = {
     // `paths` will be automatically generated using aliases.config.js
     // ...
   },
-}
+};
