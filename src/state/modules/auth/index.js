@@ -32,7 +32,6 @@ export default {
   },
   actions: {
     init: actions.init,
-    validate: actions.validate,
     [LOGIN_START]: actions.loginStart,
     [LOGOUT]: actions.logOut,
   },

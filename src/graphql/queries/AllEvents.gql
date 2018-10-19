@@ -1,0 +1,7 @@
+#import "../fragments/EventFragment.gql"
+
+query Events ($when: String) {
+  events (when: $when) {
+    ...Event
+  }
+}

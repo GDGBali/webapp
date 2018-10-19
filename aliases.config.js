@@ -14,6 +14,8 @@ const aliases = {
   '@state': 'src/state',
   '@design': 'src/design/index.scss',
   '@api': 'src/api',
+  '@queries': 'src/graphql/queries',
+  '@mutations': 'src/graphql/mutations',
 };
 
 module.exports = {

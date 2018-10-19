@@ -1,0 +1,5 @@
+fragment Event on Event {
+  id
+  name
+  slugUrl
+}
