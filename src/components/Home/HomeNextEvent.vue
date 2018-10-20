@@ -6,35 +6,45 @@
           {{ $t('events.next') }}
         </div>
       </v-flex>
-      <v-flex shrink v-if="isRequesting">
-        <v-progress-circular
-          :size="60"
-          :width="6"
-          color="primary"
-          indeterminate
-        />
-      </v-flex>
-      <v-flex xs12 v-else>
-        <v-card class="pa-3 cardContainer">
-          <v-card-title primary-title>
-            <div class="headline mb-0 product-sans">
-              {{ event.name }}
-            </div>
-            <div class="body-1 mt-3" v-html="eventDescription" />
-            <v-layout wrap>
-              <v-flex xs12>
-                <EventCardDetails :event="event" v-if="event.venue" />
-              </v-flex>
-            </v-layout>
-          </v-card-title>
-          <v-card-actions class="justify-end">
-            <v-btn :to="`/events/${event.slugUrl}`" color="primary">
-              <v-icon left>info</v-icon>
-              Details
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
+
+      <ApolloQuery
+        :query="require('@queries/AllEvents.gql')"
+        :variables="{ startedAt: 'future', limit: 1}"
+        @result="onResult"
+      >
+        <template slot-scope="{ result: { loading, error, data }, isLoading }">
+          <v-flex shrink v-if="isLoading">
+            <v-progress-circular
+              :size="60"
+              :width="6"
+              color="primary"
+              indeterminate
+            />
+          </v-flex>
+          <v-flex xs12 v-else-if="data">
+            {{ data }}
+            <v-card class="pa-3 cardContainer">
+              <v-card-title primary-title>
+                <div class="headline mb-0 product-sans">
+                  {{ event.name }}
+                </div>
+                <div class="body-1 mt-3" v-html="eventDescription" />
+                <v-layout wrap>
+                  <v-flex xs12>
+                    <EventCardDetails :event="event" v-if="event.venue" />
+                  </v-flex>
+                </v-layout>
+              </v-card-title>
+              <v-card-actions class="justify-end">
+                <v-btn :to="`/events/${event.slugUrl}`" color="primary">
+                  <v-icon left>info</v-icon>
+                  Details
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </template>
+      </ApolloQuery>
     </v-layout>
   </v-container>
 </template>
@@ -47,9 +57,6 @@ export default {
   components: {
     EventCardDetails,
   },
-  created() {
-    apiActions.requestFutureEvents(this);
-  },
   computed: {
     eventState() {
       return this.$store.state.events.future[0] || { venue: {} };
@@ -57,13 +64,15 @@ export default {
     event() {
       return this.eventState;
     },
-    isRequesting() {
-      return this.$store.state.events.isRequesting;
-    },
     eventDescription() {
       return this.eventState.description
         ? `${this.eventState.description.split('\n')[0]}.........`
         : '';
+    },
+  },
+  methods: {
+    onResult(apa) {
+      console.log(apa);
     },
   },
 };
