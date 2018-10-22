@@ -8,8 +8,7 @@
       </v-flex>
 
       <ApolloQuery
-        :query="require('@queries/AllEvents.gql')"
-        :variables="{ startedAt: 'future', limit: 1}"
+        :query="require('@queries/events/NextEvent.gql')"
         @result="onResult"
       >
         <template slot-scope="{ result: { loading, error, data }, isLoading }">
@@ -22,7 +21,6 @@
             />
           </v-flex>
           <v-flex xs12 v-else-if="data">
-            {{ data }}
             <v-card class="pa-3 cardContainer">
               <v-card-title primary-title>
                 <div class="headline mb-0 product-sans">
@@ -31,7 +29,7 @@
                 <div class="body-1 mt-3" v-html="eventDescription" />
                 <v-layout wrap>
                   <v-flex xs12>
-                    <EventCardDetails :event="event" v-if="event.venue" />
+                    <EventCardDetails :event="event" />
                   </v-flex>
                 </v-layout>
               </v-card-title>
@@ -51,28 +49,24 @@
 
 <script>
 import EventCardDetails from '@components/Events/EventCardDetails';
-import apiActions from '@api/apiActions';
 
 export default {
   components: {
     EventCardDetails,
   },
   computed: {
-    eventState() {
-      return this.$store.state.events.future[0] || { venue: {} };
-    },
-    event() {
-      return this.eventState;
-    },
     eventDescription() {
-      return this.eventState.description
-        ? `${this.eventState.description.split('\n')[0]}.........`
+      return this.event.description
+        ? `${this.event.description.split('\n')[0]}.........`
         : '';
     },
   },
+  data: () => ({
+    event: {},
+  }),
   methods: {
-    onResult(apa) {
-      console.log(apa);
+    onResult({ data: { nextEvent } }) {
+      this.event = nextEvent;
     },
   },
 };

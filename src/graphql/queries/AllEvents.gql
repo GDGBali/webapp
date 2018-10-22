@@ -1,8 +1,7 @@
 #import "../fragments/EventFragment.gql"
 
-# query Events ($startedAt: String, $limit: Int) {
-query Events($startedAt: String, $limit: Int) {
-  events (startedAt: $startedAt, limit: $limit) {
+query AllEvents ($starts: String, $limit: Int) {
+  allEvents (filters: { starts: $starts, limit: $limit}) {
     ...Event
   }
 }

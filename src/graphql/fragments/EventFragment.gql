@@ -1,5 +1,9 @@
 fragment Event on Event {
   id
   name
+  description
+  coverImgUrl
+  meetupUrl
+  startsAt
   slugUrl
 }

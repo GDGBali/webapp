@@ -1,0 +1,11 @@
+#import "../../fragments/EventFragment.gql"
+
+query NextEvent {
+  nextEvent {
+    ...Event,
+    venue {
+      id
+      name
+    }
+  }
+}
