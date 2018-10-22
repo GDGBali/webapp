@@ -1,0 +1,7 @@
+#import "../../fragments/EventWithVenueFragment.gql"
+
+query EventDetails ($slugurl: String) {
+  eventDetails (slugurl: $slugurl) {
+    ...EventWVenue
+  }
+}

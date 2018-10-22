@@ -9,7 +9,7 @@
               {{ event.startsAt | date }}
             </FabOrange>
             <FabOrange icon="directions">
-              {{ event.venue.name || 'TBA' }}
+              {{ (event.venue || {}).name || 'TBA' }}
             </FabOrange>
           </v-layout>
           <v-layout wrap v-else>

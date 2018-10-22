@@ -1,31 +1,38 @@
 <template>
-  <div>
-    <div class="text-xs-center" style="height: 50vh" v-if="isRequesting">
-      <v-container fill-height>
-        <v-layout align-center justify-center>
-          <v-progress-circular
-            :size="60"
-            :width="6"
-            color="primary"
-            indeterminate
-          />
-        </v-layout>
-      </v-container>
-    </div>
-    <div v-else-if="event.error">
-      <v-container fill-height>
-        <v-layout align-center justify-center>
-          Event not found
-        </v-layout>
-      </v-container>
-    </div>
-    <EventDetails :event="event" v-else />
-  </div>
+  <ApolloQuery
+    :query="require('@queries/events/EventDetails.gql')"
+    :variables="{
+      slugurl: $route.params.slugUrl
+    }"
+    @result="onResult"
+  >
+    <template slot-scope="{ result: { loading, error, data }, isLoading }">
+      <div class="text-xs-center" style="height: 50vh" v-if="isLoading">
+        <v-container fill-height>
+          <v-layout align-center justify-center>
+            <v-progress-circular
+              :size="60"
+              :width="6"
+              color="primary"
+              indeterminate
+            />
+          </v-layout>
+        </v-container>
+      </div>
+      <div v-else-if="error">
+        <v-container fill-height>
+          <v-layout align-center justify-center>
+            Event not found
+          </v-layout>
+        </v-container>
+      </div>
+      <EventDetails :event="event" v-else />
+    </template>
+  </ApolloQuery>
 </template>
 
 <script>
 import EventDetails from '@components/Events/EventDetails';
-import apiActions from '@api/apiActions';
 
 export default {
   metaInfo: {
@@ -34,15 +41,13 @@ export default {
   components: {
     EventDetails,
   },
-  created() {
-    apiActions.requestSingleEvent(this);
-  },
-  computed: {
-    event() {
-      return this.$store.state.events.details;
-    },
-    isRequesting() {
-      return this.$store.state.events.isRequesting;
+  data: () => ({
+    show: false,
+    event: {},
+  }),
+  methods: {
+    onResult({ data: { eventDetails } }) {
+      this.event = eventDetails;
     },
   },
 };
