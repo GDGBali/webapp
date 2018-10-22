@@ -1,0 +1,7 @@
+#import "../../fragments/EventWithVenueFragment.gql"
+
+query AllEvents ($starts: String) {
+  allEvents (starts: $starts) {
+    ...EventWVenue
+  }
+}

@@ -26,7 +26,6 @@
       </v-flex> -->
 
       <ComingSoon />
-      <ApolloExample />
     </v-layout>
   </v-container>
 </template>
@@ -34,7 +33,6 @@
 <script>
 import appConfig from '@src/app.config';
 import ComingSoon from '@components/shared/ComingSoon';
-import ApolloExample from '@components/ApolloExample';
 
 export default {
   metaInfo: {
@@ -43,7 +41,6 @@ export default {
   },
   components: {
     ComingSoon,
-    ApolloExample,
   },
 };
 </script>

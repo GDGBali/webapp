@@ -1,7 +1,0 @@
-#import "../fragments/EventFragment.gql"
-
-query AllEvents ($starts: String, $limit: Int) {
-  allEvents (filters: { starts: $starts, limit: $limit}) {
-    ...Event
-  }
-}

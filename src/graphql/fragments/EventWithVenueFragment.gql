@@ -1,0 +1,9 @@
+#import "./EventFragment.gql"
+
+fragment EventWVenue on Event {
+  ...Event
+  venue {
+    id
+    name
+  }
+}

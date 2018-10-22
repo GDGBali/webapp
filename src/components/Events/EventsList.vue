@@ -1,45 +1,49 @@
 <template>
-  <v-layout wrap class="mt-3">
-    <v-flex class="text-xs-center" xs12 v-if="isRequesting">
-      <v-progress-circular
-        :size="60"
-        :width="6"
-        color="primary"
-        indeterminate
-      />
-    </v-flex>
-    <v-flex 
-      xs12 
-      sm6 
-      v-for="event in events"
-      :key="event.title"
-      v-else
-    >
-      <EventCard :event="event" />
-    </v-flex>
-  </v-layout>
+  <ApolloQuery
+    :query="require('@queries/events/AllEvents.gql')"
+    :variables="{
+      starts: 'future'
+    }"
+    @result="onResult"
+  >
+    <template slot-scope="{ result: { loading, error, data }, isLoading }">
+      <v-layout wrap class="mt-3">
+        <v-flex class="text-xs-center" xs12 v-if="isLoading">
+          <v-progress-circular
+            :size="60"
+            :width="6"
+            color="primary"
+            indeterminate
+          />
+        </v-flex>
+        <v-flex 
+          v-else-if="data"
+          xs12 
+          sm6 
+          v-for="event in events"
+          :key="event.title"
+        >
+          <EventCard :event="event" />
+        </v-flex>
+      </v-layout>
+    </template>
+  </ApolloQuery>
 </template>
 
 <script>
 import EventCard from './EventCard';
-import apiActions from '@api/apiActions';
 
 export default {
   components: {
     EventCard,
   },
-  created() {
-    apiActions.requestFutureEvents(this);
-  },
   data: () => ({
     show: false,
+    events: [],
   }),
-  computed: {
-    events() {
-      return this.$store.state.events.future;
-    },
-    isRequesting() {
-      return this.$store.state.events.isRequesting;
+  methods: {
+    onResult({ data: { allEvents } }) {
+      this.events = allEvents;
     },
   },
 };
