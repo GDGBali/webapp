@@ -1,6 +1,5 @@
 import Vue from 'vue';
-import {
-  Vuetify,
+import Vuetify, {
   VApp,
   VNavigationDrawer,
   VFooter,
@@ -27,7 +26,7 @@ import {
   VTooltip,
   VImg,
   transitions,
-} from 'vuetify';
+} from 'vuetify/lib';
 import colors from 'vuetify/es5/util/colors';
 
 Vue.use(Vuetify, {

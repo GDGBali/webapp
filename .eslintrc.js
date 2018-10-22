@@ -12,7 +12,7 @@ module.exports = {
     'prettier',
     'prettier/standard',
   ],
-  plugins: ['prettier'],
+  plugins: ['prettier', 'graphql'],
   rules: {
     // Only allow debugger in development
     'no-debugger': process.env.PRE_COMMIT ? 'error' : 'off',
