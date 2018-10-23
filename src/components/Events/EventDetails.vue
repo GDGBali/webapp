@@ -43,7 +43,7 @@
         </template>
       </v-layout>
     </v-container>
-    <Register :register-dialog.sync="registerDialog" />
+    <Register :register-dialog.sync="registerDialog" :event-id="event.id" />
   </div>
 </template>
 

@@ -134,6 +134,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    eventId: {
+      type: Number,
+      default: 0,
+    },
   },
   mounted() {
     const { name, email } = storage.getStorage('auth.currentUser') || {};
@@ -162,9 +166,6 @@ export default {
   }),
   computed: {
     ...authComputed,
-    eventId() {
-      return this.$store.state.events.details.id;
-    },
     dialog: {
       get() {
         return this.registerDialog;

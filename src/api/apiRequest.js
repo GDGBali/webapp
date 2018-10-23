@@ -1,6 +1,5 @@
 // import db from '@api/database';
 import api from '@api';
-import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
 const getFromNetwork = (endpoint, { params, id }) => {
   if (id) {
@@ -39,26 +38,15 @@ const request = async ({ commit }, { endpoint, options, types }) => {
 };
 
 // TECHNICAL DEBT - Refactor to vuex
-export const postRequest = async ({ commit }, router, resource, payload) => {
-  commit(SHOW_SNACKBAR, {
-    titleText: 'Venue Created',
-    buttonText: 'dismiss',
-    onClick: () => commit(HIDE_SNACKBAR),
-  });
-
-  router.push('/kelian');
-};
-
-// TECHNICAL DEBT - Refactor to vuex
 export const registerEvent = async (fields, eventId) => {
   const response = await api
     .post('/attendees', {
-      data: {
+      attendee: {
         registeredAt: new Date(),
-        user: {
-          ...fields,
-        },
         eventId: eventId,
+      },
+      user: {
+        ...fields,
       },
     })
     .catch(err => ({ error: true, err }));
