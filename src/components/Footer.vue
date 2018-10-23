@@ -21,8 +21,7 @@
                 :href="socialLink.link"
               >
                 <img
-                  class="lazyload"
-                  :data-src="require(`@assets/icons/${socialLink.icon}.svg`)"
+                  :src="require(`@assets/icons/${socialLink.icon}.svg`)"
                   :alt="`icon-${socialLink.icon}`"
                 >
               </a>

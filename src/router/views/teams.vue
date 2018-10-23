@@ -32,7 +32,6 @@
                 <div class="socialIcon" v-for="social in person.socials" :key="`${person.name}-${social.id}`">
                   <a :href="social.url" target="_blank">
                     <img
-                      class="lazyload"
                       :data-src="require(`@assets/icons/${social.id}.svg`)"
                     >
                   </a>

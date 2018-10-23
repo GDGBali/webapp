@@ -1,6 +1,5 @@
 <template>
   <v-img
-    class="lazyload"
     :src="imgSrc"
     :lazy-src="require('@assets/images/sangkep_blur.jpg')"
     height="400"

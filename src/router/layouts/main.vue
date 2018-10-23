@@ -6,18 +6,28 @@
     </v-content>
     <MainFooter />
     <BaseSnackbar />
-    <BaseAuthDialog />
+    <AuthDialog />
   </v-app>
 </template>
 
 <script>
-import NavBar from '@components/NavBar';
 import MainFooter from '@components/Footer';
+
+const NavBar = () =>
+  import(/* webpackChunkName: "navbar" */ '@components/NavBar');
+
+const AuthDialog = () =>
+  import(/* webpackChunkName: "auth-dialog" */ '@components/Auth/AuthDialog');
+
+const BaseSnackbar = () =>
+  import(/* webpackChunkName: "navbar" */ '@components/Base/BaseSnackbar');
 
 export default {
   components: {
     NavBar,
+    AuthDialog,
     MainFooter,
+    BaseSnackbar,
   },
 };
 </script>

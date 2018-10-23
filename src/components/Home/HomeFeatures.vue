@@ -43,7 +43,7 @@
               :class="[isMobile ? 'mb-4' : 'px-5']"
             >
               <div>
-                <img :data-src="require(`@assets/icons/${feature.icon}.svg`)" alt="" class="lazyload">
+                <img :src="require(`@assets/icons/${feature.icon}.svg`)" alt="">
               </div>
               <div class="display-1 mb-1 product-sans">
                 {{ feature.text }}

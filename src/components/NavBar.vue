@@ -60,15 +60,19 @@
           <span>{{ navItem.text }}</span>
         </v-btn>
       </v-toolbar-items>
-      <BaseAuth />
+      <AuthMenu />
     </v-toolbar>
   </div>
 </template>
 
 <script>
+import AuthMenu from '@components/Auth/AuthMenu';
 import { navItems } from '@src/data/navItems';
 
 export default {
+  components: {
+    AuthMenu,
+  },
   data: () => ({
     navItems,
     drawer: false,

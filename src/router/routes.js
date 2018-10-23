@@ -7,43 +7,42 @@ const createBasePath = pathName => ({
   component: () => lazyLoadView(import(`@views/${pathName}`)),
 });
 
-const adminRoutes = (path, name, component) => {
-  return {
-    path,
-    name,
-    component: () => lazyLoadView(import(`@views/${component}`)),
-    meta: {
-      layout: require('@layouts/admin').default,
-      authRequired: true,
-      access: 'admin',
-    },
-  };
-};
+// const adminRoutes = (path, name, component) => {
+//   return {
+//     path,
+//     name,
+//     component: () => lazyLoadView(import(`@views/${component}`)),
+//     meta: {
+//       layout: require('@layouts/admin').default,
+//       authRequired: true,
+//       access: 'admin',
+//     },
+//   };
+// };
 
 export default [
   {
     path: '/',
     name: 'home',
-    component: () => lazyLoadView(import('@views/home')),
+    component: () =>
+      lazyLoadView(import(/* webpackChunkName: "home" */ '@views/home')),
   },
-  createBasePath('events'),
+  {
+    path: '/events',
+    name: 'events',
+    component: () =>
+      lazyLoadView(import(/* webpackChunkName: "events" */ '@views/events')),
+  },
   createBasePath('teams'),
   createBasePath('tutorials'),
   createBasePath('showcase'),
   {
     path: '/events/:slugUrl',
     name: 'event-details',
-    component: () => lazyLoadView(import('@views/event-details')),
-  },
-  {
-    ...adminRoutes('/kelian', '', 'admin/index'),
-    children: [
-      adminRoutes('', 'adminHome', 'admin/home'),
-      adminRoutes('events', 'adminEvents', 'admin/events/index'),
-      adminRoutes('events/new', 'adminEventsNew', 'admin/events/new'),
-      adminRoutes('venues', 'adminVenues', 'admin/venues/index'),
-      adminRoutes('venues/new', 'adminVenuesNew', 'admin/venues/new'),
-    ],
+    component: () =>
+      lazyLoadView(
+        import(/* webpackChunkName: "event-details" */ '@views/event-details')
+      ),
   },
   {
     path: '/profile',

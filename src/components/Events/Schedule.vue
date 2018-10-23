@@ -45,7 +45,7 @@
               </div>
               <div class="subheading" v-if="subSession.user">
                 <v-avatar>
-                  <img :data-src="userAvatar(subSession.user.avatarUrl)" alt="" class="lazyload">
+                  <img :data-src="userAvatar(subSession.user.avatarUrl)" alt="">
                 </v-avatar>
                 <span class="ml-3">
                   {{ subSession.user.fullName }}

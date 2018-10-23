@@ -1,12 +1,10 @@
 import Vue from 'vue';
 import './plugins/vuetify';
-import './plugins/lazysizes';
 import './plugins/googleAuth';
 import i18n from './plugins/vue-i18n';
 import App from './app';
 import router from '@router';
 import store from '@state/store';
-import '@components/_globals';
 import './registerServiceWorker';
 import '@assets/style/app.styl';
 import '@utils/filter';

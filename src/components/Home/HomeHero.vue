@@ -1,5 +1,9 @@
 <template>
-  <BaseLazyBg img-name="hero">
+  <v-img
+    :src="require('@assets/images/hero.jpg')"
+    :lazy-src="require('@assets/images/hero_blur.jpg')"
+    id="hero"
+  >
     <div class="heroOverlay" />
     <v-container fill-height class="heroContent">
       <v-layout align-center>
@@ -33,7 +37,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </BaseLazyBg>
+  </v-img>
 </template>
 
 <script>

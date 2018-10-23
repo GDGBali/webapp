@@ -56,7 +56,7 @@
 
 <script>
 import { setPageTitle } from '@utils/adminPage';
-import { postRequest } from '@api/apiRequest';
+// import { postRequest } from '@api/apiRequest';
 
 export default {
   created() {
@@ -75,8 +75,8 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
-        const { fields } = this;
-        postRequest(this.$store, this.$router, 'venue', { ...fields });
+        // const { fields } = this;
+        // postRequest(this.$store, this.$router, 'venue', { ...fields });
       }
     },
     clear() {
