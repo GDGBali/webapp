@@ -1,15 +1,12 @@
-const createTypes = type => {
-  const BASE = `${type}`;
+const createAsyncTypes = type => {
   return {
-    BASE,
-    START: `${BASE}_START`,
-    PENDING: `${BASE}_PENDING`,
-    SUCCESS: `${BASE}_SUCCESS`,
-    FAILURE: `${BASE}_FAILURE`,
-    VERB: `${BASE}_VERB`,
+    LIST: `${type}_LIST`,
+    SINGLE: `${type}_SINGLE`,
+    PENDING: `${type}_PENDING`,
+    SUCCESS_LIST: `${type}_SUCCESS_LIST`,
+    SUCCESS_SINGLE: `${type}_SUCCESS_SINGLE`,
+    FAILURE: `${type}_FAILURE`,
   };
 };
 
-export const EVENTS_REQ = createTypes('EVENTS_REQ');
-export const EVENTS_REQ_TYPE = 'REQ_TYPE';
-export const EVENTS_REQ_START = `events/${EVENTS_REQ.START}`;
+export const EVENTS_REQ = createAsyncTypes('EVENTS_REQ');

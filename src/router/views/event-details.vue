@@ -26,6 +26,7 @@
 <script>
 import EventDetails from '@components/Events/EventDetails';
 import apiActions from '@api/apiActions';
+import { mapGetters } from 'vuex';
 
 export default {
   metaInfo: {
@@ -35,11 +36,12 @@ export default {
     EventDetails,
   },
   created() {
-    apiActions.requestSingleEvent(this);
+    apiActions.requestSingleEvent(this.$store, this.$route.params.slugUrl);
   },
   computed: {
+    ...mapGetters(['eventDetails']),
     event() {
-      return this.$store.state.events.details;
+      return this.eventDetails(this.$route.params.slugUrl);
     },
     isRequesting() {
       return this.$store.state.events.isRequesting;

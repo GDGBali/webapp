@@ -8,11 +8,16 @@
         indeterminate
       />
     </v-flex>
+    <v-flex xs12 v-else-if="events.length === 0">
+      <h1 class="text-xs-center">
+        Coming Soon
+      </h1>
+    </v-flex>
     <v-flex 
       xs12 
       sm6 
       v-for="event in events"
-      :key="event.title"
+      :key="event.id"
       v-else
     >
       <EventCard :event="event" />
@@ -29,14 +34,14 @@ export default {
     EventCard,
   },
   created() {
-    apiActions.requestFutureEvents(this);
+    apiActions.requestFutureEvents(this.$store);
   },
   data: () => ({
     show: false,
   }),
   computed: {
     events() {
-      return this.$store.state.events.future;
+      return this.$store.state.events.futureEvents;
     },
     isRequesting() {
       return this.$store.state.events.isRequesting;

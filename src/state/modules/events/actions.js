@@ -1,12 +1,16 @@
 import { EVENTS_REQ } from '@state/networkTypes';
 import request from '@api/apiRequest';
 
-const makeRequest = async (store, { endpoint, options, verb = 'GET_LIST' }) => {
-  await store.commit(EVENTS_REQ.VERB, { verb });
+const requestList = (store, { endpoint, options }) => {
+  if (store.state.cached) return;
 
   return request(store, { endpoint, options, types: EVENTS_REQ });
 };
 
+const requestSingle = (store, { endpoint, options }) =>
+  request(store, { endpoint, options, types: EVENTS_REQ });
+
 export default {
-  makeRequest,
+  [EVENTS_REQ.LIST]: requestList,
+  [EVENTS_REQ.SINGLE]: requestSingle,
 };

@@ -6,7 +6,7 @@
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
-          {{ (event.venue || {}).name }}
+          {{ (event.venue || {}).name || 'TBA' }}
         </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>

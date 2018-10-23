@@ -1,11 +1,6 @@
 <template>
   <v-container grid-list-xl>
     <v-layout wrap justify-center>
-      <v-flex xs12>
-        <div class="product-sans display-2 white--text">
-          {{ $t('events.next') }}
-        </div>
-      </v-flex>
       <v-flex shrink v-if="isRequesting">
         <v-progress-circular
           :size="60"
@@ -14,27 +9,34 @@
           indeterminate
         />
       </v-flex>
-      <v-flex xs12 v-else>
-        <v-card class="pa-3 cardContainer">
-          <v-card-title primary-title>
-            <div class="headline mb-0 product-sans">
-              {{ event.name }}
-            </div>
-            <div class="body-1 mt-3" v-html="eventDescription" />
-            <v-layout wrap>
-              <v-flex xs12>
-                <EventCardDetails :event="event" v-if="event.venue" />
-              </v-flex>
-            </v-layout>
-          </v-card-title>
-          <v-card-actions class="justify-end">
-            <v-btn :to="`/events/${event.slugUrl}`" color="primary">
-              <v-icon left>info</v-icon>
-              Details
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-flex>
+      <template v-else-if="event">
+        <v-flex xs12>
+          <div class="product-sans display-2 white--text">
+            {{ $t('events.next') }}
+          </div>
+        </v-flex>
+        <v-flex xs12>
+          <v-card class="pa-3 cardContainer">
+            <v-card-title primary-title>
+              <div class="headline mb-0 product-sans">
+                {{ event.name }}
+              </div>
+              <div class="body-1 mt-3" v-html="eventDescription" />
+              <v-layout wrap>
+                <v-flex xs12>
+                  <EventCardDetails :event="event" />
+                </v-flex>
+              </v-layout>
+            </v-card-title>
+            <v-card-actions class="justify-end">
+              <v-btn :to="`/events/${event.slugUrl}`" color="primary">
+                <v-icon left>info</v-icon>
+                Details
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </template>
     </v-layout>
   </v-container>
 </template>
@@ -42,27 +44,25 @@
 <script>
 import EventCardDetails from '@components/Events/EventCardDetails';
 import apiActions from '@api/apiActions';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
     EventCardDetails,
   },
   created() {
-    apiActions.requestFutureEvents(this);
+    apiActions.requestFutureEvents(this.$store);
   },
   computed: {
-    eventState() {
-      return this.$store.state.events.future[0] || { venue: {} };
-    },
-    event() {
-      return this.eventState;
-    },
+    ...mapGetters({
+      event: 'nextEvent',
+    }),
     isRequesting() {
       return this.$store.state.events.isRequesting;
     },
     eventDescription() {
-      return this.eventState.description
-        ? `${this.eventState.description.split('\n')[0]}.........`
+      return this.event.description
+        ? `${this.event.description.split('\n')[0]}.........`
         : '';
     },
   },

@@ -1,27 +1,35 @@
-import { EVENTS_REQ_START } from '@state/networkTypes';
+import { EVENTS_REQ } from '@state/networkTypes';
 
-const dispatchAction = (vue, types, options) => {
-  vue.$store.dispatch(types, options);
+const dispatchAction = (store, types, options) => {
+  store.dispatch(types, options);
 };
 
-const requestFutureEvents = vue => {
-  dispatchAction(vue, EVENTS_REQ_START, {
+const requestEvents = (store, { types, options }) => {
+  dispatchAction(store, types, {
     endpoint: 'events',
+    options,
+  });
+};
+
+const requestFutureEvents = store => {
+  requestEvents(store, {
+    types: EVENTS_REQ.LIST,
     options: {
       params: {
-        when: 'future',
+        filter: {
+          startsAt: 'future',
+        },
       },
     },
   });
 };
 
-const requestSingleEvent = vue => {
-  dispatchAction(vue, EVENTS_REQ_START, {
-    endpoint: 'events',
+const requestSingleEvent = (store, slugUrl) => {
+  requestEvents(store, {
+    types: EVENTS_REQ.SINGLE,
     options: {
-      id: vue.$route.params.slugUrl,
+      id: slugUrl,
     },
-    verb: 'GET_SINGLE',
   });
 };
 
