@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import formatDate from '@utils/filter';
 import Register from './Register';
 import FabOrange from './FabOrange';
 import CoverImg from './CoverImg';
@@ -71,6 +72,9 @@ export default {
     searchName: '',
     notes: [],
   }),
+  filters: {
+    date: value => formatDate(value),
+  },
 };
 </script>
 

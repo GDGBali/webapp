@@ -14,7 +14,12 @@
           <div class="subheading">
             <div class="mb-5">
               {{ $t('features.welcomeTitle') }}
-              <a href="https://developers.google.com/programs/community/gdg/" target="_blank" rel="noopener">
+              <a 
+                href="https://developers.google.com/programs/community/gdg/" 
+                target="_blank" 
+                rel="noopener" 
+                class="anchorText"
+              >
                 Google Developer Group (GDG)
               </a>,
               {{ $t('features.welcomeText') }}
@@ -31,10 +36,10 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-container style="position: relative">
-      <div>
-        <swiper :options="swiperOption">
-          <swiperSlide 
+    <v-container>
+      <div class="sliderContainer mb-3">
+        <vue-tiny-slider v-bind="tinySliderOptions">
+          <div 
             v-for="feature in features"
             :key="feature.icon"
           >
@@ -52,28 +57,56 @@
                 {{ feature.description }}
               </div>
             </div>
-          </swiperSlide>
-          <div class="swiper-button-prev" slot="button-prev" />
-          <div class="swiper-button-next" slot="button-next" />
-          <div class="swiper-pagination" slot="pagination" />
-        </swiper>
+          </div>
+        </vue-tiny-slider>
+        <div id="arrowControls">
+          <v-btn 
+            fab 
+            color="primary" 
+            absolute 
+            class="arrow leftArrow"
+          >
+            <v-icon>chevron_left</v-icon>
+          </v-btn>
+          <v-btn 
+            fab 
+            color="primary" 
+            absolute 
+            class="arrow rightArrow"
+          >
+            <v-icon>chevron_right</v-icon>
+          </v-btn>
+        </div>
       </div>
     </v-container>
   </section>
 </template>
 
 <script>
-import 'swiper/dist/css/swiper.css';
+import 'tiny-slider/src/tiny-slider.scss';
 
-import { swiper, swiperSlide } from 'vue-awesome-swiper';
+const VueTinySlider = () =>
+  import(/* webpackChunkName: "tiny-slider" */ 'vue-tiny-slider');
 
 export default {
   components: {
-    swiper,
-    swiperSlide,
+    VueTinySlider,
   },
   data() {
     return {
+      tinySliderOptions: {
+        mouseDrag: true,
+        loop: true,
+        items: 1,
+        gutter: 20,
+        swipeAngle: 45,
+        controlsContainer: '#arrowControls',
+        responsive: {
+          1024: {
+            items: 2,
+          },
+        },
+      },
       swiperOption: {
         navigation: {
           nextEl: '.swiper-button-next',
@@ -138,13 +171,35 @@ export default {
   },
 };
 </script>
-<style >
-.swiper-button-prev,
-.swiper-button-next {
-  top: 15%;
+<style lang="scss">
+.anchorText {
+  color: #00ffdf;
 }
 
-a {
-  color: #00ffdf;
+.sliderContainer {
+  position: relative;
+  #arrowControls {
+    .arrow {
+      top: 18px;
+      &.leftArrow {
+        left: 0;
+      }
+      &.rightArrow {
+        right: 0;
+      }
+
+      @media screen and (min-width: 1024px) {
+        top: 50%;
+        transform: translateY(-50%);
+
+        &.leftArrow {
+          left: -50px;
+        }
+        &.rightArrow {
+          right: -50px;
+        }
+      }
+    }
+  }
 }
 </style>

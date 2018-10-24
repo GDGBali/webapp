@@ -110,7 +110,7 @@
 <script>
 import DateTime from '@components/Forms/DateTime';
 import { setPageTitle } from '@utils/adminPage';
-import format from 'date-fns/format';
+// import format from 'date-fns/format';
 
 export default {
   components: {
@@ -123,11 +123,11 @@ export default {
     valid: true,
     name: '',
     startsAt: {
-      date: format(new Date(), 'YYYY-MM-DD'),
+      // date: format(new Date(), 'YYYY-MM-DD'),
       time: '18:00',
     },
     endsAt: {
-      date: format(new Date(), 'YYYY-MM-DD'),
+      // date: format(new Date(), 'YYYY-MM-DD'),
       time: '21:00',
     },
   }),

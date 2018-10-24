@@ -38,17 +38,4 @@ export default {
 #nprogress .bar {
   background: #009688;
 }
-
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.3s;
-}
-
-.slide-leave-active {
-  opacity: 0;
-}
-
-.slide-enter {
-  transform: translateX(100%);
-}
 </style>

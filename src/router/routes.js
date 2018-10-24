@@ -1,12 +1,6 @@
 // import store from '@state/store';
 import { getUserProfile } from '@api/apiRequest';
 
-const createBasePath = pathName => ({
-  path: `/${pathName}`,
-  name: pathName,
-  component: () => lazyLoadView(import(`@views/${pathName}`)),
-});
-
 // const adminRoutes = (path, name, component) => {
 //   return {
 //     path,
@@ -33,9 +27,28 @@ export default [
     component: () =>
       lazyLoadView(import(/* webpackChunkName: "events" */ '@views/events')),
   },
-  createBasePath('teams'),
-  createBasePath('tutorials'),
-  createBasePath('showcase'),
+  {
+    path: '/teams',
+    name: 'teams',
+    component: () =>
+      lazyLoadView(import(/* webpackChunkName: "teams" */ '@views/teams')),
+  },
+  {
+    path: '/tutorials',
+    name: 'tutorials',
+    component: () =>
+      lazyLoadView(
+        import(/* webpackChunkName: "tutorials" */ '@views/tutorials')
+      ),
+  },
+  {
+    path: '/showcase',
+    name: 'showcase',
+    component: () =>
+      lazyLoadView(
+        import(/* webpackChunkName: "showcase" */ '@views/showcase')
+      ),
+  },
   {
     path: '/events/:slugUrl',
     name: 'event-details',
@@ -47,7 +60,7 @@ export default [
   {
     path: '/profile',
     name: 'profile',
-    component: () => lazyLoadView(import('@views/profile')),
+    component: () => import(/* webpackChunkName: "profile" */ '@views/profile'),
     meta: {
       authRequired: true,
     },

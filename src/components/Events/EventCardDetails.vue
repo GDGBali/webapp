@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import formatDate from '@utils/filter';
+
 export default {
   props: {
     event: {
@@ -32,6 +34,9 @@ export default {
         venue: {},
       }),
     },
+  },
+  filters: {
+    dateTime: value => formatDate(value, true),
   },
 };
 </script>

@@ -9411,6 +9411,11 @@ lodash@^3.2.0:
   resolved "http://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
   integrity sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=
 
+lodash@^4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+  integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
+
 log-symbols@2.2.0, log-symbols@^2.0.0, log-symbols@^2.1.0, log-symbols@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
@@ -14115,6 +14120,11 @@ tiny-emitter@^2.0.0:
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
   integrity sha512-2NM0auVBGft5tee/OxP4PI3d8WItkDM+fPnaRAVo6xTDI2knbz9eC5ArWGqtGlYqiH3RU5yMpdyTTO7MguC4ow==
 
+tiny-slider@^2.8.7:
+  version "2.8.7"
+  resolved "https://registry.yarnpkg.com/tiny-slider/-/tiny-slider-2.8.7.tgz#da6b65fa197ec7d57493c248b57d3f5fd79b8239"
+  integrity sha512-fQJHj1XOXJTOP4QhJDgBL/cYCyLopXxseldEDK8zxHCpV6er7mu4Na8CdXysFfJ7y8JAqpItPxNAqI3JGjzfXg==
+
 tmp@0.0.31:
   version "0.0.31"
   resolved "https://registry.yarnpkg.com/tmp/-/tmp-0.0.31.tgz#8f38ab9438e17315e5dbd8b3657e8bfb277ae4a7"
@@ -14923,10 +14933,10 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.3.0.tgz#97976142405d13d8efae154749e88c4e358cf926"
   integrity sha512-2j/t+wIbyVMP5NvctQoSUvLkYKoWAAk2QlQiilrM2a6/ulzFgdcLUJfTvs4XQ/3eZhHiBmmEojbjmM4AzZj8JA==
 
-vue-i18n@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.0.0.tgz#ae0c6e05ec8e36151bcf5f47c7b538c8af6d0282"
-  integrity sha512-Xi4xQEhL96zqXfPcfEM8Dusqmxu2jJBR88t+KGCxT7WoeDa7YHFtN7tauf9ZJQQEKt9kT6PH1+krVMB8tnl7TA==
+vue-i18n@^8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.2.1.tgz#7e21fed5f18dec6025992522500e9bd62cbe6668"
+  integrity sha512-eiqkUBP9uoADmHa1vz0jLS/JNvR+dODjn2nz14/ZD14hTaWpbOXoUZ0C5Nd2vbP6vOaxXjmkvkzJn/VISvX1BQ==
 
 vue-jest@2.6.x, vue-jest@^2.6.0:
   version "2.6.0"
@@ -15011,6 +15021,14 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
   integrity sha512-x3LV3wdmmERhVCYy3quqA57NJW7F3i6faas++pJQWtknWT+n7k30F4TVdHvCLn48peTJFRvCpxs3UuFPqgeELg==
+
+vue-tiny-slider@^0.1.30:
+  version "0.1.30"
+  resolved "https://registry.yarnpkg.com/vue-tiny-slider/-/vue-tiny-slider-0.1.30.tgz#a84bed0073f64573abf04df48637ca20cf8d8fd8"
+  integrity sha512-IXaEdWuGl1+InrYMiJkFTMRyeL+cWPxlcXxfhvnoZnnxb3KjSb/y5FMCb1ZdsZTbnLN8+ws6fvz9Uw5tXScicg==
+  dependencies:
+    lodash "^4.17.11"
+    tiny-slider "^2.8.7"
 
 vue@^2.5.16, vue@^2.5.17:
   version "2.5.17"

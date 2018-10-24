@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import MainFooter from '@components/Footer';
-
 const NavBar = () =>
   import(/* webpackChunkName: "navbar" */ '@components/NavBar');
+
+const MainFooter = () =>
+  import(/* webpackChunkName: "footer" */ '@components/Footer');
 
 const AuthDialog = () =>
   import(/* webpackChunkName: "auth-dialog" */ '@components/Auth/AuthDialog');
