@@ -16,7 +16,8 @@
 </template>
 
 <script>
-import VueQr from 'vue-qr';
+const VueQr = () => import(/* webpackChunkName: "vue-qr" */ 'vue-qr');
+
 export default {
   components: {
     VueQr,
