@@ -4,14 +4,7 @@ import { setDefaultAuthHeaders } from './';
 const setCurrentUser = (state, { user }) => {
   state.currentUser = user;
   if (user) {
-    const { id, accessToken, expiry, name, email } = user;
-    storage.setStorage('auth.currentUser', {
-      id,
-      accessToken,
-      expiry,
-      name,
-      email,
-    });
+    storage.setStorage('auth.currentUser', { ...user });
   } else {
     storage.setStorage('auth.currentUser', null);
   }

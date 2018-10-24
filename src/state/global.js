@@ -54,7 +54,7 @@ export const actions = {
     commit(types.SET_LOCALE, payload);
     setI18nLanguage(payload);
   },
-  showSnackbar({ commit }, payload) {
+  [types.SHOW_SNACKBAR]({ commit }, payload) {
     commit(types.SHOW_SNACKBAR, payload);
   },
 };

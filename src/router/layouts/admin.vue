@@ -17,11 +17,11 @@
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <img src="https://randomuser.me/api/portraits/men/85.jpg">
+              <v-img :src="currentUser.avatarUrl" class="primary" />
             </v-list-tile-avatar>
 
             <v-list-tile-content>
-              <v-list-tile-title>Full Name</v-list-tile-title>
+              <v-list-tile-title>{{ currentUser.name }}</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
@@ -55,12 +55,15 @@
       <v-toolbar-side-icon dark="dark" @click.native.stop="drawer = !drawer" />
       <v-toolbar-title>{{ pageTitle }}</v-toolbar-title>
       <v-spacer />
+      <v-btn flat to="/">
+        home
+      </v-btn>
     </v-toolbar>
     <v-content>
       <slot />
     </v-content>
     <BaseSnackbar />
-    <BaseAuthDialog />
+    <AuthDialog />
   </v-app>
 </template>
 
@@ -68,7 +71,19 @@
 import adminItems from '@src/data/adminItems';
 import { mapState } from 'vuex';
 
+import { authComputed } from '@state/helpers';
+
+const AuthDialog = () =>
+  import(/* webpackChunkName: "auth-dialog" */ '@components/Auth/AuthDialog');
+
+const BaseSnackbar = () =>
+  import(/* webpackChunkName: "navbar" */ '@components/Base/BaseSnackbar');
+
 export default {
+  components: {
+    AuthDialog,
+    BaseSnackbar,
+  },
   data: () => ({
     dark: false,
     mini: false,
@@ -80,6 +95,7 @@ export default {
   },
   computed: {
     ...mapState('admin', ['pageTitle']),
+    ...authComputed,
   },
 };
 </script>

@@ -2,6 +2,7 @@ import Auth from '@utils/auth';
 import {
   HIDE_AUTH_DIALOG,
   SHOW_SNACKBAR,
+  HIDE_SNACKBAR,
   SET_CURRENT_USER,
 } from '@state/mutationTypes';
 import { setDefaultAuthHeaders } from './';
@@ -15,7 +16,7 @@ const googeLogin = ({ commit, rootState }, vue) => {
       globalStore.commit(SHOW_SNACKBAR, {
         titleText: 'Login Success',
         buttonText: 'dismiss',
-        onClick: () => commit('HIDE_SNACKBAR'),
+        onClick: () => commit(HIDE_SNACKBAR),
       });
 
       const { data: user } = response;

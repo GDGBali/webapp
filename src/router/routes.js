@@ -1,20 +1,54 @@
-// import store from '@state/store';
+import store from '@state/store';
 import { getUserProfile } from '@api/apiRequest';
+import { getRoles } from '@utils/ability';
+import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
-// const adminRoutes = (path, name, component) => {
-//   return {
-//     path,
-//     name,
-//     component: () => lazyLoadView(import(`@views/${component}`)),
-//     meta: {
-//       layout: require('@layouts/admin').default,
-//       authRequired: true,
-//       access: 'admin',
-//     },
-//   };
-// };
+const createAdminRoutes = (path, name, component) => {
+  return {
+    path,
+    name,
+    component: () => import(`@views/${component}`),
+    meta: {
+      layout: require('@layouts/admin').default,
+      authRequired: true,
+      access: ['superAdmin', 'admin', 'volunteer'],
+    },
+  };
+};
 
-export default [
+const adminRoutes = [
+  {
+    ...createAdminRoutes('/kelian', '', 'admin/index'),
+    beforeEnter: (to, from, next) => {
+      const { currentUser } = store.state.auth;
+      const userRole = getRoles(currentUser.rolesMask);
+      const hasAccess = to.meta.access.some(access =>
+        userRole.includes(access)
+      );
+
+      if (hasAccess) {
+        return next();
+      }
+
+      store.commit(SHOW_SNACKBAR, {
+        titleText: 'You are unauthorized, please contact us.',
+        buttonText: 'dismiss',
+        onClick: () => store.commit(HIDE_SNACKBAR),
+      });
+
+      return next(from);
+    },
+    children: [
+      createAdminRoutes('', 'adminHome', 'admin/home'),
+      createAdminRoutes('events', 'adminEvents', 'admin/events/index'),
+      createAdminRoutes('events/new', 'adminEventsNew', 'admin/events/new'),
+      createAdminRoutes('venues', 'adminVenues', 'admin/venues/index'),
+      createAdminRoutes('venues/new', 'adminVenuesNew', 'admin/venues/new'),
+    ],
+  },
+];
+
+const baseRoutes = [
   {
     path: '/',
     name: 'home',
@@ -84,6 +118,8 @@ export default [
     redirect: '404',
   },
 ];
+
+export default [...baseRoutes, ...adminRoutes];
 
 // Lazy-loads view components, but with better UX. A loading view
 // will be used if the component takes a while to load, falling

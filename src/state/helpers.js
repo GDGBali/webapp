@@ -2,8 +2,8 @@ import { mapState, mapGetters, mapActions } from 'vuex';
 import { IS_LOGGED_IN } from '@state/mutationTypes';
 
 export const authComputed = {
-  ...mapState('auth', {
-    currentUser: state => state.currentUser,
+  ...mapState({
+    currentUser: state => state.auth.currentUser,
   }),
   ...mapGetters({
     loggedIn: IS_LOGGED_IN,

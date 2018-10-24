@@ -4,7 +4,11 @@ import VueMeta from 'vue-meta';
 import NProgress from 'nprogress/nprogress';
 import store from '@state/store';
 import routes from './routes';
-import { IS_LOGGED_IN, SHOW_AUTH_DIALOG } from '@state/mutationTypes';
+import {
+  IS_LOGGED_IN,
+  SHOW_SNACKBAR,
+  HIDE_SNACKBAR,
+} from '@state/mutationTypes';
 
 NProgress.configure({ showSpinner: false });
 
@@ -42,13 +46,11 @@ router.beforeEach((routeTo, routeFrom, next) => {
       return next();
     }
 
-    if (routeTo.name === 'team-register') {
-      store.commit(SHOW_AUTH_DIALOG, {
-        titleText: 'Please Login to Continue',
-        redirectTo: routeTo,
-      });
-      return next({ name: 'teams' });
-    }
+    store.commit(SHOW_SNACKBAR, {
+      titleText: 'Please login to access.',
+      buttonText: 'dismiss',
+      onClick: () => store.commit(HIDE_SNACKBAR),
+    });
 
     return next('/');
   }

@@ -2,6 +2,7 @@
 
 import { register } from 'register-service-worker';
 import store from '@state/store';
+import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
 const updateOptions = registration => ({
   titleText: 'New content available',
@@ -13,11 +14,11 @@ const updateOptions = registration => ({
 const readyOfflineOptions = {
   titleText: 'Ready to work offline',
   buttonText: 'dismiss',
-  onClick: () => store.commit('HIDE_SNACKBAR'),
+  onClick: () => store.commit(HIDE_SNACKBAR),
 };
 
 const notifyUserUpdate = options =>
-  store.dispatch('showSnackbar', { ...options });
+  store.dispatch(SHOW_SNACKBAR, { ...options });
 
 const onNewServiceWorker = (registration, callback) => {
   if (registration.waiting) return callback();
