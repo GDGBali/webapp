@@ -20,7 +20,6 @@ export function setDefaultAuthHeaders(currentUser) {
 }
 
 export default {
-  namespaced: true,
   state,
   mutations: {
     [SET_CURRENT_USER]: mutations.setCurrentUser,
@@ -31,7 +30,7 @@ export default {
     },
   },
   actions: {
-    init: actions.init,
+    'auth/init': actions.init,
     validate: actions.validate,
     [LOGIN_START]: actions.loginStart,
     [LOGOUT]: actions.logOut,

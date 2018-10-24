@@ -12,7 +12,7 @@
         </v-layout>
       </v-container>
     </div>
-    <div v-else-if="event.error">
+    <div v-else-if="$store.state.events.error">
       <v-container fill-height>
         <v-layout align-center justify-center>
           Event not found

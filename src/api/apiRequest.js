@@ -15,29 +15,27 @@ const request = async ({ commit }, { endpoint, options, types }) => {
   commit(types.PENDING, { value: true });
 
   // const { idbStore, id } = options;
-
-  const response = await getFromNetwork(endpoint, options).catch(error => {
+  try {
+    const response = await getFromNetwork(endpoint, options);
+    const responseData = response.data;
+    if (options.id) {
+      commit(types.SUCCESS_SINGLE, { responseData });
+    } else {
+      commit(types.SUCCESS_LIST, { responseData });
+    }
+  } catch (error) {
     if (error.response) {
       commit(types.FAILURE, { error: error.response });
     }
-  });
-
-  const responseData = response.data;
-
-  if (options.id) {
-    commit(types.SUCCESS_SINGLE, { responseData });
-  } else {
-    commit(types.SUCCESS_LIST, { responseData });
+  } finally {
+    commit(types.PENDING, { value: false });
   }
-
-  commit(types.PENDING, { value: false });
 
   // await db.save(reqVerb, idbStore, responseData);
   // const data = await db.getFromLocal(reqVerb, idbStore, id);
   // commit(types.SUCCESS, { responseData: data });
 };
 
-// TECHNICAL DEBT - Refactor to vuex
 export const registerEvent = async (fields, eventId) => {
   const response = await api
     .post('/attendees', {
@@ -54,13 +52,15 @@ export const registerEvent = async (fields, eventId) => {
 };
 
 // TECHNICAL DEBT - Refactor to vuex
-export const registerVolunteer = async fields => {
+export const registerVolunteer = async ({ reasons, ...rest }) => {
   const response = await api
     .post('/volunteers', {
-      data: {
+      volunteer: {
         registeredAt: new Date(),
-        ...fields,
-        isVolunteer: true,
+        reasons,
+      },
+      user: {
+        ...rest,
       },
     })
     .catch(err => ({ error: true, err }));

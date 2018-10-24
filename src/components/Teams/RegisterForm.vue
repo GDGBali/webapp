@@ -16,9 +16,8 @@
             type="email"
             v-model="form.email"
             label="Email"
-            :error-messages="emailErrors"
-            @input="$v.form.email.$touch()"
-            @blur="$v.form.email.$touch()"
+            readonly
+            disabled
           />
         </v-flex>
         <v-flex xs12>
@@ -64,7 +63,7 @@
 <script>
 import storage from '@utils/storage';
 import { validationMixin } from 'vuelidate';
-import { required, email } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
 import { registerVolunteer } from '@api/apiRequest';
 
 export default {
@@ -83,7 +82,6 @@ export default {
   validations: {
     form: {
       name: { required },
-      email: { required, email },
       phone: { required },
       reasons: { required },
     },
@@ -103,14 +101,6 @@ export default {
       const { name } = this.$v.form;
       if (!name.$dirty) return errors;
       !name.required && errors.push('Full Name is required.');
-      return errors;
-    },
-    emailErrors() {
-      const errors = [];
-      const { email } = this.$v.form;
-      if (!email.$dirty) return errors;
-      !email.email && errors.push('Must be a valid e-mail');
-      !email.required && errors.push('E-mail is required');
       return errors;
     },
     phoneErrors() {

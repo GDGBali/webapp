@@ -61,7 +61,7 @@ export default {
   methods: {
     ...mapMutations([SHOW_AUTH_DIALOG]),
     logout() {
-      this.$store.dispatch(`auth/${LOGOUT}`);
+      this.$store.dispatch(LOGOUT);
     },
   },
   computed: {

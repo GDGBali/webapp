@@ -6,7 +6,7 @@ export const authComputed = {
     currentUser: state => state.currentUser,
   }),
   ...mapGetters({
-    loggedIn: `auth/${IS_LOGGED_IN}`,
+    loggedIn: IS_LOGGED_IN,
   }),
 };
 

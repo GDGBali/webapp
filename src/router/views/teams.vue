@@ -31,8 +31,8 @@
               <div class="d-flex">
                 <div class="socialIcon" v-for="social in person.socials" :key="`${person.name}-${social.id}`">
                   <a :href="social.url" target="_blank">
-                    <img
-                      :data-src="require(`@assets/icons/${social.id}.svg`)"
+                    <img 
+                      :src="require(`@assets/icons/${social.id}.svg`)"
                     >
                   </a>
                 </div>
@@ -102,7 +102,7 @@ export default {
   },
   methods: {
     registerEvent() {
-      const isLoggedIn = this.$store.getters[`auth/${IS_LOGGED_IN}`];
+      const isLoggedIn = this.$store.getters[IS_LOGGED_IN];
       const nextRoute = {
         name: 'teams',
       };

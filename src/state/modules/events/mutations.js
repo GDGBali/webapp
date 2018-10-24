@@ -15,10 +15,9 @@ export default {
       responseData,
     ];
   },
-  [EVENTS_REQ.FAILURE]: (state, { error }) => {
-    state.details = {
-      error: true,
-      status: error.status,
-    };
+  [EVENTS_REQ.FAILURE]: (state, { error: { status } }) => {
+    Vue.set(state, 'error', {
+      status,
+    });
   },
 };

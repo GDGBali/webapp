@@ -38,7 +38,7 @@ router.beforeEach((routeTo, routeFrom, next) => {
   redirectTo();
 
   function redirectTo() {
-    if (store.getters[`auth/${IS_LOGGED_IN}`]) {
+    if (store.getters[IS_LOGGED_IN]) {
       return next();
     }
 

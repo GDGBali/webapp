@@ -47,6 +47,8 @@
                   :error-messages="emailErrors"
                   @input="$v.form.email.$touch()"
                   @blur="$v.form.email.$touch()"
+                  :readonly="loggedIn"
+                  :disabled="loggedIn"
                 />
               </v-flex>
               <v-flex xs12>
