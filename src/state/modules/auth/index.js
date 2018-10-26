@@ -11,6 +11,7 @@ import {
 
 const state = {
   currentUser: storage.getStorage('auth.currentUser'),
+  ability: null,
 };
 
 export function setDefaultAuthHeaders(currentUser) {
@@ -30,7 +31,7 @@ export default {
     },
   },
   actions: {
-    'auth/init': actions.init,
+    initAuth: actions.init,
     validate: actions.validate,
     [LOGIN_START]: actions.loginStart,
     [LOGOUT]: actions.logOut,

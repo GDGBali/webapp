@@ -1030,6 +1030,11 @@
   dependencies:
     sift "^7.0.1"
 
+"@casl/vue@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@casl/vue/-/vue-0.4.3.tgz#db212759a7b1ed05e2cd57d27b6f6cbee28645e5"
+  integrity sha512-6rI8Ot98aKPbeAqtQuuxvnsE4itQmyfnt2SNlqhWg0lm4tvQZBrPCKq0gM/9bWBPsH1AS43gwKPnsyen08KYmQ==
+
 "@cypress/listr-verbose-renderer@0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@cypress/listr-verbose-renderer/-/listr-verbose-renderer-0.4.1.tgz#a77492f4b11dcc7c446a34b3e28721afd33c642a"

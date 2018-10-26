@@ -27,22 +27,27 @@
         </v-list>
       </v-toolbar>
       <v-divider />
+      <div v-if="$can('manage', 'all')">
+        <h1>hello</h1>
+      </div>
       <v-list dense="dense">
-        <template v-for="(item) in menus">
-          <v-list-tile
-            :to="`/kelian${item.href}`" 
-            router="router" 
-            ripple="ripple"
-            :key="item.title"
-            exact
-          >
-            <v-list-tile-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+        <template v-if="!$can('manage', 'all')">
+          <template v-for="(item) in menus">
+            <v-list-tile
+              :to="`/kelian${item.href}`" 
+              router="router" 
+              ripple="ripple"
+              :key="item.title"
+              exact
+            >
+              <v-list-tile-action>
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </template>
         </template>
       </v-list>
     </v-navigation-drawer>

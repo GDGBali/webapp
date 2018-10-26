@@ -5,7 +5,6 @@ import {
   HIDE_SNACKBAR,
   SET_CURRENT_USER,
 } from '@state/mutationTypes';
-import { setDefaultAuthHeaders } from './';
 
 const googeLogin = ({ commit, rootState }, vue) => {
   const globalStore = vue.$store;
@@ -39,8 +38,8 @@ const googeLogin = ({ commit, rootState }, vue) => {
   );
 };
 
-const init = ({ state: { currentUser }, dispatch }) => {
-  setDefaultAuthHeaders(currentUser);
+const init = ({ state: { currentUser }, commit }) => {
+  commit(SET_CURRENT_USER, { user: currentUser });
   // dispatch('validate');
 };
 

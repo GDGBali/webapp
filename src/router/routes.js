@@ -3,7 +3,8 @@ import { getUserProfile } from '@api/apiRequest';
 import { getRoles } from '@utils/ability';
 import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
-const createAdminRoutes = (path, name, component) => {
+const createAdminRoutes = (path, name, component, access = ['superAdmin']) => {
+  console.log(access);
   return {
     path,
     name,
@@ -11,14 +12,18 @@ const createAdminRoutes = (path, name, component) => {
     meta: {
       layout: require('@layouts/admin').default,
       authRequired: true,
-      access: ['superAdmin', 'admin', 'volunteer'],
+      access,
     },
   };
 };
 
 const adminRoutes = [
   {
-    ...createAdminRoutes('/kelian', '', 'admin/index'),
+    ...createAdminRoutes('/kelian', '', 'admin/index', [
+      'superAdmin',
+      'admin',
+      'volunteer',
+    ]),
     beforeEnter: (to, from, next) => {
       const { currentUser } = store.state.auth;
       const userRole = getRoles(currentUser.rolesMask);
@@ -39,7 +44,6 @@ const adminRoutes = [
       return next(from);
     },
     children: [
-      createAdminRoutes('', 'adminHome', 'admin/home'),
       createAdminRoutes('events', 'adminEvents', 'admin/events/index'),
       createAdminRoutes('events/new', 'adminEventsNew', 'admin/events/new'),
       createAdminRoutes('venues', 'adminVenues', 'admin/venues/index'),

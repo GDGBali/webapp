@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@casl/ability": "^2.5.0",
+    "@casl/vue": "^0.4.3",
     "axios": "0.18.0",
     "date-fns": "^1.29.0",
     "idb": "^2.1.3",
