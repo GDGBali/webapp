@@ -1,5 +1,5 @@
 <template>
-  <ResourceList title="Venues" add-href="/kelian/venues/new" />
+  <ResourceList title="Venues" add-href="/kelian/venues/new" :list="venuesList" />
 </template>
 
 <script>
@@ -12,6 +12,12 @@ export default {
   },
   created() {
     setPageTitle(this, 'Venues');
+    this.$store.dispatch('admin/FETCH_VENUES');
+  },
+  computed: {
+    venuesList() {
+      return this.$store.state.admin.venues.list;
+    },
   },
 };
 </script>

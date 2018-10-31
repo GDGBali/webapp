@@ -4,7 +4,6 @@ import { getRoles } from '@utils/ability';
 import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
 const createAdminRoutes = (path, name, component, access = ['superAdmin']) => {
-  console.log(access);
   return {
     path,
     name,

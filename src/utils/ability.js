@@ -21,6 +21,10 @@ export const defineAbilitiesFor = rolesMask => {
       allow('manage', 'all');
     }
 
+    if (hasAccess(['admin', 'volunteer'])) {
+      allow('read', 'admin');
+    }
+
     if (hasAccess(['volunteer'])) {
       allow('read', 'events');
     }

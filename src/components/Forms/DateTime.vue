@@ -22,13 +22,15 @@
       v-if="pickerType === 'date'"
       v-model="valueModel" 
       first-day-of-week="1" 
-      scrollable 
+      :min="min"
+      scrollable
       @input="updateValue(menuRef)"
     />
     <v-time-picker
       v-else
       v-model="valueModel"
       full-width
+      :min="min"
       format="24hr"
       @change="updateValue(menuRef)"
     />
@@ -51,6 +53,10 @@ export default {
       default: 'date',
     },
     pickerValue: {
+      type: String,
+      default: '',
+    },
+    min: {
       type: String,
       default: '',
     },

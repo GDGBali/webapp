@@ -1,67 +1,75 @@
 <template>
-  <v-flex xs12>
-    <div 
-      class="product-sans mb-5"
-      :class="[isMobile ? 'display-1' : 'display-2']"
-    >
-      Schedule
-    </div>
-    
-    <v-layout wrap v-if="sessions.length !== 0">
-      <v-flex
-        v-for="session in schedules"
-        :key="session.id"
-        xs12
-        class="mt-5"
-      >
-        <v-layout wrap>
-          <v-flex
-            xs1
-            class="product-sans "
-            :class="[isMobile ? 'headline' : 'display-1']"
+  <v-card>
+    <v-container>
+      <v-layout>
+        <v-flex xs12>
+          <div 
+            class="product-sans mb-5"
+            :class="[isMobile ? 'display-1' : 'display-2']"
           >
-            <span>
-              {{ session.hours }}
-            </span>
-            <span class="subheading">
-              {{ session.minutes }}
-            </span>
-          </v-flex>
-          <v-flex
-            class="subSession pa-4" 
-            v-for="(subSession) in session.subSessions" 
-            :key="subSession.id"
-          >
-            <v-layout 
-              column 
-              fill-height
-              justify-space-between
+            Schedule
+          </div>
+          
+          <v-layout wrap v-if="sessions.length !== 0">
+            <v-flex
+              v-for="session in schedules"
+              :key="session.id"
+              xs12
+              class="mt-5"
             >
-              <div class="title product-sans mb-3">
-                {{ subSession.name }}
-              </div>
-              <div class="subheading mb-auto">
-                {{ subSession.duration }} minutes
-              </div>
-              <div class="subheading" v-if="subSession.user">
-                <v-avatar>
-                  <img :data-src="userAvatar(subSession.user.avatarUrl)" alt="">
-                </v-avatar>
-                <span class="ml-3">
-                  {{ subSession.user.fullName }}
-                </span>
-              </div>
-            </v-layout>
-          </v-flex>
-        </v-layout>
-      </v-flex>
-    </v-layout>
-    <v-layout v-else>
-      <div :class="[isMobile ? 'display-1' : 'display-2']">
-        TBA
-      </div>
-    </v-layout>
-  </v-flex>
+              <v-layout wrap>
+                <v-flex
+                  xs1
+                  class="product-sans "
+                  :class="[isMobile ? 'headline' : 'display-1']"
+                >
+                  <span>
+                    {{ session.hours }}
+                  </span>
+                  <span class="subheading">
+                    {{ session.minutes }}
+                  </span>
+                </v-flex>
+                <v-flex
+                  class="subSession pa-4" 
+                  v-for="(subSession) in session.subSessions" 
+                  :key="subSession.id"
+                >
+                  <v-layout 
+                    column 
+                    fill-height
+                    justify-space-between
+                  >
+                    <div class="title product-sans mb-3">
+                      {{ subSession.name }}
+                    </div>
+                    <div class="subheading mb-auto">
+                      {{ subSession.duration }} minutes
+                    </div>
+                    <div class="subheading" v-if="subSession.users">
+                      <div v-for="user in subSession.users" :key="`user-${user.id}`">
+                        <v-avatar>
+                          <img :src="userAvatar(user.avatarUrl)" alt="">
+                        </v-avatar>
+                        <span class="ml-3">
+                          {{ user.name }}
+                        </span>
+                      </div>
+                    </div>
+                  </v-layout>
+                </v-flex>
+              </v-layout>
+            </v-flex>
+          </v-layout>
+          <v-layout v-else>
+            <div :class="[isMobile ? 'display-1' : 'display-2']">
+              TBA
+            </div>
+          </v-layout>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-card>
 </template>
 
 <script>

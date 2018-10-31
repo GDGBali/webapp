@@ -1,4 +1,5 @@
 import Vue from 'vue';
+
 import { EVENTS_REQ } from '@state/networkTypes';
 
 export default {
@@ -6,12 +7,11 @@ export default {
     Vue.set(state, 'isRequesting', value);
   },
   [EVENTS_REQ.SUCCESS_LIST]: (state, { responseData }) => {
-    state.futureEvents = responseData;
-    state.cached = true;
+    state.list = responseData;
   },
   [EVENTS_REQ.SUCCESS_SINGLE]: (state, { responseData }) => {
-    state.futureEvents = [
-      ...state.futureEvents.filter(event => event.id !== responseData.id),
+    state.list = [
+      ...state.list.filter(event => event.id !== responseData.id),
       responseData,
     ];
   },

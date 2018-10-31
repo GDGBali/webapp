@@ -10,3 +10,4 @@ const createAsyncTypes = type => {
 };
 
 export const EVENTS_REQ = createAsyncTypes('EVENTS_REQ');
+export const VENUES_REQ = createAsyncTypes('VENUES_REQ');

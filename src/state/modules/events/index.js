@@ -3,11 +3,7 @@ import getters from './getters';
 import mutations from './mutations';
 
 const state = {
-  details: {
-    venue: {},
-    sessions: [],
-  },
-  futureEvents: [],
+  list: [],
   cached: false,
 };
 

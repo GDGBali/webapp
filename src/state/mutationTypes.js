@@ -15,3 +15,7 @@ export const IS_LOGGED_IN = 'IS_LOGGED_IN';
 
 // Admin Types
 export const SET_ADMIN_TITLE = 'SET_ADMIN_TITLE';
+export const NEW_VENUE = 'NEW_VENUE';
+export const FETCH_VENUES = 'FETCH_VENUES';
+export const NEW_EVENT = 'NEW_EVENT';
+export const FETCH_EVENTS = 'FETCH_EVENTS';

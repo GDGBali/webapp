@@ -31,7 +31,7 @@
         <h1>hello</h1>
       </div>
       <v-list dense="dense">
-        <template v-if="!$can('manage', 'all')">
+        <template v-if="$can('manage', 'all')">
           <template v-for="(item) in menus">
             <v-list-tile
               :to="`/kelian${item.href}`" 

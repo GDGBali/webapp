@@ -31,15 +31,22 @@
         align-center
       >
         <v-flex xs12 text-xs-center>
+          <div class="py-1" v-if="$can('read', 'admin')">
+            <v-btn color="secondary" to="/kelian" block>
+              <v-icon left>developer_mode</v-icon>
+              Admin
+            </v-btn>
+          </div>
+          <v-divider />
           <div class="py-1">
-            <v-btn color="primary" @click="$router.push('/profile')">
+            <v-btn color="primary" to="/profile" block>
               <v-icon left>account_circle</v-icon>
               Profile
             </v-btn>
           </div>
           <v-divider />
           <div class="py-1">
-            <v-btn color="error" @click="logout">
+            <v-btn color="error" @click="logout" block>
               <v-icon left>power_settings_new</v-icon>
               Logout
             </v-btn>

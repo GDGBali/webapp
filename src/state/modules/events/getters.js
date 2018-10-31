@@ -1,5 +1,6 @@
 export default {
-  nextEvent: state => state.futureEvents[0],
+  nextEvent: state => state.list[0],
   eventDetails: state => slugUrl =>
-    state.futureEvents.find(event => event.slugUrl === slugUrl),
+    state.list.find(event => event.slugUrl === slugUrl),
+  eventSpeakers: () => event => event.speakers,
 };

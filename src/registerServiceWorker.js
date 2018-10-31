@@ -36,21 +36,21 @@ const onNewServiceWorker = (registration, callback) => {
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
-      console.log(
+      console.debug(
         'App is being served from cache by a service worker.\n' +
           'For more details, visit https://goo.gl/AFskqB'
       );
     },
     cached() {
-      console.log('Content has been cached for offline use.');
+      console.debug('Content has been cached for offline use.');
       notifyUserUpdate(readyOfflineOptions);
     },
     updated(registration) {
-      console.log('New content is available; please refresh.');
+      console.debug('New content is available; please refresh.');
       notifyUserUpdate(updateOptions(registration));
     },
     offline() {
-      console.log(
+      console.debug(
         'No internet connection found. App is running in offline mode.'
       );
     },

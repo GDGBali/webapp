@@ -30,14 +30,24 @@
               />
             </v-flex>
             <v-flex xs12>
-              <v-text-field
-                v-model="fields.logoUrl"
-                label="Logo URL"
-              />
+              <v-btn raised class="primary ma-0 mt-3" @click="onPickFile">
+                Logo Image
+              </v-btn>
+              <input
+                type="file"
+                style="display: none"
+                ref="logoInput"
+                accept="image/*"
+                @change="onFilePicked"
+              >
+              <div class="mt-4">
+                <img :src="fields.logoUrl" height="150">
+              </div>
             </v-flex>
-            <div class="mt-3">
+            <div class="mt-3 ml-auto">
               <v-btn
-                :disabled="!valid"
+                :loading="isSubmitting"
+                :disabled="isSubmitting"
                 @click="submit"
                 color="primary"
               >
@@ -56,28 +66,51 @@
 
 <script>
 import { setPageTitle } from '@utils/adminPage';
-// import { postRequest } from '@api/apiRequest';
 
 export default {
   created() {
     setPageTitle(this, 'New Venue');
   },
   data: () => ({
-    valid: true,
+    valid: false,
+    isSubmitting: false,
     fields: {
       name: '',
       mapsUrl: '',
       websiteUrl: '',
       logoUrl: '',
+      logo: null,
     },
   }),
 
   methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        // const { fields } = this;
-        // postRequest(this.$store, this.$router, 'venue', { ...fields });
+    onPickFile() {
+      this.$refs.logoInput.click();
+    },
+    onFilePicked(event) {
+      const [logoFile] = event.target.files;
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load', () => {
+        this.fields.logoUrl = fileReader.result;
+      });
+      if (logoFile) {
+        fileReader.readAsDataURL(logoFile);
+        this.fields.logo = logoFile;
       }
+    },
+    async submit() {
+      const {
+        fields: { logo, name, mapsUrl, websiteUrl },
+      } = this;
+      const formFields = new FormData();
+      formFields.append('logoImg', logo);
+      formFields.append('name', name);
+      formFields.append('mapsUrl', mapsUrl);
+      formFields.append('websiteUrl', websiteUrl);
+      this.isSubmitting = true;
+      await this.$store.dispatch('admin/NEW_VENUE', formFields);
+
+      this.isSubmitting = false;
     },
     clear() {
       this.$refs.form.reset();

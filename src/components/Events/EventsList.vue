@@ -41,7 +41,7 @@ export default {
   }),
   computed: {
     events() {
-      return this.$store.state.events.futureEvents;
+      return this.$store.state.events.list;
     },
     isRequesting() {
       return this.$store.state.events.isRequesting;
