@@ -139,8 +139,6 @@ export default {
 .description {
   max-width: 670px;
   margin: 0 auto;
-  text-align: center;
-  white-space: pre-line;
 
   >>> a {
     color: #00ffdf;

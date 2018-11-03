@@ -3,7 +3,7 @@
     <v-container grid-list-xl class="my-5">
       <v-layout wrap>
         <v-flex
-          xs12 
+          xs6
           sm3
           v-for="speaker in speakers" 
           :key="`speaker-${speaker.id}`"
@@ -16,10 +16,10 @@
                 class="primary"
               />
             </v-avatar>
-            <div class="product-sans headline mt-3">
+            <div class="product-sans subheading mt-3">
               {{ speaker.name }}
             </div>
-            <div class="title mt-2">
+            <div class="caption">
               {{ speaker.institution }}
             </div>
           </div>

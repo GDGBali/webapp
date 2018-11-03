@@ -19,43 +19,55 @@
             >
               <v-layout wrap>
                 <v-flex
-                  xs1
+                  xs12
+                  md2
                   class="product-sans "
                   :class="[isMobile ? 'headline' : 'display-1']"
                 >
-                  <span>
-                    {{ session.hours }}
-                  </span>
-                  <span class="subheading">
-                    {{ session.minutes }}
-                  </span>
+                  <div class="text-md-right pr-3 mb-2">
+                    {{ session.hours }}<span class="subheading">
+                      {{ session.minutes }}
+                    </span>
+                  </div>
                 </v-flex>
                 <v-flex
-                  class="subSession pa-4" 
-                  v-for="(subSession) in session.subSessions" 
-                  :key="subSession.id"
+                  xs12
+                  md10
                 >
-                  <v-layout 
-                    column 
-                    fill-height
-                    justify-space-between
-                  >
-                    <div class="title product-sans mb-3">
-                      {{ subSession.name }}
-                    </div>
-                    <div class="subheading mb-auto">
-                      {{ subSession.duration }} minutes
-                    </div>
-                    <div class="subheading" v-if="subSession.users">
-                      <div v-for="user in subSession.users" :key="`user-${user.id}`">
-                        <v-avatar>
-                          <img :src="userAvatar(user.avatarUrl)" alt="">
-                        </v-avatar>
-                        <span class="ml-3">
-                          {{ user.name }}
-                        </span>
-                      </div>
-                    </div>
+                  <v-layout wrap>
+                    <v-flex
+                      xs12
+                      class="subSession pa-4" 
+                      v-for="(subSession) in session.subSessions" 
+                      :key="subSession.id"
+                    >
+                      <v-layout 
+                        column 
+                        fill-height
+                        justify-space-between
+                      >
+                        <div class="title product-sans mb-3">
+                          {{ subSession.name }}
+                        </div>
+                        <div class="subheading mb-auto">
+                          {{ subSession.duration }} minutes
+                        </div>
+                        <template v-if="subSession.users">
+                          <div class="subheading" v-for="user in subSession.users" :key="`user-${user.id}`">
+                            <v-avatar>
+                              <v-img
+                                :src="userAvatar(user.avatarUrl)"
+                                aspect-ratio="1"
+                                class="primary"
+                              />
+                            </v-avatar>
+                            <span class="ml-3">
+                              {{ user.name }}
+                            </span>
+                          </div>
+                        </template>
+                      </v-layout>
+                    </v-flex>
                   </v-layout>
                 </v-flex>
               </v-layout>
