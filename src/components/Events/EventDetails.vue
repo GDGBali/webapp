@@ -6,11 +6,11 @@
         <v-layout wrap justify-center>
           <v-flex xs12 sm9>
             <v-layout wrap v-if="event.startsAt">
-              <FabOrange icon="event">
+              <FabOrange icon="event" :href="calendarUrl">
                 {{ event.startsAt | date }}
               </FabOrange>
-              <FabOrange icon="directions">
-                {{ (event.venue || {}).name || 'TBA' }}
+              <FabOrange icon="directions" :href="venue.mapsUrl">
+                {{ venue.name || 'TBA' }}
               </FabOrange>
             </v-layout>
             <v-layout wrap v-else>
@@ -103,6 +103,30 @@ export default {
     ...mapGetters(['eventSpeakers']),
     speakers() {
       return this.eventSpeakers(this.event);
+    },
+    calendarUrl() {
+      const { name, startsAt, endsAt, slugUrl } = this.event;
+
+      if (!startsAt) {
+        return '';
+      }
+
+      const formatDate = date =>
+        date.toISOString().replace(/\.[0-9]{3}|-|:/g, '');
+      const startDate = formatDate(new Date(startsAt));
+      const endDate = formatDate(new Date(endsAt));
+
+      const eventName = name.replace(/ /g, '+');
+      const venueName = this.venue.name
+        ? this.venue.name.replace(/ /g, '+')
+        : '';
+
+      const url = `https://calendar.google.com/calendar/r/eventedit?text=${eventName}&dates=${startDate}/${endDate}&details=https://gdgbali.com/events/${slugUrl}&location=${venueName}`;
+
+      return url;
+    },
+    venue() {
+      return this.event.venue || {};
     },
   },
   filters: {

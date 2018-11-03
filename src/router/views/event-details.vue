@@ -29,8 +29,10 @@ import apiActions from '@api/apiActions';
 import { mapGetters } from 'vuex';
 
 export default {
-  metaInfo: {
-    title: 'Events',
+  metaInfo() {
+    return {
+      title: (this.event || {}).name,
+    };
   },
   components: {
     EventDetails,

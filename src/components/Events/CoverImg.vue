@@ -1,7 +1,7 @@
 <template>
   <v-img
-    :src="imgSrc"
-    :lazy-src="require('@assets/images/sangkep_blur.jpg')"
+    :src="imgSrc ? imgSrc : placeholderImg"
+    :lazy-src="placeholderImg"
     height="400"
     aspect-ratio="2.75"
   >
@@ -50,6 +50,9 @@ export default {
   computed: {
     isMobile() {
       return this.$vuetify.breakpoint.xsOnly;
+    },
+    placeholderImg() {
+      return require('@assets/images/sangkep_blur.jpg');
     },
   },
 };
