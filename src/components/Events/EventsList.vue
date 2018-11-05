@@ -27,21 +27,29 @@
 
 <script>
 import EventCard from './EventCard';
-import apiActions from '@api/apiActions';
+import { FETCH_MULTI_EVENT } from '@state/networkTypes';
 
 export default {
   components: {
     EventCard,
   },
+  props: {
+    startsAt: {
+      type: String,
+      default: '',
+    },
+  },
   created() {
-    apiActions.requestFutureEvents(this.$store);
+    const { startsAt } = this;
+    this.$store.dispatch(FETCH_MULTI_EVENT, { startsAt });
   },
   data: () => ({
     show: false,
   }),
   computed: {
     events() {
-      return this.$store.state.events.list;
+      const { events } = this.$store.state;
+      return this.startsAt === 'future' ? events.future : events.past;
     },
     isRequesting() {
       return this.$store.state.events.isRequesting;

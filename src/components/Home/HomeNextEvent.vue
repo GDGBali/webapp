@@ -21,13 +21,12 @@
               <div class="headline mb-0 product-sans">
                 {{ event.name }}
               </div>
-              <div class="body-1 mt-3" v-html="eventDescription" />
-              <v-layout wrap>
-                <v-flex xs12>
-                  <EventCardDetails :event="event" />
-                </v-flex>
-              </v-layout>
             </v-card-title>
+            <v-layout wrap>
+              <v-flex xs12>
+                <EventCardDetails :event="event" />
+              </v-flex>
+            </v-layout>
             <v-card-actions class="justify-end">
               <v-btn :to="`/events/${event.slugUrl}`" color="primary">
                 <v-icon left>info</v-icon>
@@ -43,7 +42,7 @@
 
 <script>
 import EventCardDetails from '@components/Events/EventCardDetails';
-import apiActions from '@api/apiActions';
+import { FETCH_MULTI_EVENT } from '@state/networkTypes';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -51,7 +50,7 @@ export default {
     EventCardDetails,
   },
   created() {
-    apiActions.requestFutureEvents(this.$store);
+    this.$store.dispatch(FETCH_MULTI_EVENT, { startsAt: 'future' });
   },
   computed: {
     ...mapGetters({
@@ -59,11 +58,6 @@ export default {
     }),
     isRequesting() {
       return this.$store.state.events.isRequesting;
-    },
-    eventDescription() {
-      return this.event.description
-        ? `${this.event.description.split('\n')[0]}.........`
-        : '';
     },
   },
 };

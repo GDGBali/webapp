@@ -25,8 +25,7 @@
 
 <script>
 import EventDetails from '@components/Events/EventDetails';
-import apiActions from '@api/apiActions';
-import { mapGetters } from 'vuex';
+import { FETCH_SINGLE_EVENT } from '@state/networkTypes';
 
 export default {
   metaInfo() {
@@ -38,12 +37,12 @@ export default {
     EventDetails,
   },
   created() {
-    apiActions.requestSingleEvent(this.$store, this.$route.params.slugUrl);
+    const { slugUrl } = this.$route.params;
+    this.$store.dispatch(FETCH_SINGLE_EVENT, { slugUrl });
   },
   computed: {
-    ...mapGetters(['eventDetails']),
     event() {
-      return this.eventDetails(this.$route.params.slugUrl);
+      return this.$store.state.events.singleEvent;
     },
     isRequesting() {
       return this.$store.state.events.isRequesting;

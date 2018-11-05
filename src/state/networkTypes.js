@@ -1,13 +1,5 @@
-const createAsyncTypes = type => {
-  return {
-    LIST: `${type}_LIST`,
-    SINGLE: `${type}_SINGLE`,
-    PENDING: `${type}_PENDING`,
-    SUCCESS_LIST: `${type}_SUCCESS_LIST`,
-    SUCCESS_SINGLE: `${type}_SUCCESS_SINGLE`,
-    FAILURE: `${type}_FAILURE`,
-  };
-};
-
-export const EVENTS_REQ = createAsyncTypes('EVENTS_REQ');
-export const VENUES_REQ = createAsyncTypes('VENUES_REQ');
+export const FETCH_SINGLE_EVENT = 'FETCH_SINGLE_EVENT';
+export const FETCH_MULTI_EVENT = 'FETCH_MULTI_EVENT';
+export const FETCH_EVENTS_PENDING = 'FETCH_EVENTS_PENDING';
+export const FETCH_EVENTS_SUCCESS = 'FETCH_EVENTS_SUCCESS';
+export const FETCH_EVENTS_FAILURE = 'FETCH_EVENTS_FAILURE';

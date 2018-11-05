@@ -1,23 +1,23 @@
-import Vue from 'vue';
-
-import { EVENTS_REQ } from '@state/networkTypes';
+import {
+  FETCH_EVENTS_PENDING,
+  FETCH_EVENTS_FAILURE,
+  FETCH_EVENTS_SUCCESS,
+} from '@state/networkTypes';
 
 export default {
-  [EVENTS_REQ.PENDING]: (state, { value }) => {
-    Vue.set(state, 'isRequesting', value);
+  [FETCH_EVENTS_PENDING]: (state, { value }) => {
+    state.isRequesting = value;
   },
-  [EVENTS_REQ.SUCCESS_LIST]: (state, { responseData }) => {
-    state.list = responseData;
+  [FETCH_EVENTS_SUCCESS]: (state, { isSingle, isFuture, responseData }) => {
+    if (isSingle) {
+      state.singleEvent = responseData;
+    } else if (isFuture) {
+      state.future = responseData;
+    } else {
+      state.past = responseData;
+    }
   },
-  [EVENTS_REQ.SUCCESS_SINGLE]: (state, { responseData }) => {
-    state.list = [
-      ...state.list.filter(event => event.id !== responseData.id),
-      responseData,
-    ];
-  },
-  [EVENTS_REQ.FAILURE]: (state, { error: { status } }) => {
-    Vue.set(state, 'error', {
-      status,
-    });
+  [FETCH_EVENTS_FAILURE]: (state, { error }) => {
+    state.error = error;
   },
 };

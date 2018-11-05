@@ -37,10 +37,7 @@
 
     <v-slide-y-transition>
       <div v-show="show">
-        <v-card-text v-show="show" class="description">
-          <div v-html="eventDescription" />
-          <EventCardDetails v-if="event.startsAt" :event="event" />
-        </v-card-text>
+        <EventCardDetails v-if="event.startsAt" :event="event" />
       </div>
     </v-slide-y-transition>
   </v-card>
@@ -62,20 +59,11 @@ export default {
   data: () => ({
     show: false,
   }),
-  computed: {
-    eventDescription() {
-      return this.event.description.split('\n')[0] + '.........';
-    },
-  },
 };
 </script>
 <style lang="stylus" scoped>
 .cardContainer {
   background: #eaeaea;
   box-shadow: 2px -1px 7px 0 rgba(57, 204, 204, 1), -2px 3px 8px 0 rgba(34, 122, 122, 1);
-}
-
-.description {
-  white-space: pre-line;
 }
 </style>
