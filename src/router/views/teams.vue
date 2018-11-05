@@ -45,38 +45,39 @@
     <div class="text-xs-center">
       <hr class="divider">
     </div>
-    <section id="volunteers">
+    <section>
       <v-container>
         <v-layout justify-center>
           <v-flex xs12 sm7>
             <div class="display-1 product-sans text-xs-center mb-4">
-              Volunteers
+              Join Us
             </div>
             <div class="subheading text-xs-center">
-              Life is not accumulation, it is about contribution.
+              Life is not about accumulation, it is about contribution.
               <br>
               <br>
               Sudah saatnya kamu ikut berkontribusi menjadi bagian dari Google Developer Group Bali! 
-              Jika kamu mempunyai visi untuk ikut mengembangkan ekosistem developer di Bali, mari ikut bersama kami menjadi relawan dalam event - event GDG Bali selanjutnya!
-            </div>
-            <div class="mt-5 text-xs-center">
-              <v-btn color="primary" large @click="registerEvent">
-                Join as a volunteer
-              </v-btn>
+              Jika kamu mempunyai visi untuk ikut mengembangkan ekosistem developer di Bali, 
+              mari ikut bersama kami dengan menjadi bagian dari pergerakan ini!
             </div>
           </v-flex>
         </v-layout>
       </v-container>
     </section>
-    <RegisterDialog :register-dialog.sync="registerDialog" />
+    <SubmissionDialog
+      form-title="Team Submission"
+      button-text="Join Us"
+      dialog-title="Join Our Team!"
+      submission-type="teams"
+      reasons-text="Alasan ingin bergabung"
+    />
   </div>
 </template>
 
 <script>
-import RegisterDialog from '@components/Teams/RegisterDialog';
+import SubmissionDialog from '@components/Submissions/Dialog';
 import appConfig from '@src/app.config';
 import teams from '@src/data/teams';
-import { IS_LOGGED_IN, SHOW_AUTH_DIALOG } from '@state/mutationTypes';
 
 export default {
   metaInfo: {
@@ -84,38 +85,11 @@ export default {
     meta: [{ name: 'description', content: appConfig.description }],
   },
   components: {
-    RegisterDialog,
+    SubmissionDialog,
   },
   data: () => ({
     teams: teams,
-    registerDialog: false,
   }),
-  mounted() {
-    const { hash } = this.$route;
-
-    if (hash) {
-      const el = document.getElementById('volunteers');
-      setTimeout(() => {
-        window.scrollTo(0, el.offsetTop);
-      }, 500);
-    }
-  },
-  methods: {
-    registerEvent() {
-      const isLoggedIn = this.$store.getters[IS_LOGGED_IN];
-      const nextRoute = {
-        name: 'teams',
-      };
-      if (isLoggedIn) {
-        this.registerDialog = true;
-      } else {
-        this.$store.commit(SHOW_AUTH_DIALOG, {
-          titleText: 'Please Login to Continue',
-          redirectTo: nextRoute,
-        });
-      }
-    },
-  },
 };
 </script>
 

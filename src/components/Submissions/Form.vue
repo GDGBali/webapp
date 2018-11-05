@@ -6,9 +6,8 @@
           <v-text-field
             v-model="form.name"
             label="Full Name"
-            :error-messages="nameErrors"
-            @input="$v.form.name.$touch()"
-            @blur="$v.form.name.$touch()"
+            readonly
+            disabled
           />
         </v-flex>
         <v-flex xs12>
@@ -25,15 +24,14 @@
             type="tel"
             v-model="form.phone"
             label="Phone"
-            :error-messages="phoneErrors"
-            @input="$v.form.phone.$touch()"
-            @blur="$v.form.phone.$touch()"
+            readonly
+            disabled
           />
         </v-flex>
         <v-flex xs12>
           <v-textarea
             v-model="form.reasons"
-            label="Alasan ingin menjadi volunteer"
+            :label="reasonsText"
             :error-messages="reasonsErrors"
             @input="$v.form.reasons.$touch()"
             @blur="$v.form.reasons.$touch()"
@@ -64,25 +62,28 @@
 import storage from '@utils/storage';
 import { validationMixin } from 'vuelidate';
 import { required } from 'vuelidate/lib/validators';
-import { registerVolunteer } from '@api/apiRequest';
+import { postSubmission } from '@api/apiRequest';
 
 export default {
   props: {
-    success: {
-      type: Boolean,
-      default: false,
+    submissionType: {
+      type: String,
+      default: '',
+    },
+    reasonsText: {
+      type: String,
+      default: '',
     },
   },
   mounted() {
-    const { name, email } = storage.getStorage('auth.currentUser');
+    const { name, email, phone } = storage.getStorage('auth.currentUser');
     this.form.name = name;
     this.form.email = email;
+    this.form.phone = phone;
   },
   mixins: [validationMixin],
   validations: {
     form: {
-      name: { required },
-      phone: { required },
       reasons: { required },
     },
   },
@@ -96,20 +97,6 @@ export default {
     },
   }),
   computed: {
-    nameErrors() {
-      const errors = [];
-      const { name } = this.$v.form;
-      if (!name.$dirty) return errors;
-      !name.required && errors.push('Full Name is required.');
-      return errors;
-    },
-    phoneErrors() {
-      const errors = [];
-      const { phone } = this.$v.form;
-      if (!phone.$dirty) return errors;
-      !phone.required && errors.push('Phone is required');
-      return errors;
-    },
     reasonsErrors() {
       const errors = [];
       const { reasons } = this.$v.form;
@@ -126,7 +113,10 @@ export default {
       if (!form.$invalid) {
         this.isSubmitting = true;
 
-        const response = await registerVolunteer(this.form);
+        const response = await postSubmission({
+          reasons: this.form.reasons,
+          submissionType: this.submissionType,
+        });
         if (!response.error) {
           this.$emit('open-dialog');
         }
