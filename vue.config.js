@@ -13,6 +13,12 @@ module.exports = {
     },
     devtool: 'source-map',
     plugins: [],
+    optimization: {
+      splitChunks: {
+        minSize: 10000,
+        maxSize: 250000,
+      },
+    },
   },
   productionSourceMap: false,
   // Configure Webpack's dev server.

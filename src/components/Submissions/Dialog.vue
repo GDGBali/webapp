@@ -53,8 +53,11 @@
 </template>
 
 <script>
-import SubmissionForm from '@components/Submissions/Form';
 import { IS_LOGGED_IN, SHOW_AUTH_DIALOG } from '@state/mutationTypes';
+
+const SubmissionForm = () =>
+  import(/* webpackChunkName: "submission-form" */ '@components/Submissions/Form');
+
 export default {
   props: {
     formTitle: {
