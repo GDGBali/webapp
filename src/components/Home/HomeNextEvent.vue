@@ -16,7 +16,7 @@
           </div>
         </v-flex>
         <v-flex xs12>
-          <v-card class="pa-3 cardContainer">
+          <v-card class="pa-3 cardContainer success">
             <v-card-title primary-title>
               <div class="headline mb-0 product-sans">
                 {{ event.name }}

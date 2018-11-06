@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="success">
     <v-container>
       <v-layout>
         <v-flex xs12>

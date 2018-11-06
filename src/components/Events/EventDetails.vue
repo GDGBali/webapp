@@ -1,7 +1,7 @@
 <template>
   <div>
     <CoverImg :img-src="event.coverImgUrl" :name="event.name" />
-    <v-card>
+    <v-card class="success">
       <v-container>
         <v-layout wrap justify-center>
           <v-flex xs12 sm9>

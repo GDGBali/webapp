@@ -4,6 +4,7 @@
       v-model="drawer"
       v-if="!hideDrawer"
       fixed
+      class="success"
     >
       <div class="pa-2">
         <img

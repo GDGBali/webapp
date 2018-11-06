@@ -22,13 +22,11 @@
             </v-icon>
           </v-avatar>
           <div class="headline mt-4">
-            <div>
-              {{ currentUser.name }}
-            </div>
+            {{ currentUser.name }}
           </div>
         </div>
       </v-flex>
-      <v-flex xs12 class="mt-5" v-if="currentUser.attendingEvents.length !== 0">
+      <v-flex xs12 class="mt-5" v-if="currentUser.attendsAt.length !== 0">
         <v-expansion-panel popout>
           <v-expansion-panel-content class="primary">
             <div slot="header">
@@ -37,7 +35,7 @@
             <v-card light>
               <v-card-text>
                 <v-layout column align-center>
-                  <div v-for="event in currentUser.attendingEvents" :key="event.id">
+                  <div v-for="event in currentUser.attendsAt" :key="event.id">
                     <v-btn color="primary" @click="openQr(currentUser, event)">
                       {{ event.name }}
                     </v-btn>
@@ -58,6 +56,11 @@
             </v-card-text>
           </v-card>
         </v-dialog>
+      </v-flex>
+      <v-flex xs12>
+        <div class="headline mt-4 text-xs-center">
+          Kami akan segera menambahkan beberapa fitur lainnya pada halaman ini.
+        </div>
       </v-flex>
     </v-layout>
   </v-container>

@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="success">
     <v-container grid-list-xl class="my-5">
       <v-layout wrap>
         <v-flex

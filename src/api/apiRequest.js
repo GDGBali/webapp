@@ -26,10 +26,9 @@ export const postSubmission = async ({ reasons, submissionType }) => {
   return response;
 };
 
-// TECHNICAL DEBT - Refactor to vuex
 export const getUserProfile = async () => {
   const response = await api
-    .get('/profile')
+    .get('/users/profile')
     .catch(err => ({ error: true, err }));
   return response;
 };
