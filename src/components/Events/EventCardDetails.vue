@@ -16,7 +16,7 @@
       </v-list-tile-action>
       <v-list-tile-content>
         <v-list-tile-title>
-          {{ event.startsAt | dateTime }}
+          <FormatDate :starts-at="event.startsAt" :with-time="true" />
         </v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import formatDate from '@utils/filter';
+const FormatDate = () =>
+  import(/* webpackChunkName: "format-date" */ '@components/shared/FormatDate');
 
 export default {
   props: {
@@ -35,8 +36,8 @@ export default {
       }),
     },
   },
-  filters: {
-    dateTime: value => formatDate(value, true),
+  components: {
+    FormatDate,
   },
 };
 </script>

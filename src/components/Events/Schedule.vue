@@ -85,8 +85,6 @@
 </template>
 
 <script>
-import formatDate from '@utils/formatDate';
-
 export default {
   props: {
     sessions: {
@@ -111,12 +109,14 @@ export default {
       return this.$vuetify.breakpoint.xsOnly;
     },
     schedules() {
-      const formattedDate = formatDate(this.startsAt);
+      const currentTime = new Date(this.startsAt);
+      const hours = currentTime.getHours();
+      const minutes = currentTime.getMinutes();
 
       const registration = {
         id: 'registration',
-        hours: formattedDate.hours,
-        minutes: formattedDate.minutes,
+        hours: hours < 10 ? `0${hours}` : hours,
+        minutes: minutes < 10 ? `0${minutes}` : minutes,
         subSessions: [
           {
             name: 'Registration',

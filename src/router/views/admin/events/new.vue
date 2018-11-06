@@ -127,7 +127,6 @@
 <script>
 import DateTime from '@components/Forms/DateTime';
 import { setPageTitle } from '@utils/adminPage';
-// import format from 'date-fns/format';
 
 export default {
   components: {

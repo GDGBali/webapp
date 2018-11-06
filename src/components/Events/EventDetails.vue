@@ -7,7 +7,7 @@
           <v-flex xs12 sm9>
             <v-layout wrap v-if="event.startsAt">
               <FabOrange icon="event" :href="calendarUrl">
-                {{ event.startsAt | date }}
+                <FormatDate :starts-at="event.startsAt" />
               </FabOrange>
               <FabOrange icon="directions" :href="venue.mapsUrl">
                 {{ venue.name || 'TBA' }}
@@ -72,13 +72,15 @@
 </template>
 
 <script>
-import formatDate from '@utils/filter';
 import Register from './Register';
 import FabOrange from './FabOrange';
 import CoverImg from './CoverImg';
 import Schedule from './Schedule';
 import Speakers from './Speakers';
 import { mapGetters } from 'vuex';
+
+const FormatDate = () =>
+  import(/* webpackChunkName: "format-date" */ '@components/shared/FormatDate');
 
 export default {
   components: {
@@ -87,6 +89,7 @@ export default {
     CoverImg,
     Schedule,
     Speakers,
+    FormatDate,
   },
   props: {
     event: {
@@ -111,10 +114,10 @@ export default {
         return '';
       }
 
-      const formatDate = date =>
+      const formatCal = date =>
         date.toISOString().replace(/\.[0-9]{3}|-|:/g, '');
-      const startDate = formatDate(new Date(startsAt));
-      const endDate = formatDate(new Date(endsAt));
+      const startDate = formatCal(new Date(startsAt));
+      const endDate = formatCal(new Date(endsAt));
 
       const eventName = name.replace(/ /g, '+');
       const venueName = this.venue.name
@@ -128,9 +131,6 @@ export default {
     venue() {
       return this.event.venue || {};
     },
-  },
-  filters: {
-    date: value => formatDate(value),
   },
 };
 </script>
