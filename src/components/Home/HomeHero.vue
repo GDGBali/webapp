@@ -1,6 +1,6 @@
 <template>
   <v-img
-    :src="require('@assets/images/hero.jpg')"
+    src="https://res.cloudinary.com/gdgbali/image/upload/f_auto/v1541565797/hero.jpg"
     :lazy-src="require('@assets/images/hero_blur.jpg')"
     id="hero"
   >
