@@ -14,17 +14,6 @@
           />
         </div>
       </v-flex>
-      <!-- <v-flex xs12>
-        <div class="text-xs-center mb-4">
-          <i18n
-            path="tutorials.submit"
-            tag="div"
-            class="body-2"
-            v-html="$t('tutorials.submit')" />
-          <v-btn round color="primary" dark>Request</v-btn>
-        </div>
-      </v-flex> -->
-
       <ComingSoon />
     </v-layout>
   </v-container>

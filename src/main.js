@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import './plugins/vuetify';
-import './plugins/googleAuth';
 import './plugins/abilities';
 import i18n from './plugins/vue-i18n';
 import App from './app';

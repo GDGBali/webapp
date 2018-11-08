@@ -6,6 +6,7 @@
       enable-resize-watcher
       dark
       app
+      class="success"
     >
       <div class="pa-3 text-xs-center">
         <div class="display-2 py-4">

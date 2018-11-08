@@ -2,12 +2,9 @@ import { getAuthUrl } from '@api/config';
 import axios from 'axios';
 
 const googleLogin = async authCode => {
-  const data = {
-    code: authCode,
-  };
-  const searchParams = Object.keys(data)
+  const searchParams = Object.keys(authCode)
     .map(key => {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
+      return encodeURIComponent(key) + '=' + encodeURIComponent(authCode[key]);
     })
     .join('&');
 
