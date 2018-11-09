@@ -184,6 +184,9 @@ export default {
 .sliderContainer {
   position: relative;
   #arrowControls {
+    button {
+      z-index: 2;
+    }
     .arrow {
       top: 18px;
       &.leftArrow {
