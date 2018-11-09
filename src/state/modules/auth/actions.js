@@ -16,24 +16,27 @@ const googeLogin = async ({ commit, rootState }, authClient) => {
         buttonText: 'dismiss',
         onClick: () => commit('HIDE_SNACKBAR'),
       });
+      return 'error';
     });
 
-  const response = await Auth.googleLogin(authCode);
-  commit(HIDE_AUTH_DIALOG);
-  commit(SHOW_SNACKBAR, {
-    titleText: 'Login Success',
-    buttonText: 'dismiss',
-    onClick: () => commit(HIDE_SNACKBAR),
-  });
+  if (authCode !== 'error') {
+    const response = await Auth.googleLogin(authCode);
+    commit(HIDE_AUTH_DIALOG);
+    commit(SHOW_SNACKBAR, {
+      titleText: 'Login Success',
+      buttonText: 'dismiss',
+      onClick: () => commit(HIDE_SNACKBAR),
+    });
 
-  const { data: user } = response;
+    const { data: user } = response;
 
-  await commit(SET_CURRENT_USER, { user });
+    await commit(SET_CURRENT_USER, { user });
 
-  const { redirectTo } = rootState.authDialog;
-  if (redirectTo) {
-    const { name, params } = redirectTo;
-    router.push({ name, params });
+    const { redirectTo } = rootState.authDialog;
+    if (redirectTo) {
+      const { name, params } = redirectTo;
+      router.push({ name, params });
+    }
   }
 };
 

@@ -44,24 +44,12 @@ const gAuthConfig = {
 };
 
 const loadSignin = async callback => {
-  await installClient();
-  window.gapi.load('auth2', callback);
-};
-
-const installClient = () => {
-  const apiUrl = 'https://apis.google.com/js/api:client.js';
-  return new Promise(function(resolve, reject) {
-    const script = document.createElement('script');
-    script.src = apiUrl;
-    script.onreadystatechange = script.onload = function() {
-      if (!script.readyState || /loaded|compvare/.test(script.readyState)) {
-        setTimeout(function() {
-          resolve();
-        }, 500);
-      }
-    };
-    document.getElementsByTagName('head')[0].appendChild(script);
-  });
+  const script = document.createElement('script');
+  script.setAttribute('src', 'https://apis.google.com/js/api:client.js');
+  script.onload = () => {
+    window.gapi.load('auth2', callback);
+  };
+  document.head.appendChild(script);
 };
 </script>
 
