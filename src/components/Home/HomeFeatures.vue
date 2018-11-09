@@ -48,7 +48,11 @@
               :class="[isMobile ? 'mb-4' : 'px-5']"
             >
               <div>
-                <img :src="require(`@assets/icons/${feature.icon}.svg`)" alt="">
+                <img 
+                  :data-src="require(`@assets/icons/${feature.icon}.svg`)" 
+                  alt="" 
+                  class="tns-lazy-img"
+                >
               </div>
               <div class="display-1 mb-1 product-sans">
                 {{ feature.text }}
@@ -98,6 +102,7 @@ export default {
         mouseDrag: true,
         loop: true,
         items: 1,
+        lazyload: true,
         gutter: 20,
         swipeAngle: 45,
         controlsContainer: '#arrowControls',

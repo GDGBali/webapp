@@ -21,7 +21,7 @@ const AuthDialog = () =>
   import(/* webpackChunkName: "auth-dialog" */ '@components/Auth/AuthDialog');
 
 const BaseSnackbar = () =>
-  import(/* webpackChunkName: "navbar" */ '@components/Base/BaseSnackbar');
+  import(/* webpackChunkName: "snackbar" */ '@components/Base/BaseSnackbar');
 
 export default {
   components: {
