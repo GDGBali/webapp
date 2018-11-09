@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as types from './mutationTypes';
 
 export const state = {
@@ -61,6 +60,5 @@ export const actions = {
 
 const setI18nLanguage = ({ i18n, locale }) => {
   i18n.locale = locale;
-  axios.defaults.headers.common['Accept-Language'] = locale;
   document.querySelector('html').setAttribute('lang', locale);
 };

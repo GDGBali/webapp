@@ -1,4 +1,3 @@
-import axios from 'axios';
 import actions from './actions';
 import mutations from './mutations';
 import storage from '@utils/storage';
@@ -8,6 +7,7 @@ import {
   SET_CURRENT_USER,
   IS_LOGGED_IN,
 } from '@state/mutationTypes';
+import api from '@api';
 
 const state = {
   currentUser: storage.getStorage('auth.currentUser'),
@@ -15,7 +15,7 @@ const state = {
 };
 
 export function setDefaultAuthHeaders(currentUser) {
-  axios.defaults.headers.common.Authorization = currentUser
+  api.defaults.headers.common.Authorization = currentUser
     ? currentUser.accessToken
     : '';
 }

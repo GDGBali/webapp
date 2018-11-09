@@ -1,12 +1,16 @@
-import { getApiUrl, getAuthUrl } from '@api/config';
 import axios from 'axios';
 
-export const rootEndpoint = () => {
-  return axios.create({
-    baseURL: getAuthUrl(),
-  });
+const apiUrl = () => `${apiRootUrl()}/api/v1`;
+
+export const apiRootUrl = () => {
+  switch (process.env.NODE_ENV) {
+    case 'production':
+      return 'https://gdg-bali.herokuapp.com';
+    default:
+      return 'http://localhost:3007';
+  }
 };
 
 export default axios.create({
-  baseURL: getApiUrl(),
+  baseURL: apiUrl(),
 });

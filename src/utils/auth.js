@@ -1,5 +1,4 @@
-import { getAuthUrl } from '@api/config';
-import axios from 'axios';
+import api, { apiRootUrl } from '@api';
 
 const googleLogin = async authCode => {
   const searchParams = Object.keys(authCode)
@@ -8,9 +7,9 @@ const googleLogin = async authCode => {
     })
     .join('&');
 
-  return axios({
+  return api({
     method: 'post',
-    url: `${getAuthUrl()}/auth/google_oauth2/callback`,
+    url: `${apiRootUrl()}/auth/google_oauth2/callback`,
     data: searchParams,
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
