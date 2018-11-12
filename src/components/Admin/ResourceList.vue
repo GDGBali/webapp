@@ -35,7 +35,10 @@
     </v-flex>
     <v-flex xs12 v-else>
       <v-card light class="mt-5">
-        <v-list>
+        <div class="headline text-xs-center pa-3" v-if="listIsEmpty">
+          No Data Available
+        </div>
+        <v-list else>
           <template v-for="(item, index) in list">
             <v-list-tile
               :key="item.id"
@@ -44,7 +47,7 @@
               <v-list-tile-content>
                 <v-list-tile-title v-text="item.name" />
               </v-list-tile-content>
-
+  
               <v-list-tile-action>
                 <v-icon color="primary">edit</v-icon>
               </v-list-tile-action>
@@ -92,6 +95,11 @@ export default {
     cardView: {
       type: Boolean,
       default: false,
+    },
+  },
+  computed: {
+    listIsEmpty() {
+      return this.list.length === 0;
     },
   },
 };
