@@ -15,6 +15,7 @@ NProgress.configure({ showSpinner: false });
 Vue.use(VueRouter);
 Vue.use(VueMeta, {
   keyName: 'metaInfo',
+  tagIDKeyName: 'vmid',
 });
 
 const router = new VueRouter({

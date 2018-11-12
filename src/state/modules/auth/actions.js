@@ -6,6 +6,7 @@ import {
   SET_CURRENT_USER,
 } from '@state/mutationTypes';
 import router from '@router';
+import { validateUser } from '@api/apiRequest';
 
 const googeLogin = async ({ commit, rootState }, authClient) => {
   const authCode = await authClient
@@ -40,12 +41,18 @@ const googeLogin = async ({ commit, rootState }, authClient) => {
   }
 };
 
-const init = ({ state: { currentUser }, commit }) => {
+const init = async ({ state: { currentUser }, commit }) => {
   commit(SET_CURRENT_USER, { user: currentUser });
-  // dispatch('validate');
+  if (currentUser) {
+    const { data } = await validateUser();
+    commit(SET_CURRENT_USER, {
+      user: {
+        ...currentUser,
+        ...data,
+      },
+    });
+  }
 };
-
-const validate = () => {};
 
 const loginStart = (store, { provider, authClient }) => {
   switch (provider) {
@@ -62,7 +69,6 @@ const logOut = ({ commit }) => {
 
 export default {
   init,
-  validate,
   loginStart,
   logOut,
 };

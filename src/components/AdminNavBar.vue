@@ -58,7 +58,7 @@
       <v-toolbar-title>{{ pageTitle }}</v-toolbar-title>
       <v-spacer />
       <v-btn flat to="/">
-        home
+        MAIN SITE
       </v-btn>
     </v-toolbar>
   </div>

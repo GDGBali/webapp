@@ -2,6 +2,9 @@
   <v-container>
     <v-layout wrap>
       <v-flex xs12>
+        <div v-if="isHomeRoute">
+          <h1>hqweqwheqwe</h1>
+        </div>
         <router-view />
       </v-flex>
     </v-layout>
@@ -9,7 +12,12 @@
 </template>
 
 <script>
+import { setPageTitle } from '@utils/adminPage';
+
 export default {
+  created() {
+    setPageTitle(this, 'Home');
+  },
   data() {
     return {
       items: [
@@ -27,6 +35,12 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    isHomeRoute() {
+      const homeRoutes = ['/kelian/', '/kelian'];
+      return homeRoutes.includes(this.$router.currentRoute.fullPath);
+    },
   },
 };
 </script>

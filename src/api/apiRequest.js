@@ -32,3 +32,10 @@ export const getUserProfile = async () => {
     .catch(err => ({ error: true, err }));
   return response;
 };
+
+export const validateUser = async () => {
+  const response = await api
+    .get('/users/validate')
+    .catch(err => ({ error: true, err }));
+  return response;
+};
