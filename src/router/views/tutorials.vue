@@ -1,29 +1,20 @@
 <template>
   <v-container fluid grid-list-xl>
-    <v-layout row wrap justify-center>
+    <v-layout wrap justify-center>
       <v-flex xs12>
         <div class="text-xs-center mb-4">
-          <h1 class="product-sans">Tutorials</h1>
+          <h1 class="product-sans">
+            Tutorials
+          </h1>
           <i18n
             path="tutorials.title"
             tag="div"
             class="body-2"
-            v-html="$t('tutorials.title')" />
+            v-html="$t('tutorials.title')"
+          />
         </div>
       </v-flex>
-      <!-- <v-flex xs12>
-        <div class="text-xs-center mb-4">
-          <i18n
-            path="tutorials.submit"
-            tag="div"
-            class="body-2"
-            v-html="$t('tutorials.submit')" />
-          <v-btn round color="primary" dark>Request</v-btn>
-        </div>
-      </v-flex> -->
-
-      <coming-soon />
-
+      <ComingSoon />
     </v-layout>
   </v-container>
 </template>

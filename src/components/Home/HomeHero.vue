@@ -1,12 +1,15 @@
 <template>
-  <BaseLazyBg img-name="hero">
+  <v-img
+    src="https://res.cloudinary.com/gdgbali/image/upload/f_auto/v1541565797/hero.jpg"
+    :lazy-src="require('@assets/images/hero_blur.jpg')"
+    id="hero"
+  >
     <div class="heroOverlay" />
     <v-container fill-height class="heroContent">
       <v-layout align-center>
         <v-flex xs12>
           <v-container>
             <v-layout
-              row
               wrap
               justify-center
               align-center
@@ -16,8 +19,15 @@
               </v-flex>
               <v-flex xs12 text-xs-center>
                 <div class="mt-5">
-                  <v-btn to="/events" class="primary--text">
-                    <v-icon left>local_activity</v-icon>
+                  <v-btn 
+                    to="/events" 
+                    class="primary--text" 
+                    light 
+                    round
+                  >
+                    <v-icon left>
+                      local_activity
+                    </v-icon>
                     Events
                   </v-btn>
                 </div>
@@ -27,7 +37,7 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </BaseLazyBg>
+  </v-img>
 </template>
 
 <script>

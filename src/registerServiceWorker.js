@@ -2,6 +2,7 @@
 
 import { register } from 'register-service-worker';
 import store from '@state/store';
+import { SHOW_SNACKBAR, HIDE_SNACKBAR } from '@state/mutationTypes';
 
 const updateOptions = registration => ({
   titleText: 'New content available',
@@ -13,14 +14,11 @@ const updateOptions = registration => ({
 const readyOfflineOptions = {
   titleText: 'Ready to work offline',
   buttonText: 'dismiss',
-  onClick: () => store.commit('HIDE_SNACKBAR'),
+  onClick: () => store.commit(HIDE_SNACKBAR),
 };
 
 const notifyUserUpdate = options =>
-  store.dispatch('showSnackbar', {
-    ...options,
-    visible: true,
-  });
+  store.dispatch(SHOW_SNACKBAR, { ...options });
 
 const onNewServiceWorker = (registration, callback) => {
   if (registration.waiting) return callback();
@@ -38,21 +36,21 @@ const onNewServiceWorker = (registration, callback) => {
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready() {
-      console.log(
+      console.debug(
         'App is being served from cache by a service worker.\n' +
           'For more details, visit https://goo.gl/AFskqB'
       );
     },
     cached() {
-      console.log('Content has been cached for offline use.');
+      console.debug('Content has been cached for offline use.');
       notifyUserUpdate(readyOfflineOptions);
     },
     updated(registration) {
-      console.log('New content is available; please refresh.');
+      console.debug('New content is available; please refresh.');
       notifyUserUpdate(updateOptions(registration));
     },
     offline() {
-      console.log(
+      console.debug(
         'No internet connection found. App is running in offline mode.'
       );
     },

@@ -1,41 +1,10 @@
 import Vue from 'vue';
-import {
-  Vuetify,
-  VApp,
-  VNavigationDrawer,
-  VFooter,
-  VList,
-  VBtn,
-  VIcon,
-  VGrid,
-  VToolbar,
-  VSelect,
-  VCard,
-  VDivider,
-  VExpansionPanel,
-  VSnackbar,
-  transitions,
-} from 'vuetify';
-import colors from 'vuetify/es5/util/colors';
+import Vuetify from 'vuetify/lib';
 
 Vue.use(Vuetify, {
-  components: {
-    VApp,
-    VNavigationDrawer,
-    VFooter,
-    VList,
-    VBtn,
-    VIcon,
-    VGrid,
-    VToolbar,
-    VSelect,
-    VCard,
-    VDivider,
-    VExpansionPanel,
-    VSnackbar,
-    transitions,
-  },
   theme: {
-    primary: colors.teal.darken3,
+    primary: '#00695c',
+    secondary: '#ff9800',
+    success: '#131A1F',
   },
 });

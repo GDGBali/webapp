@@ -1,16 +1,36 @@
 <template>
-  <v-app>
-    <BaseNavbar />
+  <v-app dark>
+    <NavBar />
     <v-content>
       <slot />
     </v-content>
-    <BaseFooter />
-    <BaseSnackbar/>
+    <MainFooter />
+    <BaseSnackbar />
+    <AuthDialog />
   </v-app>
 </template>
 
 <script>
-export default {};
+const NavBar = () =>
+  import(/* webpackChunkName: "navbar" */ '@components/NavBar');
+
+const MainFooter = () =>
+  import(/* webpackChunkName: "footer" */ '@components/Footer');
+
+const AuthDialog = () =>
+  import(/* webpackChunkName: "auth-dialog" */ '@components/Auth/AuthDialog');
+
+const BaseSnackbar = () =>
+  import(/* webpackChunkName: "snackbar" */ '@components/Base/BaseSnackbar');
+
+export default {
+  components: {
+    NavBar,
+    AuthDialog,
+    MainFooter,
+    BaseSnackbar,
+  },
+};
 </script>
 
 <style lang="scss">

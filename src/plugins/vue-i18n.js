@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import id from '@/lang/id.json';
+import id from '@src/lang/id.json';
 
 Vue.use(VueI18n);
 

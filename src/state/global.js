@@ -1,5 +1,4 @@
 import * as types from './mutationTypes';
-import axios from 'axios';
 
 export const state = {
   locale: 'id',
@@ -11,6 +10,11 @@ export const state = {
     onClick: null,
     visible: false,
   },
+  authDialog: {
+    visible: false,
+    titleText: 'Login',
+    redirectTo: null,
+  },
 };
 
 export const mutations = {
@@ -18,10 +22,23 @@ export const mutations = {
     state.locale = locale;
   },
   [types.SHOW_SNACKBAR](state, payload) {
+    state.snackbar.visible = true;
     state.snackbar = { ...state.snackbar, ...payload };
   },
   [types.HIDE_SNACKBAR](state) {
     state.snackbar.visible = false;
+  },
+  [types.SHOW_AUTH_DIALOG](state, payload = {}) {
+    state.authDialog.visible = true;
+    const titleText = payload.titleText || 'Login';
+    state.authDialog.titleText = titleText;
+
+    if (payload.redirectTo) {
+      state.authDialog.redirectTo = payload.redirectTo;
+    }
+  },
+  [types.HIDE_AUTH_DIALOG](state) {
+    state.authDialog.visible = false;
   },
 };
 
@@ -36,13 +53,12 @@ export const actions = {
     commit(types.SET_LOCALE, payload);
     setI18nLanguage(payload);
   },
-  showSnackbar({ commit }, payload) {
+  [types.SHOW_SNACKBAR]({ commit }, payload) {
     commit(types.SHOW_SNACKBAR, payload);
   },
 };
 
 const setI18nLanguage = ({ i18n, locale }) => {
   i18n.locale = locale;
-  axios.defaults.headers.common['Accept-Language'] = locale;
   document.querySelector('html').setAttribute('lang', locale);
 };

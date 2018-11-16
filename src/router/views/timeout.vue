@@ -2,7 +2,7 @@
 import Layout from '@layouts/main';
 
 export default {
-  page: {
+  metaInfo: {
     title: 'Page timeout',
     meta: [
       { name: 'description', content: 'The page timed out while loading.' },

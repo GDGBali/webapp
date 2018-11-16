@@ -21,6 +21,10 @@ module.exports = {
       ? ['error', { allow: ['warn', 'error'] }]
       : 'off',
     'prettier/prettier': 'error',
+    'vue/multiline-html-element-content-newline': 'error',
+    'vue/singleline-html-element-content-newline': ['error', { ignores: ['v-icon']}],
+    'vue/no-spaces-around-equal-signs-in-attribute': 'error',
+    'vue/script-indent': ['error', 2, { baseIndent: 0 }],
     'vue/max-attributes-per-line': [
       2,
       {
