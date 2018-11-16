@@ -23,16 +23,33 @@ export default {
     GoogleIcon,
   },
   data: () => ({
-    loading: false,
+    loading: true,
+    authClient: null,
   }),
+  mounted() {
+    this.loadGoogle();
+  },
+  watch: {
+    authClient: function(value) {
+      if (value) {
+        this.loading = false;
+      }
+    },
+  },
   methods: {
+    async loadGoogle() {
+      await installClient();
+      this.authClient = await initClient();
+    },
     async authenticate(provider) {
       this.loading = true;
-      loadSignin(async () => {
-        const authClient = await window.gapi.auth2.init(gAuthConfig);
-        await this.$store.dispatch(LOGIN_START, { provider, authClient });
-        this.loading = false;
+
+      await this.$store.dispatch(LOGIN_START, {
+        provider,
+        authClient: this.authClient,
       });
+
+      this.loading = false;
     },
   },
 };
@@ -43,13 +60,30 @@ const gAuthConfig = {
   scope: 'profile email',
 };
 
-const loadSignin = async callback => {
-  const script = document.createElement('script');
-  script.setAttribute('src', 'https://apis.google.com/js/api:client.js');
-  script.onload = () => {
-    window.gapi.load('auth2', callback);
-  };
-  document.head.appendChild(script);
+const installClient = () => {
+  const url = 'https://apis.google.com/js/api.js';
+  return new Promise(resolve => {
+    const script = document.createElement('script');
+    script.src = url;
+    script.onreadystate = script.onload = function() {
+      if (!script.readyState || /loaded|compvare/.test(script.readyState)) {
+        setTimeout(function() {
+          resolve();
+        }, 500);
+      }
+    };
+    document.getElementsByTagName('head')[0].appendChild(script);
+  });
+};
+
+const initClient = config => {
+  return new Promise(resolve => {
+    window.gapi.load('auth2', () => {
+      window.gapi.auth2.init(gAuthConfig).then(() => {
+        resolve(window.gapi.auth2.getAuthInstance());
+      });
+    });
+  });
 };
 </script>
 
