@@ -18,11 +18,7 @@ const createAdminRoutes = (path, name, component, access = ['superAdmin']) => {
 
 const adminRoutes = [
   {
-    ...createAdminRoutes('/kelian', '', 'admin/index', [
-      'superAdmin',
-      'admin',
-      'volunteer',
-    ]),
+    ...createAdminRoutes('/kelian', '', 'admin/index', ['superAdmin', 'admin']),
     beforeEnter: (to, from, next) => {
       const { currentUser } = store.state.auth;
       const userRole = getRoles(currentUser.rolesMask);
@@ -43,10 +39,27 @@ const adminRoutes = [
       return next(from);
     },
     children: [
-      createAdminRoutes('events', 'adminEvents', 'admin/events/index'),
+      createAdminRoutes('events', 'adminEvents', 'admin/events'),
       createAdminRoutes('events/new', 'adminEventsNew', 'admin/events/new'),
-      createAdminRoutes('venues', 'adminVenues', 'admin/venues/index'),
+      createAdminRoutes('venues', 'adminVenues', 'admin/venues'),
       createAdminRoutes('venues/new', 'adminVenuesNew', 'admin/venues/new'),
+      createAdminRoutes('users', 'adminUsers', 'admin/users'),
+      createAdminRoutes('users/new', 'adminUsersNew', 'admin/users/new'),
+      createAdminRoutes('attendees', 'adminAttendees', 'admin/attendees', [
+        'superAdmin',
+        'admin',
+      ]),
+      createAdminRoutes(
+        'attendees/new',
+        'adminAttendeesNew',
+        'admin/attendees/new'
+      ),
+      createAdminRoutes(
+        'attendees/events',
+        'adminAttendeesEvents',
+        'admin/attendees/events',
+        ['superAdmin', 'admin']
+      ),
     ],
   },
 ];

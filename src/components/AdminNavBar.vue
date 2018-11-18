@@ -17,7 +17,7 @@
         <v-list class="pa-0">
           <v-list-tile avatar>
             <v-list-tile-avatar>
-              <v-img :src="currentUser.avatarUrl" class="primary" />
+              <v-img :src="currentUser.avatarUrl" class="primary" v-if="currentUser.avatarUrl" />
             </v-list-tile-avatar>
 
             <v-list-tile-content>
@@ -28,23 +28,22 @@
       </v-toolbar>
       <v-divider />
       <v-list dense="dense">
-        <template v-if="$can('manage', 'all')">
-          <template v-for="(item) in menus">
-            <v-list-tile
-              :to="`/kelian${item.href}`" 
-              router="router" 
-              ripple="ripple"
-              :key="item.title"
-              exact
-            >
-              <v-list-tile-action>
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </template>
+        <template v-for="(item) in menus">
+          <v-list-tile
+            :to="`/kelian${item.href}`" 
+            router="router" 
+            ripple="ripple"
+            :key="item.title"
+            exact
+            v-if="$can(item.access.action, item.access.resource)"
+          >
+            <v-list-tile-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
         </template>
       </v-list>
     </v-navigation-drawer>

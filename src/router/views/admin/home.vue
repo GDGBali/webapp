@@ -9,10 +9,13 @@
       v-for="item in items"
       :key="item.title"
     >
-      <v-icon left>
-        {{ item.icon }}
-      </v-icon>
-      {{ item.title }}
+      <template v-if="$can(item.access.action, item.access.resource)">
+        {{ item.access }}
+        <v-icon left>
+          {{ item.icon }}
+        </v-icon>
+        {{ item.title }}
+      </template>
     </v-btn>
   </v-layout>
 </template>

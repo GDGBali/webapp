@@ -1,7 +1,7 @@
 import { Ability, AbilityBuilder } from '@casl/ability';
 import { SET_CURRENT_USER } from '@state/mutationTypes';
 
-const ROLES = ['superAdmin', 'admin', 'volunteer', 'speaker', 'member'];
+const ROLES = ['superAdmin', 'admin', 'speaker', 'member'];
 
 export const getRoles = rolesMask => {
   return ROLES.filter(

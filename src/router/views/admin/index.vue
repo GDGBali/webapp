@@ -4,20 +4,22 @@
       <v-flex xs12>
         <template v-if="isHomeRoute">
           <v-layout wrap justify-center class="mt-5">
-            <v-btn 
-              :to="`/kelian${item.href}`" 
-              class="primary--text" 
-              light 
-              round
-              large
-              v-for="item in items"
-              :key="item.title"
-            >
-              <v-icon left>
-                {{ item.icon }}
-              </v-icon>
-              {{ item.title }}
-            </v-btn>
+            <div v-for="item in items" :key="item.title">
+              <template v-if="$can(item.access.action, item.access.resource)">
+                <v-btn 
+                  :to="`/kelian${item.href}`" 
+                  class="primary--text" 
+                  light 
+                  round
+                  large
+                >
+                  <v-icon left>
+                    {{ item.icon }}
+                  </v-icon>
+                  {{ item.title }}
+                </v-btn>
+              </template>
+            </div>
           </v-layout>
         </template>
         <router-view />

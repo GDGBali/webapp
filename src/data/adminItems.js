@@ -1,6 +1,27 @@
+const createAdminItem = (
+  href,
+  title,
+  icon,
+  access = {
+    action: 'manage',
+    resource: 'all',
+  }
+) => {
+  return {
+    href,
+    title,
+    icon,
+    access,
+  };
+};
+
 export default [
-  { href: '/', title: 'Home', icon: 'home' },
-  { href: '/events', title: 'Events', icon: 'event' },
-  { href: '/venues', title: 'Venues', icon: 'place' },
-  { href: '/users', title: 'Users', icon: 'people' },
+  createAdminItem('/', 'Home', 'home'),
+  createAdminItem('/events', 'Events', 'event'),
+  createAdminItem('/venues', 'Venues', 'place'),
+  createAdminItem('/users', 'Users', 'people'),
+  createAdminItem('/attendees', 'Attendees', 'people', {
+    action: 'read',
+    resource: 'admin',
+  }),
 ];

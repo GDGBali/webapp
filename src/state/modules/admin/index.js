@@ -3,6 +3,7 @@ import {
   NEW_VENUE,
   FETCH_VENUES,
   FETCH_EVENTS,
+  FETCH_ATTENDEES,
 } from '@state/mutationTypes';
 import actions from './actions';
 
@@ -13,6 +14,10 @@ const state = {
     cached: false,
   },
   events: {
+    list: [],
+    cached: false,
+  },
+  attendees: {
     list: [],
     cached: false,
   },
@@ -37,6 +42,10 @@ export default {
     [FETCH_EVENTS]: ({ events }, { list }) => {
       if (events.cached) return;
       events.list = list;
+    },
+    [FETCH_ATTENDEES]: ({ attendees }, { list }) => {
+      if (attendees.cached) return;
+      attendees.list = list;
     },
   },
 };
