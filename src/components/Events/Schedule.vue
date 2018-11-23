@@ -53,17 +53,26 @@
                           {{ subSession.duration }} minutes
                         </div>
                         <template v-if="subSession.users">
-                          <div class="subheading" v-for="user in subSession.users" :key="`user-${user.id}`">
-                            <v-avatar>
-                              <v-img
-                                :src="userAvatar(user.avatarUrl)"
-                                aspect-ratio="1"
-                                class="primary"
-                              />
-                            </v-avatar>
-                            <span class="ml-3">
-                              {{ user.name }}
-                            </span>
+                          <div class="subheading my-2" v-for="user in subSession.users" :key="`user-${user.id}`">
+                            <v-layout align-center>
+                              <v-flex class="shrink">
+                                <v-avatar>
+                                  <v-img
+                                    :src="userAvatar(user.avatarUrl)"
+                                    aspect-ratio="1"
+                                    class="primary"
+                                  />
+                                </v-avatar>
+                              </v-flex>
+                              <v-flex class="ml-3">
+                                <v-layout column>
+                                  <div>{{ user.name }}</div>
+                                  <div class="caption">
+                                    {{ user.institution }}
+                                  </div>
+                                </v-layout>
+                              </v-flex>
+                            </v-layout>
                           </div>
                         </template>
                       </v-layout>
